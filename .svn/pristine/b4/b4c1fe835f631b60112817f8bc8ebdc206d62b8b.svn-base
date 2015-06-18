@@ -1,4 +1,0 @@
-<?php
-include 'http.php';
-$info = apiGet ("http://www.lenovomm.com/error/queryappvc.do?pn=com.lenovo.leos.appstore");
-echo $info;
