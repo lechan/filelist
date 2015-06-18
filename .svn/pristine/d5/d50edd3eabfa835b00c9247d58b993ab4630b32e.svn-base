@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<meta name="viewport" content="minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no,width=device-width" />
+</head>
+
+<body>
+<style type="text/css">
+*{ margin:0px; padding:0px;}
+.wrap{ width:320px; margin:0 auto;}
+.box{ width:300px; height:300px; margin:0 auto; position:relative; background:#BAFBFD; overflow:hidden;}
+.wave{ width:400px; height:10px; background:url(images/wave.png) repeat-x; background-size:auto 10px; position:absolute; left:-50px;}
+.wave1{ bottom:0px;-webkit-animation:wave1 10s linear infinite; z-index:9;}
+.wave2{ bottom:10px;-webkit-animation:wave2 12s ease-out infinite; z-index:8;}
+.wave3{ bottom:20px;-webkit-animation:wave1 14s linear infinite; z-index:7;}
+.wave4{ bottom:30px;-webkit-animation:wave2 10s ease-out infinite; z-index:6;}
+.wave5{ bottom:40px;-webkit-animation:wave1 13s linear infinite; z-index:5;}
+.wave6{ bottom:50px;-webkit-animation:wave1 10s linear infinite; z-index:4;}
+.wave7{ bottom:60px;-webkit-animation:wave1 12s linear infinite; z-index:3;}
+.wave8{ bottom:70px;-webkit-animation:wave1 11s linear infinite; z-index:2;}
+.wave9{ bottom:80px;-webkit-animation:wave1 14s linear infinite; z-index:1;}
+
+.bottle{ width:32px; height:64px; background:url(images/icon_bottle_type104470.png) no-repeat 0 0; position:absolute; cursor:pointer;}
+.bottle1{ bottom:30px; left:20px; -webkit-transform:rotate(80deg);-webkit-animation:bottle1 8.0s linear infinite; z-index:4;}
+.bottle2{ bottom:20px; left:200px; -webkit-transform:rotate(0deg);-webkit-animation:bottle2 6.0s linear infinite; z-index:5;}
+.bottle3{ bottom:20px; left:100px; -webkit-transform:rotate(0deg);-webkit-animation:bottle3 5.0s linear infinite; z-index:6;}
+.bottle4{ bottom:40px; left:50px; -webkit-transform:rotate(0deg);-webkit-animation:bottle4 7.0s linear infinite; z-index:6;}
+.bottle5{ bottom:10px; left:150px; -webkit-transform:rotate(0deg);-webkit-animation:bottle5 8.0s linear infinite; z-index:5;}
+
+@-webkit-keyframes wave1{
+	0% { left:-50px;}
+   25% { left:-25px;}
+  50% { left:0px;}
+  75% { left:-25px;}
+  100% { left:-50px;}
+}
+@-webkit-keyframes wave2{
+	0% { left:-50px;}
+   25% { left:-75px;}
+  50% { left:-100px;}
+  75% { left:-75px;}
+  100% { left:-50px;}
+}
+@-webkit-keyframes bottle1{
+	0% { bottom:30px; -webkit-transform:rotate(90deg); left:20px;}
+   25% { bottom:20px; -webkit-transform:rotate(80deg); left:30px;}
+  50% { bottom:10px; -webkit-transform:rotate(70deg); left:40px;}
+  75% { bottom:20px; -webkit-transform:rotate(80deg); left:30px;}
+  100% { bottom:30px; -webkit-transform:rotate(90deg); left:20px;}
+}
+@-webkit-keyframes bottle2{
+	0% { bottom:30px; -webkit-transform:rotate(0deg); left:200px;}
+   25% { bottom:20px; -webkit-transform:rotate(-20deg); left:210px;}
+  50% { bottom:10px; -webkit-transform:rotate(0deg); left:220px;}
+  75% { bottom:20px; -webkit-transform:rotate(20deg); left:210px;}
+  100% { bottom:30px; -webkit-transform:rotate(0deg); left:200px;}
+}
+@-webkit-keyframes bottle3{
+	0% { bottom:20px; -webkit-transform:rotate(0deg); left:100px;}
+   25% { bottom:10px; -webkit-transform:rotate(-20deg); left:110px;}
+  50% { bottom:0px; -webkit-transform:rotate(0deg); left:120px;}
+  75% { bottom:10px; -webkit-transform:rotate(20deg); left:110px;}
+  100% { bottom:20px; -webkit-transform:rotate(0deg); left:100px;}
+}
+@-webkit-keyframes bottle4{
+	0% { bottom:20px; -webkit-transform:rotate(0deg); left:50px;}
+   25% { bottom:10px; -webkit-transform:rotate(-20deg); left:60px;}
+  50% { bottom:0px; -webkit-transform:rotate(0deg); left:70px;}
+  75% { bottom:10px; -webkit-transform:rotate(20deg); left:60px;}
+  100% { bottom:20px; -webkit-transform:rotate(0deg); left:50px;}
+}
+@-webkit-keyframes bottle5{
+	0% { bottom:30px; -webkit-transform:rotate(0deg); left:150px;}
+   25% { bottom:20px; -webkit-transform:rotate(-20deg); left:160px;}
+  50% { bottom:10px; -webkit-transform:rotate(0deg); left:170px;}
+  75% { bottom:20px; -webkit-transform:rotate(20deg); left:160px;}
+  100% { bottom:30px; -webkit-transform:rotate(0deg); left:150px;}
+}
+</style>
+<div class="wrap">
+	<div class="box">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+        <div class="wave wave5"></div>
+        <div class="wave wave6"></div>
+        <div class="wave wave7"></div>
+        <div class="wave wave8"></div>
+        <div class="wave wave9"></div>
+        
+        <div class="bottle bottle1"></div>
+        <div class="bottle bottle2"></div>
+        <div class="bottle bottle3"></div>
+        <div class="bottle bottle4"></div>
+        <div class="bottle bottle5"></div>
+    </div>
+</div>
+</body>
+</html>

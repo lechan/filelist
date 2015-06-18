@@ -1,0 +1,26 @@
+{
+	"success":true,
+	"code":"",
+	"msg":"",
+	"data" : [{
+		"id" : 1,
+		"code" : "video_xx",
+		"name" : "电视剧",
+		"isDefault" : 1,
+		"orderNum" : 1
+	}, {
+		"id" : 2,
+		"code" : "video_movie",
+		"name" : "电影",
+		"isDefault" : 0,
+		"orderNum" : 2
+
+	},{
+		"id" : 3,
+		"code" : "video_animation",
+		"name" : "动漫",
+		"isDefault" : 0,
+		"orderNum" : 3
+
+	}]	
+}

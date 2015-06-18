@@ -1,0 +1,6 @@
+define(function(require, exports, module) {
+	"use strict";
+	function a(){return 'hello world'}
+	var a = {a:a()}
+	module.exports = a;
+});

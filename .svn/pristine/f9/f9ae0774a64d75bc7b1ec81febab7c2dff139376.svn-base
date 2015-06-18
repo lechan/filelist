@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="viewport" content="minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no,width=device-width" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta http-equiv="Cache-Control" content="max-age=3600"/>
+<title>无标题文档</title>
+<style type="text/css">
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fiedlset,input,textarea,p,blockquote,th,td,figure,button,time,span,i{margin:0; padding:0;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+table{border-collapse:collapse; border-spacing:0;}
+fieldset,img,button{border:0}
+address,b,caption,cite,code,dfn,em,th,var{font-style:normal; font-weight:normal; font-variant:normal}
+ol,ul{list-style:none}
+caption,th{text-align:left}
+h1,h2,h3,h4,h5,h6{font-size:100%; font-weight:normal}
+q:before,q:after{content:""}
+blockquote, q{quotes: none}
+abbr,acronym{border:0}
+a{text-decoration: none; color:inherit}
+i,b,em,strong{font-style:normal}
+input,button,select,textarea{outline:none}
+.wrap{ max-width:640px; min-width:320px; width:100%; margin:0 auto; position:relative;}
+.wrap img{ width:100%; vertical-align:top;}
+.pop{ position:absolute; top:0px; margin:10px; display:none; border:2px solid #FD982F; border-radius:10px; overflow:hidden;}
+.pop img{ width:100%; vertical-align:top;}
+.mask{ background:rgba(0,0,0,0.5); position:absolute; top:0px; left:0px; width:100%; height:100%; display:none;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+	<a id="downloadBtn"><img src="images/bg.png" /></a>
+    <div class="mask"></div>
+    <div class="pop"><img src="images/pop.png" /></div>
+</div>
+<script type="text/javascript">
+(function(){
+	if(typeof(WeixinJSBridge)!="undefined"){
+		alert(1);	
+	}else{
+		alert(2);	
+	}
+	
+	
+	document.querySelector("#downloadBtn").onclick = function(){
+		if(typeof(WeixinJSBridge)!="undefined"){
+			document.querySelector(".pop").style.display = 'block';	
+			document.querySelector(".mask").style.display = 'block';	
+		}else{
+			window.open('http://app.lenovo.com/appdown/12368596-2');	
+		}
+	}	
+})()
+</script>
+</body>
+</html>

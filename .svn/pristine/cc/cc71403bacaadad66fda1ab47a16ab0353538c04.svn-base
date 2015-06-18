@@ -1,0 +1,290 @@
+(function(WIN, U, E, T){
+	var jDoc=$(document), jWin=$(WIN);
+	var App={
+		urlAlbum:'/video/api/albuminfo'
+		,urlVideo:'/video/api/videolist'
+		,clsLoaded:'loaded', clsLoading:'isLoading'
+		,listCtnr:null, itemTpl:null
+		,tpls:{tplEnt:'.drama-dates', tplDrama:'.drama-nums'}
+		,doms:{head:'#dramaHead', body:'#dramaBody', footer:'#dramaFooter', phBar:'#phBar', sdBar:'#sdBar', phUsed:'#phUsed', phTotal:'#phTotal', sdUsed:'#sdUsed', sdTotal:'#sdTotal', slSource:'#slSource', btnSort:'#btnSort', g3Dlg:'#g3Dlg', btnWlan:'#g3Wlan', btnGoDL:'#g3Go'}
+		,videos:[], vDoms:null, vStatuses:[], sort:null, selectedData:null ,scroller:null
+		,noLoadedEver:true 	,startIndex:E.startIndex
+		,init:function(){
+
+			var tpls=this.tpls;
+			U.initDoms(tpls);
+			tpls.tplDrama.remove();
+			tpls.tplEnt.remove();
+
+			this.albumId=U.getURLParam('aid');
+
+			this.initDoms();
+			this.loadAlbum();
+
+			var t=this;
+			t.sort=E.sort.desc;
+			this.doms.btnSort.addClass(t.sort.cls).click(function(){t.toggleSort();});
+			this.doms.btnWlan.click(function(){
+				U.dialog.close();
+				t.doDL(true);
+			});
+			this.doms.btnGoDL.click(function(){
+				t.doDL();
+				U.dialog.close();
+			});
+
+			(function again(){
+				if(t.updateSpace()){
+					WIN.setTimeout(again, 5000);
+				}
+			})();
+		}
+		,toggleSort:function(){
+			this.doms.btnSort.removeClass(this.sort.cls);
+			if(this.sort==E.sort.desc){
+				this.sort=E.sort.asc;
+			}else{
+				this.sort=E.sort.desc;
+			}
+			this.doms.btnSort.addClass(this.sort.cls);
+			this.reload();
+		}
+		,download:function(tar){
+			if(!API||!API.downloadOffline){
+				return T.show('不支持离线');
+				this.download=function(){};
+			}
+			var ix;
+			while(tar&&tar!=this.listCtnr[0]){
+				if(tar.hasAttribute('ix')){
+					ix=parseInt(tar.getAttribute('ix'));
+					break;
+				}
+				tar=tar.parentNode;
+			}
+			tar=$(tar);
+			if(ix!=undefined&&!isNaN(ix)){
+				var d=this.videos[ix];
+				if(!d.isDownload){
+					T.show('该集不支持离线');
+				}else if(!tar.hasClass(this.clsLoaded)&&!tar.hasClass(this.clsLoading)){
+					this.selectedData=d;
+					if(API.getNetworkType()!='wifi'){
+						 this.doms.g3Dlg.removeClass(E.clsTpl);
+						 U.dialog.open(this.doms.g3Dlg[0]);
+					}else{
+						this.doDL();
+					}
+				}
+			}
+		}
+		,doDL:function(delayed){
+			s=this.ddsource.selectedSource;
+			var d=this.selectedData;
+			var args=[String(s.src.sourceCode), String(d.vid), String(this.albumId), String(s.stream), d.fullName||d.name, this.albumInfo.albumImgV, U.getWVUrl(E.detailFileName+'?aid='+this.albumId), !delayed, '{}'];
+			//alert(JSON.stringify(args));
+			API.downloadOffline.apply(API, args);
+		}
+		,getVideoStatus:function(){
+			if(!API||!API.getVideoStatus)return T.show('不支持getVideoStatus');
+			var d=this.ddsource.selectedSource;
+			var rs=API.getVideoStatus(JSON.stringify({aid:this.albumId, source:d.src.sourceCode, clarity:d.stream}));
+			if(rs){
+				try{
+					//alert(rs);
+					rs=JSON.parse(rs);
+					this.vStatuses=rs.results;
+				}catch(err){
+					T.show('视频状态获取失败');
+				}
+			}
+		}
+		,updateVStatus:function(){
+			var s=this.vStatuses, v=this.vDoms;
+			for(var i=0, len=s.length; i<len; i++){
+				var sIt=s[i];
+				if(sIt.status==E.vStatus.loading){
+					v[sIt.vid].addClass(this.clsLoading);
+				}else if(sIt.status==E.vStatus.loaded){
+					v[sIt.vid].removeClass(this.clsLoading).addClass(this.clsLoaded);
+				}
+			}
+		}
+		,loadAlbum:function(){
+			var t=this;
+			$.getJSON(this.urlAlbum, {albumId:this.albumId}, this.doms.body, function(d){
+				if(d.data){
+					d=t.albumInfo=d.data;
+					document.title=d.albumTitle||d.albumName||'';
+					t.ddsource=new U.DDSource(d.source, function(){t.reload();});
+					t.getVideoStatus();
+					t.loadVideo();
+				}
+			});
+		}
+		,loadVideo:function(callback){
+			var t=this;
+			var d=t.ddsource.selectedSource;
+			$.getJSON(this.urlVideo, {albumId:this.albumId, sourceId:d.src.sourceCode, clarityId:d.stream, si:this.startIndex, c:E.pageCount, o:t.sort.val}
+					,t.doms.body
+					,function(d){
+						d=d.data;
+						if(d){
+							t.startIndex=(d.startIndex||d.si)+(d.count||d.c);
+							if(d.totalCount<=t.startIndex){
+								t.scroller.stop();
+							}
+							if(d.videos&&d.videos.length){
+								t.render(d);
+							}else if(!this.videos.length){
+								this.ctnr.addClass(E.clsEmpty);
+							}
+						}
+						callback&&callback(d&&d.data&&d.data.videos&&d.data.videos.length);
+					}
+					,function(){
+						callback&&callback();
+					}
+				);
+		}
+		,reload:function(){
+			if(E.startIndex==E.pageCount)return;
+			this.video=[];
+			this.vDoms={};
+			this.startIndex=E.startIndex;
+			this.listCtnr.empty().removeClass(E.clsEmpty);
+			this.noLoadedEver=true;
+			this.getVideoStatus();
+			this.scroller.reset();
+			this.loadVideo();
+		}
+		,render:function(d){
+			if(!this.inited){
+				this.inited=true;
+				var setWidth=false;
+				if(d.channelCode==E.channelCode.variety){
+					this.listCtnr=this.tpls.tplEnt.appendTo(this.doms.body).removeClass(E.clsTpl);
+				}else if(d.channelCode!=undefined){
+					this.listCtnr=this.tpls.tplDrama.appendTo(this.doms.body).removeClass(E.clsTpl);
+					setWidth=true;
+				}else{
+					T.show('视频数据有误');
+					return;
+				}
+				this.itemTpl=$(this.listCtnr.children()[0]);
+				var t=this;
+				this.listCtnr.click(function(ev){t.download(ev.target);});
+
+				this.vDoms={};
+				setWidth&&this.adjustWidth();
+				this.itemTpl.remove();
+			}
+
+
+			if(d.videos&&d.videos.length){
+				if(d.channelCode==E.channelCode.variety){
+					this.appendEnt(d.videos);
+				}else if(d.channelCode!=undefined){
+					this.appendDrama(d.videos);
+				}
+			}
+
+			this.videos=this.videos.concat(d.videos);
+			if(this.noLoadedEver){
+				this.scroller.check();
+				this.noLoadedEver=false;
+			}
+			if(this.vStatuses&&this.vStatuses.length){
+				this.updateVStatus();
+			}
+		}
+		,adjustWidth:function(){
+			var doms=this.doms;
+			var ctnrWidth=doms.body.width(), itemWidth=this.itemTpl.width();
+			var p=parseInt(doms.body.css('padding-left')), m=parseInt(this.itemTpl.css('margin-left'));
+			if(!isNaN(p)){
+				ctnrWidth-=p*2;
+			}
+			if(isNaN(m)){
+				m=0;
+			}
+			var fullItemWidth=itemWidth+m*2;
+			var num=Math.floor(ctnrWidth/fullItemWidth);
+			this.itemTpl.width((ctnrWidth-fullItemWidth*num)/num+itemWidth);
+			//m+=(ctnrWidth-itemWidth*num)/num/2;
+			//this.itemTpl.css('margin-left', m);
+			//this.itemTpl.css('margin-right', m);
+		}
+		,appendDrama:function(d){
+			var ls=this.listCtnr;
+			var c=document.createDocumentFragment();
+			var startIx=this.videos.length;
+			for(var i=0, len=d.length; i<len; i++){
+				var it=this.itemTpl.clone();
+				//if(d[i].isDownload){
+				//	it.addClass(this.clsLoaded);
+				//}
+				it.html(d[i].name);
+				it.attr("ix", i+startIx);
+				c.appendChild(it[0]);
+				this.vDoms[d[i].vid]=it;
+			}
+			ls.append(c);
+		}
+		,appendEnt:function(d){
+			var ls=this.listCtnr;
+			var c=document.createDocumentFragment();
+			var startIx=this.videos.length;
+			for(var i=0, len=d.length; i<len; i++){
+				var it=this.itemTpl.clone();
+				//if(d[i].isDownload){
+				//	$(it.children()[0]).addClass(this.clsLoaded);
+				//}
+				it.find('.drama-date').html(d[i].updateDate);
+				it.find('.drama-tit').html(d[i].video_name);
+				it.attr("ix", i+startIx);
+				c.appendChild(it[0]);
+				this.vDoms[d[i].vid]=it;
+			}
+			ls.append(c);
+		}
+		,initDoms:function(){
+			var doms=this.doms;
+			U.initDoms(doms);
+			doms.body.height(jWin.height()-doms.head.height()-doms.footer.height());
+			var t=this;
+			this.scroller=U.scrollLoad(doms.body, function(callback){t.loadVideo(callback);});
+		}
+		,updateSpace:function(){
+			if(!API||!API.getVideoStatus){
+				T.show('不支持updateSpace');
+				return this.updateSpace=function(){};
+			}
+			try{
+				var d=JSON.parse(API.getDeviceInfo());
+				if(d&&d.memInfo){
+					d=d.memInfo;
+					var doms=this.doms;
+					doms.phUsed.html(d.internalused);
+					doms.phTotal.html(d.internaltotal);
+					doms.phBar[0].style.width=(parseFloat(d.internalused)/parseFloat(d.internaltotal)*100)+'%';
+					if(d.sdcardtotal>-1){
+						doms.sdUsed.html(d.sdcardused);
+						doms.sdTotal.html(d.sdcardtotal);
+						doms.sdBar[0].style.width=(parseFloat(d.sdcardused)/parseFloat(d.sdcardtotal)*100)+'%';
+					}else{
+						doms.sdUsed.parent().html('未安装');
+					}
+				}
+				return true;
+			}catch(err){
+				T.show('内存读取失败');
+				return false;
+			}
+		}
+	};
+
+	$(function(){
+		App.init();
+	});
+})(window, LENOVO.util, LENOVO.enum, LENOVO.toast);

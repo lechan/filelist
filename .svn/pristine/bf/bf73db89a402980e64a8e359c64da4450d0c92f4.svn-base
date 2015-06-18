@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>空气质量报告</title>
+<style type="text/css">
+body,nav,dl,dt,dd,p,h1,h2,h3,h4,ul,ol,li,input,button,textarea,footer{margin:0;padding:0}
+body{font:16px/1.5 'XinGothic-SinaWeibo','Microsoft Yahei','helvetica','arial';color:#333;background:#f8f8f8;-webkit-text-size-adjust:none;min-width:320px}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+form{display:inline}
+ul,ol{list-style:none}
+a{text-decoration:none;color:#000}
+a:hover{color:#1c5aa2;text-decoration:none}
+img{vertical-align:middle;border:0;-ms-interpolation-mode:bicubic;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+button,input,select,textarea{font-size:100%;vertical-align:middle;outline:0}
+textarea{resize:none}
+button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button;-moz-appearance:button}
+input:focus:-moz-placeholder,input:focus::-webkit-input-placeholder{color:transparent}
+button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}
+table{border-collapse:collapse;border-spacing:0}
+.fl{float:left}
+.fr{float:right}
+.hide{display:none}
+.show{display:block}
+.ellipsis{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.break{word-break:break-all;word-wrap:break-word}
+header,footer,article,section,nav,menu,hgroup{display:block;clear:all}
+#search{ max-width:640px; min-width:320px; padding:10px; margin:0 auto;}
+#search input{ width:80%; display:block; height:30px; line-height:30px; padding:5px; margin:0 auto;}
+#search button{ width:40%; text-align:center; display:block; height:50px; margin:20px auto;}
+.wrap{ max-width:640px; min-width:320px; padding:10px; margin:0 auto;}
+</style>
+<script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+<script type="text/javascript" src="../js/ajax.js"></script>
+</head>
+
+<body>
+<header id="search">
+	<input type="text" id="search_inp" placeholder="请输入城市名" x-webkit-speech />
+    <button id="search_btn">查看空气质量</button>
+</header>
+<section class="wrap">
+	<article id="info">
+    	
+    </article>
+</section>
+<script type="text/javascript">
+/*
+
+*
+*iplookup
+*
+var remote_ip_info = {"ret":1,"start":"119.6.60.0","end":"119.6.75.255","country":"\u4e2d\u56fd","province":"\u56db\u5ddd","city":"\u6210\u90fd","district":"","isp":"\u8054\u901a","type":"","desc":""};
+
+*
+*airQuality api
+*
+http://web.juhe.cn:8080/environment/air/cityair?city=chengdu&key=d0d99eca7c81af8baaa196a845930fd8
+
+{"resultcode":"200","reason":"SUCCESSED!","result":[{"citynow":{"city":"chengdu","AQI":"65","quality":"良","date":"2014-03-21 15:00"},"lastTwoWeeks":{"1":{"city":"chengdu","AQI":"79","quality":"良","date":"03月07日"},"2":{"city":"chengdu","AQI":"42","quality":"优","date":"03月08日"},"3":{"city":"chengdu","AQI":"98","quality":"良","date":"03月09日"},"4":{"city":"chengdu","AQI":"134","quality":"轻度污染","date":"03月10日"},"5":{"city":"chengdu","AQI":"138","quality":"轻度污染","date":"03月11日"},"6":{"city":"chengdu","AQI":"125","quality":"轻度污染","date":"03月12日"},"7":{"city":"chengdu","AQI":"114","quality":"轻度污染","date":"03月13日"},"8":{"city":"chengdu","AQI":"71","quality":"良","date":"03月14日"},"9":{"city":"chengdu","AQI":"101","quality":"轻度污染","date":"03月15日"},"10":{"city":"chengdu","AQI":"176","quality":"中度污染","date":"03月16日"},"11":{"city":"chengdu","AQI":"170","quality":"中度污染","date":"03月17日"},"12":{"city":"chengdu","AQI":"164","quality":"中度污染","date":"03月18日"},"13":{"city":"chengdu","AQI":"166","quality":"中度污染","date":"03月19日"},"14":{"city":"chengdu","AQI":"79","quality":"良","date":"03月20日"},"lastMoniData":{"1":{"city":"美国领事馆","AQI":"54","quality":"良","PM2.5Hour":"38μg/m³","PM2.5Day":"38μg/m³","PM10Hour":"μg/m³"},"2":{"city":"金泉两河","AQI":"67","quality":"良","PM2.5Hour":"34μg/m³","PM2.5Day":"34μg/m³","PM10Hour":"84μg/m³"},"3":{"city":"十里店","AQI":"65","quality":"良","PM2.5Hour":"33μg/m³","PM2.5Day":"33μg/m³","PM10Hour":"79μg/m³"},"4":{"city":"三瓦窑","AQI":"79","quality":"良","PM2.5Hour":"45μg/m³","PM2.5Day":"45μg/m³","PM10Hour":"108μg/m³"},"5":{"city":"沙河铺","AQI":"74","quality":"良","PM2.5Hour":"36μg/m³","PM2.5Day":"36μg/m³","PM10Hour":"97μg/m³"},"6":{"city":"梁家巷","AQI":"61","quality":"良","PM2.5Hour":"31μg/m³","PM2.5Day":"31μg/m³","PM10Hour":"72μg/m³"},"7":{"city":"草堂寺","AQI":"66","quality":"良","PM2.5Hour":"33μg/m³","PM2.5Day":"33μg/m³","PM10Hour":"82μg/m³"},"8":{"city":"人民公园","AQI":"65","quality":"良","PM2.5Hour":"37μg/m³","PM2.5Day":"37μg/m³","PM10Hour":"79μg/m³"}},"error_code":0}}]}
+
+*/
+(function(){
+	var Air = {
+		_city : remote_ip_info.city,
+		_key : "d0d99eca7c81af8baaa196a845930fd8",
+		info : function(city){
+			var url = "";
+			if(city==null||city==""){
+				url = "http://web.juhe.cn:8080/environment/air/cityair?city="+ this._city +"&key="+this._key;
+			}else{
+				url = "http://web.juhe.cn:8080/environment/air/cityair?city="+ city +"&key="+this._key;
+			}
+			Ajax.get(url,"",function(info){
+				return info;
+			});
+		}
+	}
+	
+	document.getElementById("search_btn").onclick = function(){
+		var city = document.getElementById("search_inp").value;
+		var info = Air.info(city);
+		alert(info);
+	}
+	
+	
+})()
+</script>
+</body>
+</html>

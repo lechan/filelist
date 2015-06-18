@@ -1,0 +1,45 @@
+define(['tool','zepto','swipe','iscroll'], function(tool) {
+	"use strict";
+	var App = {
+		sideBar : function(){
+			$("#mainPage").on("swipeLeft",function(){
+				var self = $(this);
+				if(self.hasClass("swipeR")){
+					$(this).removeClass("swipeR");
+					tool.scrollStatus.status = true;
+				}else{
+					$(this).addClass("swipeL");
+					tool.scrollStatus.status = false;
+				}
+			}).on("swipeRight",function(){
+				var self = $(this);
+				if(self.hasClass("swipeL")){
+					$(this).removeClass("swipeL");
+					tool.scrollStatus.status = true;
+				}else{
+					$(this).addClass("swipeR");
+					tool.scrollStatus.status = false;
+				}
+			});
+			$("#mainPage").click(function(){
+				alert(1);	
+			});
+			tool.scrollStatus.init();	
+		},
+		recommendList : function(){
+			myScroll = new IScroll('#recommend_wrapper', { scrollX: true, scrollY: false, eventPassthrough: true, preventDefault: false });	
+		},
+		init : function(){
+			this.sideBar();	
+			this.recommendList();
+			tool.fastClick();
+			tool.countdown.init('countdown1','2015/5/26 10:00:00',function(){
+				alert(1);	
+			});
+			console.log(tool.formatDate('1430370000000','yyyy年MM月dd日 hh:mm:ss'));
+		}
+	}
+		
+	App.init();
+		
+});

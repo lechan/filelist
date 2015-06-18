@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<script language="javascript" type="text/javascript">
+var minHeight = 100;
+var setHeight = function() {window.frameElement.height = document.body.scrollHeight < minHeight ? minHeight : document.body.scrollHeight}
+window.frameElement.height = minHeight;
+var SetHeightTimeObj = setInterval(function() {try {setHeight(); } catch(e) {} }, 50);
+window.onload = function() {clearInterval(SetHeightTimeObj); setHeight(); }
+</script>
+</body>
+</html>

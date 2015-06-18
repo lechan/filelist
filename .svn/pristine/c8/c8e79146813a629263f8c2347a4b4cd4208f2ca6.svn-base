@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no,width=device-width" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<title>周鸿祎：为什么360手机和360路由器都失败了</title>
+<style type="text/css">
+*{ margin:0px; padding:0px; font-family:"微软雅黑";}
+body{ overflow:hidden;}
+a{ text-decoration:none;}
+.wrap{ width:100%; height:100%; overflow:hidden;}
+.top{ width:100%; height:70px; position:absolute; top:0px; left:0px; z-index:10; background:#fff; border-bottom:2px solid #ccc; box-shadow:0px 0px 50px #ccc;}
+.top dl{ padding:10px;}
+.top dl dt{ float:left; text-align:center; margin-right:20px;}
+.top dl dt{ text-decoration:none;}
+.top dl dt img{ display:block; margin:0 auto;}
+.top dl dd{ font-size:16px; font-weight:bold; color:#111;}
+.top dl dd h1{ font-size:16px;}
+.top dl dd h2{ font-size:14px; font-weight:100;}
+.bottom{ width:100%; height:100%; position:absolute; top:0px; left:0px;}
+.bottom iframe{ width:100%; height:100%; vertical-align:top;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+	<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.messi.languagehelper">
+        <div class="top">
+            <dl>
+                <dt><img src="http://p19.qhimg.com/t0196612cc06dc93c99.png" width="50" height="50" /></dt>
+                <dd>
+                	<h1>中英互译</h1>
+                    <h2>告别说不出口的英语</h2>
+                </dd>
+            </dl>
+        </div>
+    </a>
+    <div class="bottom" id="content">
+    	<iframe src="http://www.leiphone.com/news/201408/NCzShB5ZWNSCiUyV.html#0-tsina-1-49986-397232819ff9a47a7b7e80a40613cfe1" frameborder="0" scrolling="auto"></iframe>
+    </div>
+</div>
+</body>
+</html>

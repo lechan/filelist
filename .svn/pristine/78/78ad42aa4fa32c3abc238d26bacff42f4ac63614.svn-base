@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,maximum-scale=1" />
+	<title>频道</title>	
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/channel.css">
+</head>
+<body>
+<div class='ctnr'>
+	<div class='chnl-top'>
+		<div class='chnl-top-inner' id="slider">
+			<a  class='tpl' href=''><img src=""></a>
+		</div>
+	</div>
+	<div id='chnlCtn'>
+		<a class='tpl blk chnl-item multi-clm-box' href='chnlDetail.html?code='>
+			<div class='chnl-item-poster'><img src=''></div>
+			<div class='chnl-item-detail'>
+				<div class='chnl-tit'>
+					<span class='chnl-tit-txt'></span>
+					<span class='chnl-tit-label'>(<span class='chnl-tit-num'></span>)</span>
+				</div>
+				<div class='chnl-synopsis'></div>
+			</div>
+		</a>
+	</div>
+</div>
+<script type="text/javascript" src='js/zepto.js'></script>
+<script type="text/javascript" src='js/swipe.js'></script>
+<script type="text/javascript" src='js/video.js'></script>
+<script type="text/javascript" src='js/channel.js'></script>
+<script type="text/javascript">
+//page tracking
+var EVENT_ACTION='channel';
+window.Avatar= [];
+Avatar.push([document.querySelectorAll("#slider"), {selector:".tpl", parser:'bannerClick'}]);
+Avatar.push([document.querySelectorAll("#chnlCtn"), {selector:".chnl-item", parser:'channelClick'}]);
+(function(){
+	var scriptTag = document.createElement('script');
+	scriptTag.type = 'text/javascript';
+	scriptTag.async = true;
+	scriptTag.src = 'js/avatarCfg.js';
+	var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(scriptTag,t);
+})()
+</script>
+</body>
+</html>
+

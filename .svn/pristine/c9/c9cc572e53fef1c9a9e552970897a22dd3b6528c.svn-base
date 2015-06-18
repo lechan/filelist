@@ -1,0 +1,90 @@
+@charset "gb2312";
+/* reset */
+body,form,h1,h2,h3,h4,h5,ul,ol,li,dl,dt,dd,p,input,textarea,table,th,td,iframe{margin:0;padding:0}
+body,input,textarea{font-size:12px;font-family:microsoft yahei}
+input,textarea{outline:none;}
+textarea{ resize:none;}
+ul,ol{list-style:none}
+img{border:0}
+button,input {line-height:normal;*overflow:visible}
+a{ text-decoration:none; cursor:pointer;}
+
+
+.weibo_inp{ width:565px; margin:0 auto;}
+.weibo_inp textarea{ width:550px; height:70px; border:1px solid #F5CD93; resize:none; overflow:auto; padding:5px;}
+.func{ overflow:hidden; margin-bottom:10px;}
+.func a{ width:50px; height:20px; padding-left:20px; float:left; display:inline; font-size:12px; color:#2b83b0; line-height:20px;}
+.func a.face{ background:url(../images/face.png) no-repeat left center;}
+.func a.img{ background:url(../images/img.png) no-repeat left center;}
+.submit_btn{ float:right; padding:0px; width:auto; height:auto;}
+.txt_list{ width:600px; clear:both; overflow:hidden; margin:0 auto;}
+.txt_list ul li{ width:100%; overflow:hidden; clear:both; margin-bottom:10px;}
+.txt_list ul li input{ float:left; vertical-align:middle; margin:20px 10px 0px 0px;}
+.txt_list ul li div.txt_item{ width:563px; height:62px; background:url(../images/txt_bg.png) no-repeat 0 0; float:left; vertical-align:middle;}
+.txt_list ul li div.txt_item p{ width:530px; margin:0 auto; line-height:20px; padding-top:10px;}
+
+.faceItem li{float:left; width:30px;}
+.lt{float:left;}
+.rt{float:right;}
+
+.pa_left_bottom{z-index:200;}
+.basicDialog{width:400px;height:300px;position:absolute;left:0px;top:0;z-index:2001;display:none; font-size:12px; font-family:"Î¢ÈíÑÅºÚ";}
+.bdgtpl,.bdgtpr,.bdgbtl,.bdgbtr{width:5px;height:5px;background:url('http://cs.sina.com.cn/minisite/2011/fenbidhero/images/logoNew_nocache.png') no-repeat 0 0;overflow:hidden;}
+.bdgtp,.bdgbt{width:100%;border-collapse:collapse;}
+.bdgtpct{height:5px;background:url('http://cs.sina.com.cn/minisite/2011/fenbidhero/images/wraplayer_09.png') repeat;line-height:5px;font-size:0;}
+.bdgtpl{background-position:-5px 0;}
+.bdgtpr{background-position:0 0;}
+
+.bdgbtct{height:5px;background:url('http://cs.sina.com.cn/minisite/2011/fenbidhero/images/wraplayer_09.png') repeat;line-height:5px;font-size:0;}
+.bdgbtl{background-position:-5px -5px;}
+.bdgbtr{background-position:0 -5px;}
+
+.bdgct{background:url('http://cs.sina.com.cn/minisite/2011/fenbidhero/images/wraplayer_09.png') repeat;padding:0 5px;}
+.bgdline{border:1px solid #a0a0a0;}
+.basicDialogBd{padding:8px;background-color:#fff;overflow:hidden;zoom:1;}
+.basicDialogTle{background:url('http://cs.sina.com.cn/minisite/2011/fenbidhero/images/basicDialogTle.jpg') repeat-x 0 0;height:28px;line-height:28px;padding:0 5px;}
+.basicDialogTle2{background:#fff;height:15px;}
+
+.dialogcls{width:15px;height:15px;margin-top:5px;}
+.dialogcls a{display:block;width:15px;height:15px;background:url('http://cs.sina.com.cn/minisite/2011/fenbidhero/images/dialogcls.jpg') no-repeat 0 0;}
+.layerArrow {background:url('http://cs.sina.com.cn/minisite/2011/fenbidhero/images/layerArrow.gif') no-repeat 0 0;position:absolute;left:20px;top:-2px;width:16px;height:8px;}
+.layerArrow2{left:100px;}
+.uploadBtn{width:120px;height:27px;margin:0 auto;background:url('http://cs.sina.com.cn/minisite/2011/fenbidhero/images/selpicbtn.jpg') no-repeat 0 0;overflow:hidden;position:relative;}
+.uploadBtn input{font-size:50px;opacity:0;*filter:alpha(opacity=0);cursor:pointer;position:absolute;right:-5px;top:-5px;}
+.basicDialogBd{color:#999;line-height:20px;}
+.basicDialogBd em{font-style:normal;}
+.layerMedia_tip02{color:#999;}
+.basicDialog .basicDialogBd a{color:#0082CB;}
+.vBasicDialog{width:380px;left:25px;}
+.layerMedia_tip02 .title{color:#333;}
+.layerMedia_input{padding:10px 0;}
+.layerMusic_txt{border:1px solid #000;height:20px;width:200px;border-color: #C4C7BD #EFEFEF #F2F2F2 #D2D5CA;}
+#tipInfoBox em{font-style:normal;}
+#uploadBasicDialog{left:70px;}
+#faceBasicDialog{ left:0px;}
+.intro_box{ width:850px; margin:0 auto;}
+.intro_box h2{ font-size:14px; margin-bottom:10px; margin-top:20px;}
+.intro_box p{ font-size:12px; line-height:24px;}
+
+.pop1{ width:633px; height:569px; background:url(../images/pop1.jpg) no-repeat 0 0; position:absolute; z-index:20000; display:none;}
+.pop2{ width:633px; height:569px; background:url(../images/pop2.jpg) no-repeat 0 0; position:absolute; z-index:20000; display:none;}
+.pop3{ width:633px; height:569px; background:url(../images/pop2.jpg) no-repeat 0 0; position:absolute; z-index:20000; display:none;}
+.close_btn{ position:absolute; top:10px; right:10px;}
+.blank_1{ height:190px;}
+.pop2 p{ width:400px; margin:0 auto; margin-bottom:10px; overflow:hidden; clear:both;}
+.pop2 p label{ width:80px; float:left; font-size:18px; color:#b84040;}
+.pop2 p input{ width:250px; height:25px; float:left; border:1px solid #E99A84; background:#F4BCBC; font-size:14px; line-height:25px;}
+.pop_btn{ text-align:center; padding-top:20px;}
+.blank_2{ height:110px;}
+.lottery_num{ padding:0px 20px; font-size:20px; color:#f7ba2e; text-align:right;}
+.tips{ width:460px; margin:0 auto; overflow:hidden;}
+.tips img{ float:left; margin-right:20px;}
+.tips h2{ font-size:30px; color:#b84040; padding-top:60px; margin-bottom:20px;}
+.tips h3{ font-size:16px; color:#b84040;}
+.pop_btn p{ padding-top:10px; font-size:16px; color:#b84040;}
+.winner_list{ width:580px; margin:0 auto; overflow:hidden;}
+.winner_list dl{ width:100%; height:125px; border-bottom:1px solid #F6E7E7; overflow:hidden; margin-bottom:20px;}
+.winner_list dl dt{ width:100px; float:left; text-align:left;}
+.winner_list dl dd{ width:480px; float:left; height:100px; overflow-y:scroll;}
+.winner_list dl dd ul{ width:460px; overflow:hidden;}
+.winner_list dl dd ul li{ width:115px; float:left; height:20px; line-height:20px; margin-bottom:5px; overflow:hidden;}

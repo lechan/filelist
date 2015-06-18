@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<meta name="Keywords" content="," />
+<meta name="Description" content="此页面的说明" />
+<title>当前页面名称_频道名_新浪网</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.pop.js"></script>
+<script type="text/javascript">
+
+</script>
+<!--[if lte IE 6]>
+    <script type="text/javascript" src="js/DD_belatedPNG-min.js"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('.png, img');
+        DD_belatedPNG.fix('*');
+    </script>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="wrap">
+    <div class="content5">
+    	<div class="title"><h2>精美图集</h2></div>
+        <div class="tab" id="tab2">
+        	<a class="active">上市现场图集</a> |
+            <a>到店实拍</a> |
+            <a>官方精美图集</a>
+        </div>
+        
+        <div class="focus_box" id="focus_box">
+        	<div class="focus_main" id="focus_main"></div>
+            <div class="focus_list" id="focus_list"></div>
+            <a id="focus_prev">上一个</a>
+            <a id="focus_next">下一个</a>
+        </div>
+        
+    </div>
+    
+    <script type="text/javascript">
+    $(function(){
+		var data = {
+			data1:[
+				['images/focus_big.jpg','images/focus_small.jpg'],
+				['images/focus_big.jpg','images/focus_small.jpg'],
+				['images/focus_big.jpg','images/focus_small.jpg'],
+				['images/focus_big.jpg','images/focus_small.jpg'],
+				['images/focus_big.jpg','images/focus_small.jpg'],
+				['images/focus_big.jpg','images/focus_small.jpg'],
+				['images/focus_big.jpg','images/focus_small.jpg'],
+				['images/focus_big.jpg','images/focus_small.jpg'],
+				['images/focus_big.jpg','images/focus_small.jpg']
+			],
+			data2:[
+				['images/focus_big.jpg','images/focus_small.jpg'],
+				['images/focus_big.jpg','images/focus_small.jpg'],
+				['images/focus_big.jpg','images/focus_small.jpg']
+			],
+			data3:[
+				['images/focus_big.jpg','images/focus_small.jpg'],
+				['images/focus_big.jpg','images/focus_small.jpg'],
+				['images/focus_big.jpg','images/focus_small.jpg']
+			]
+		};		
+		var focus_pic = new focus_box();
+		focus_pic.init(data.data1);
+		
+		
+		$("#tab2 a").click(function(){
+			var index = $(this).index();
+			$("#tab2 a").removeClass("active");
+			$("#tab2 a").eq(index).addClass("active");
+			focus_pic.change_data(eval("data.data" + (index+1)));
+		});	
+	});
+	
+	function focus_box(){
+		this.focus_box = document.getElementById("focus_box");
+		this.focus_main = document.getElementById("focus_main");
+		this.focus_list = document.getElementById("focus_list");
+		this.prev = document.getElementById("focus_prev");
+		this.next = document.getElementById("focus_next");	
+		this.count = 0;
+		this.li_width = 92;
+		this.max_num = 8;
+		this.timer = null;
+	}
+	
+	focus_box.prototype = {
+		init : function(data){
+			this.load(data).change_pic(this.count).list_select().autoPlay().prevBtn().nextBtn();
+		},
+		
+		load : function(data){
+			var This = this;
+			var oUlBigList = document.createElement("ul");	
+			var oUlSmallList = document.createElement("ul");
+			oUlSmallList.style.width = this.li_width * data.length +"px";
+			this.count = 0;
+			for(var i=0,len = data.length;i<len;i++){
+				var oLi1 = document.createElement("li");
+				var oLi2 = document.createElement("li");
+				oLi1.innerHTML = '<img src="'+data[i][0]+'" />';
+				oUlBigList.appendChild(oLi1);
+				oLi2.innerHTML = '<img src="'+data[i][1]+'" />';
+				oUlSmallList.appendChild(oLi2);
+			}
+			this.focus_main.innerHTML = '';
+			this.focus_main.appendChild(oUlBigList);
+			this.focus_list.innerHTML = '';
+			this.focus_list.appendChild(oUlSmallList);
+			return this;
+		},
+		
+		change_data : function(data){
+			this.init(data);
+			return this;
+		},
+		
+		change_pic : function(count){
+			var This = this;
+			var aLi_small = this.focus_list.getElementsByTagName('li');
+			var aLi_big = this.focus_main.getElementsByTagName('li');
+			for(var i=0,len = aLi_small.length;i<len;i++){
+				aLi_small[i].className = '';
+				//aLi_big[i].style.display = 'none';
+				This.move(aLi_big[i],{"opacity":0},function(){
+					this.style.display = 'none';	
+				});
+			}
+			aLi_small[count].className = 'active';
+			aLi_big[count].style.display = 'block';
+			This.move(aLi_big[count],{"opacity":100});
+			return this;
+		},
+		
+		list_select : function(){
+			var This = this;
+			var aLi_small = this.focus_list.getElementsByTagName('li');
+			for(var i=0,len = aLi_small.length;i<len;i++){
+				aLi_small[i].index = i;
+				aLi_small[i].onclick = function(){
+					This.change_pic(this.index);
+					This.count = this.index;	
+				}
+			}
+			return this;
+		},
+		
+		autoPlay : function(){
+			var This = this;
+			clearInterval(this.timer);
+			this.timer = setInterval(function(){
+				This.countPlus();
+				This.change_pic(This.count);
+			},3000);
+			
+			this.focus_box.onmouseover = function(){
+				clearInterval(This.timer);	
+			}
+			this.focus_box.onmouseout = function(){
+				clearInterval(This.timer);
+				This.timer = setInterval(function(){
+					This.countPlus();
+					This.change_pic(This.count);
+				},3000);	
+			}
+			return this;
+		},
+		
+		countPlus : function(){
+			this.count++;
+			var total = this.focus_list.getElementsByTagName('li').length;
+			if(this.count>=total){
+				this.count = 0;	
+				this.listMove(0);
+			}
+			else if(this.count>this.max_num-1 && this.count<total){
+				this.listMove(-(this.count - this.max_num+1));	
+			}
+			return this;
+		},
+		
+		countMinus : function(){
+			this.count--;
+			var total = this.focus_list.getElementsByTagName('li').length;
+			if(this.count<0){
+				this.count = total-1;
+				this.listMove(-(total - this.max_num));	
+			}
+			else if(this.count<total-this.max_num+1 && this.count>0){
+				this.listMove((this.count-1));	
+			}
+			return this;
+		},
+		
+		listMove : function(num){
+			var oUl = this.focus_list.getElementsByTagName('ul')[0];
+			var left = this.li_width * num;
+			this.move(oUl,{"left":left});
+		},
+		
+		prevBtn : function(){
+			var This = this;
+			this.prev.onclick = function(){
+				This.countMinus();	
+				This.change_pic(This.count);
+			}	
+			return this;
+		},
+		
+		nextBtn : function(){
+			var This = this;
+			this.next.onclick = function(){
+				This.countPlus();
+				This.change_pic(This.count);
+			}	
+			return this; 
+		},
+		
+		move : function(obj,json,fn){
+			var This = this;
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				var bBtn = true;
+				for(var attr in json){
+					var iCur = 0;
+					if(attr=='opacity'){
+						iCur = Math.round(parseFloat(This.getStyle(obj,attr))*100);
+					}
+					else{
+						iCur = parseInt(This.getStyle(obj,attr));
+					}
+					var iSpeed = (json[attr] - iCur)/8;
+					iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+					if(json[attr] != iCur){
+						bBtn = false;
+					}
+					if(attr == 'opacity'){
+						obj.style.filter = 'alpha(opacity='+(iCur+iSpeed)+')';
+						obj.style.opacity = (iCur+iSpeed)/100;
+					}
+					else{
+						obj.style[attr] = iCur + iSpeed + 'px';
+					}
+				}
+				if(bBtn){
+					clearInterval(obj.timer);
+					if(fn){
+						fn.call(obj);
+					}
+				}
+			},30);
+		},
+		
+		getStyle : function(obj,attr){
+			if(obj.currentStyle){
+				return obj.currentStyle[attr];
+			}
+			else{
+				return getComputedStyle(obj,false)[attr];
+			}
+		}
+	}
+    </script>
+</div>
+
+<div id="popMask"></div>
+
+</body>
+</html>

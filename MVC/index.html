@@ -1,0 +1,65 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+    <title></title>    
+    <script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //定义一个controller
+            var piliController = {
+                //选择视图
+                start: function () {
+                    this.view.start();
+                },
+                //将用户操作映射到模型更新上
+                set: function (name) {
+                    this.model.setPerson(name);
+                }
+            };
+            piliController.model = {
+                piliKV: {
+                    '叶小钗': '刀狂剑痴',
+                    '一页书': '百世经纶',
+                    '素还真': '清香白莲'
+                },
+                curPerson: null,
+                //数据模型负责业务逻辑和数据存储
+                setPerson: function (name) {
+                    this.curPerson = this.piliKV[name] ? name : null;
+                    this.onchange();
+                },
+                //通知数据同步更新
+                onchange: function () {
+                    piliController.view.update();
+                },
+                //相应视图对当前状态的查询
+                getPiliAction: function () {
+                    return this.curPerson ? this.piliKV[this.curPerson] + this.curPerson : '???';
+                }
+            };
+            piliController.view = {
+                //用户触发change事件
+                start: function () {
+                    $('#pili').change(this.onchange);
+                },
+                onchange: function () {
+                    piliController.set($('#pili').val());
+                },
+                update: function () {
+                    $('#end').html(piliController.model.getPiliAction());
+                }
+            };
+            piliController.start();
+        });
+    </script>
+</head>
+<body>
+    <select id="pili">
+     <option value="叶小钗">叶小钗</option>
+        <option value="一页书">一页书</option>
+        <option value="素还真">素还真</option>
+    </select>
+    <div id="end"></div>
+</body>
+</html>

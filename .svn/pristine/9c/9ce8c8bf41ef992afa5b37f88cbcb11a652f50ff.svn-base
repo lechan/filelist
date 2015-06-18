@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+#bg_style { width:100%; height:100%; position:absolute; top:0px; right:0; z-index:-1; overflow:hidden; background:url(images/body_bg_style.png) no-repeat; }
+#wrap{ width:1000px; height:1000px; position:relative; background:#000; opacity:0.5; filter:alpha(opacity=50); margin:0 auto;}
+</style>
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+</head>
+
+<body>
+<div id="bg_style"></div>
+<div id="wrap"></div>
+<script type="text/javascript">
+/// 鼠标移动
+(function (){
+
+	var dimensions = function() {
+		$('#bg_style').css({ 'width' : $(document).width(), 'height' : $(document).height()-110 });
+	}
+	dimensions ();
+	
+	$(window).resize(dimensions);
+
+	$(document).mousemove(function(e){
+		var x = -Math.floor(e.pageX/10);
+		var y = -Math.floor(e.pageY/10);
+		var x1 = -Math.floor(e.pageX/80);
+		var y1 = -Math.floor(e.pageY/80);
+		
+		//$('#bg_style').css({ 'background-position-x':x,'background-position-y': y });	//  坑爹的FF不支持
+		document.getElementById('bg_style').style.backgroundPosition = x +'px ' + y + 'px';
+		
+		$('#wrap').css({ 'left':-x1, 'top':y1 });
+	});
+})();
+</script>
+</body>
+</html>

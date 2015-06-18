@@ -1,0 +1,53 @@
+(function(WIN, U, E, T){
+	var jDoc=$(document), jWin=$(WIN);
+
+	var App={
+		doms:{errForm:'#errForm', btnSendErr:'#btnSendErr',  errBody:'#errBody', boxTotal:'#boxTotal', boxWritten:'#boxWritten'}
+		,maxLen:140
+		,init:function(){
+			var doms=this.doms;
+			U.initDoms(doms);
+			doms.boxWritten.html(0);
+			doms.boxTotal.html(this.maxLen);
+			var t=this;
+			doms.btnSendErr.click(function(){t.send();});
+			doms.errBody.keyup(function(){return t.keyup();});
+			doms.errBody.focus();
+		}
+		,keyup:function(){
+			var doms=this.doms;
+			var val=doms.errBody.val(), len=val.length;
+			if(len>this.maxLen){
+				doms.errBody.val(val.substr(0, this.maxLen));
+			}else{
+				doms.boxWritten.html(len);
+			}
+		}
+		,send:function(){
+			if(API&&API.sendFeedBack){
+				var doms=this.doms, val=doms.errBody.val();
+				//if(doms.errForm[0].checkValidity()){
+				if(val){
+					if(API.getNetworkType&&API.getNetworkType()=='offline'){
+						T.show('您当前处于离线状态。');
+					}else{
+						API.sendFeedBack(U.getURLParam('t'), val);
+						T.show('提交成功');
+						WIN.history.back();
+					}
+				}else{
+					//doms.btnCheck.click();
+					T.show('你还没有填写内容哦。');
+				}
+			}else{
+				T.show('该版本不支持');
+			}
+		}
+	};
+
+
+
+	$(function(){
+		App.init();
+	});
+})(window, LENOVO.util, LENOVO.enum, LENOVO.toast);

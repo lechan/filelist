@@ -1,0 +1,27 @@
+<?php
+//验证TOKEN
+$tokeninfo=$webconn->viewdata("*","wxtoken","where type='p'");
+if(time()>$tokeninfo["rtime"]){
+	$temp = $webconn->call_get("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".APPID."&secret=".SECRET);
+	$gettoken = json_decode($temp,true);
+	$token=$gettoken["access_token"];
+	$rtime=time() + $gettoken["expires_in"];
+	$webconn->updata("wxtoken","token='{$token}',rtime='{$rtime}'","where type='p'");
+}else{
+	$token=$tokeninfo["token"];
+}
+$smarty->assign("token",$token);
+//验证ticket
+$ticketinfo=$webconn->viewdata("*","wxtoken","where type='j'");
+if(time()>$tokeninfo["rtime"]){
+	$temp = $webconn->call_get("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=".$token."&type=jsapi ");
+	$getticket = json_decode($temp,true);
+	$ticket=$getticket["ticket"];
+	$rtime=time() + $getticket["expires_in"];
+	$webconn->updata("wxtoken","token='{$ticket}',rtime='{$rtime}'","where type='j'");
+}else{
+	$ticket=$ticketinfo["token"];
+}
+$smarty->assign("ticket",$ticket);
+
+?>

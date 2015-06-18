@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>无标题文档</title>
+<style type="text/css">
+*{ margin:0px; padding:0px;}
+.photowall{ width:810px; height:auto; margin:0 auto; position:relative; padding-top:100px;}
+.photowall a{ cursor:pointer;}
+.photowall img{ width:50px; height:50px; float:left; display:inline; border:1px solid #000; margin:1px;background:url(images/loading.gif) no-repeat center center;}
+</style>
+<script type="text/javascript" src="js/move.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	var photowall = document.getElementById("photowall");
+	var img_num = 124;
+	
+	for(var i=1;i<=img_num;i++){
+		photowall.innerHTML +='<a><img src="images/'+getNum(i)+'.jpg" /></a>';
+	}
+	var aImg = photowall.getElementsByTagName("img");
+	var arrImg =[];
+	var iZindex = 1;
+	for(var i=0;i<img_num;i++){
+		arrImg.push([aImg[i].offsetLeft,aImg[i].offsetTop]);
+	}
+	for(var i=0;i<img_num;i++){
+		aImg[i].style.position = 'absolute';
+		aImg[i].style.left = arrImg[i][0]+'px';
+		aImg[i].style.top = arrImg[i][1]+'px';
+		aImg[i].style.margin = 0;	
+	}
+	for(var i=0;i<img_num;i++){
+		aImg[i].index = i;
+		aImg[i].onmouseover = function(){
+			this.style.zIndex = iZindex++;
+			startMove(this,{width:100,height:100,left:arrImg[this.index][0]-25,top:arrImg[this.index][1]-25});	
+		}
+		aImg[i].onmouseout = function(){
+			startMove(this,{width:50,height:50,left:arrImg[this.index][0],top:arrImg[this.index][1]});	
+		}
+	}
+}
+function getNum(num){
+	if(num<10){
+		return '00'+num;	
+	}else if(num>=10&&num<100){
+		return '0'+num;	
+	}else{
+		return num;	
+	}
+}
+</script>
+</head>
+
+<body>
+<div class="photowall" id="photowall"></div>
+</body>
+</html>

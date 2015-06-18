@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no,width=device-width" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<style type="text/css">
+*{ margin:0px; padding:0px;}
+#loveHeart{max-width:650px;height:650px; margin:0 auto; position:relative; overflow:hidden;}
+#garden{width:100%;height:100%; position:absolute; top:0px; left:0px;}
+#words{font-family:"sans-serif";width:185px;font-size:20px;color:#666; text-align:left; display:block; line-height:30px; margin:185px auto 0px; display:none;}
+#words strong{ font-weight:100; -webkit-transition:1s all ease-out;}
+</style>
+<div id="loveHeart">
+	<canvas id="garden"></canvas>
+    <div id="words">
+        <p><strong>朱</strong>阁雅淡心照宣，</p>
+        <p><strong>梦</strong>绕萦回情愫间。</p>
+        <p><strong>娇</strong>美如画眉宇悬，</p>
+        <p><strong>我</strong>虽有心夜难眠。</p>
+        <p><strong>爱</strong>挚心诚愿无憾，</p>
+        <p><strong>你</strong>眸一笑此生恋。</p>
+    </div>
+</div>
+<script type="text/javascript" src="../js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="js/garden_dev.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

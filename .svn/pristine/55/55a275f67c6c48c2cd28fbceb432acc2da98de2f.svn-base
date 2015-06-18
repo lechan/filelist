@@ -1,0 +1,6 @@
+<?php
+include 'http.php';
+//$info = apiGet ("http://www.lenovomm.com/error/queryappvc.do?pn=com.lenovo.leos.appstore");
+$url = $_GET['url'];
+$info = apiGet ($url);
+var_dump($info);

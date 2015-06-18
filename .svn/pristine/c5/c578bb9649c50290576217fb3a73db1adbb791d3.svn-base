@@ -1,0 +1,262 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>学做菜</title>
+<style type="text/css">
+body,nav,dl,dt,dd,p,h1,h2,h3,h4,ul,ol,li,input,button,textarea,footer{margin:0;padding:0}
+html{ font-size:62.5%;}
+body{font:2rem/1.5 'XinGothic-SinaWeibo','Microsoft Yahei','helvetica','arial';color:#333;background:#f8f8f8;-webkit-text-size-adjust:none;min-width:320px;}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+form{display:inline}
+ul,ol{list-style:none}
+a{text-decoration:none;color:#000}
+a:hover{color:#1c5aa2;text-decoration:none}
+img{vertical-align:middle;border:0;-ms-interpolation-mode:bicubic;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+button,input,select,textarea{font-size:100%;vertical-align:middle;outline:0}
+textarea{resize:none}
+button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button;-moz-appearance:button}
+input:focus:-moz-placeholder,input:focus::-webkit-input-placeholder{color:transparent}
+button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}
+table{border-collapse:collapse;border-spacing:0}
+.fl{float:left}
+.fr{float:right}
+.hide{display:none}
+.show{display:block}
+.ellipsis{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.break{word-break:break-all;word-wrap:break-word}
+header,footer,article,section,nav,menu,hgroup{display:block;clear:all}
+body{ background:#f2f2f2;}
+#search{ max-width:620px; min-width:300px; padding:10px; margin:0 auto; opacity:0;}
+#search input{ width:95%; display:block; height:40px; line-height:40px; padding:5px; margin:0 auto; font-size:3rem; border:2px solid #666; background:#fff; opacity:0.8;}
+#search button{ width:40%; text-align:center; display:block; height:50px; margin:20px auto; font-size:3rem; background:none; border:2px solid #666; background:#fff;opacity:0.8; border-radius:10px;}
+.wrap{ max-width:620px; min-width:300px; padding:10px; margin:0 auto;}
+.wrap ul{ padding:10px;}
+.wrap ul li{ position:relative;}
+.wrap ul li div.list_title{ padding:20px 0px; border-bottom:1px solid #ccc; border-top:1px solid #fff; overflow:hidden; clear:both;}
+.wrap ul li:nth-child(1) div.list_title{ border-top:none;}
+.wrap ul li div.list_title h2{ font-size:2rem; color:#1e1e1e;}
+.wrap ul li div.list_title .img_wrap{ width:30%; height:60px; overflow:hidden; float:left; margin-right:20px;}
+.wrap ul li div.list_title .img_wrap img{ width:100%;}
+.wrap ul li div.list_con{ background:#CCC; padding:20px; margin:20px 0px; background:#fff; border-color:#d7d7d7 #d4d4d4 #cbcbcb; border-radius:10px; box-shadow: 0 1px 1px rgba(49,60,75,.35);}
+.wrap ul li div.list_con h2{ font-size:3.5rem; margin-bottom:20px; color:#1e1e1e;}
+.wrap ul li div.list_con h3{ font-size:1.2rem; margin-bottom:10px; color:#333; font-weight:100;}
+.wrap ul li div.list_con h4{ font-size:2.5rem; margin-bottom:5px; color:#1e1e1e; font-weight:100;}
+.wrap ul li div.list_con p{ font-size:1.5rem; margin-bottom:10px; color:#1e1e1e; line-height:2rem;}
+.resource{ margin-bottom:20px; line-height:2rem;}
+.resource dt{ font-size:1.5rem;}
+.resource dd{ font-size:1.5rem;}
+.step{ padding:10px;}
+.step dl{ margin-bottom:20px;}
+.step dl dt{ font-size:2rem; margin-bottom:10px;}
+#logo{ width:200px; padding-top:150px; position:absolute; left:50%; margin-left:-100px; top:200px; text-align:center; background:url(coffee.png) no-repeat center top;}
+#logo h1{ font-size:3rem; opacity:0;}
+.more{ width:40%; text-align:center; display:block; height:50px; margin:20px auto; font-size:3rem; background:none; border:2px solid #666; background:#fff;opacity:0.8; border-radius:10px;}
+</style>
+</head>
+
+<body>
+<div id="logo">
+	<h1>学做菜</h1>
+</div>
+<header id="search">
+    <input type="text" id="search_inp" placeholder="请输入菜品名" x-webkit-speech />
+    <button id="search_btn">搜索</button>
+    <input type="hidden" value="0" id="listNum" />
+</header>
+<section class="wrap">
+	<ul id="list"></ul>
+</section>
+<script type="text/javascript" src="../js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="../js/underscore.js"></script>
+<script type="text/template" id="listTpl">
+<% for(var i = 0; i < jdata.length; i++) { %>
+<% var item = jdata[i] %>
+<li>
+	<div class="list_title show">
+		<div class="img_wrap"><img src="<%=item.steps[item.steps.length-1].img %>" alt="<%=item.title %>" /></div>
+		<h2><%=item.title %></h2>
+	</div>
+	<div class="list_con hide">
+		<h2><%=item.title %></h2>
+		<h3>
+			<b>关键字：</b>
+			<%=item.tags %>
+		</h3>
+		<h4>菜谱介绍：</h4>
+		<p><%=item.imtro %></p>
+		<h4>需要的素材及调料：</h4>
+		<dl class="resource">
+			<dt><%=item.ingredients %></dt>
+			<dd><%=item.burden %></dd>
+		</dl>
+		<div class="step">
+			<% for(var j=0;j<item.steps.length;j++){ %>
+			<% var stepitem = item.steps[j] %>
+				<dl>
+					<dt><%=stepitem.step %></dt>
+					<dd><img src="<%=stepitem.img %>" /></dd>
+				</dl>
+			<% } %>
+		</div>
+	</div>
+</li>
+<% } %>
+</script>
+<script type="text/javascript">
+/*
+
+
+*
+*cookbook api
+*
+http://apis.juhe.cn/cook/query.php?key=5c34d0cdd72ee8145f5d4602b69d01bd&menu=%E8%A5%BF%E7%BA%A2%E6%9F%BF&rn=10&pn=3&callback=result
+
+result({"resultcode":"200","reason":"Success","result":{"data":[{"title":"西红柿炒豆芽","tags":"清爽; 蔬菜; 夏季; 家常菜; 炒","imtro":"转眼秋天就到了，竟然夏天的菜还没有发出去，确实懒的太久啦~~~希望以后能正常起来，不要继续过去的状态~~","ingredients":"绿豆芽, 300g; 西红柿, 100g; 猪肉, 100g","burden":"油, 适量; 盐, 适量; 葱, 适量; 姜, 适量; 生抽, 适量; 料酒, 适量","albums":["http:\/\/58.215.185.154\/cookimg\/v201307\/images\/247779_247779_82921f.jpg","http:\/\/58.215.185.154\/cookimg\/v201307\/images\/247779_247779_5f5c72.jpg","http:\/\/58.215.185.154\/cookimg\/v201307\/images\/247779_247779_6f5426.jpg"],"steps":[{"step":"1. 猪肉切片，放入碗中，加适量生抽料酒腌制。","img":"http:\/\/58.215.185.154\/cookimg\/v201307\/images\/247779_823350.jpg"},{"step":"2. 豆芽洗净，控水备用。","img":"http:\/\/58.215.185.154\/cookimg\/v201307\/images\/247779_823351.jpg"},{"step":"3. 西红柿切洗净，切块。","img":"http:\/\/58.215.185.154\/cookimg\/v201307\/images\/247779_823371.jpg"},{"step":"4. 锅内放适量清水，烧开，放豆芽焯一下，捞出。","img":"http:\/\/58.215.185.154\/cookimg\/v201307\/images\/247779_823372.jpg"},{"step":"5. 锅内放适量油，放入葱姜爆香。","img":"http:\/\/58.215.185.154\/cookimg\/v201307\/images\/247779_823373.jpg"},{"step":"6. 放入肉片，炒至肉片变色。","img":"http:\/\/58.215.185.154\/cookimg\/v201307\/images\/247779_823352.jpg"},{"step":"7. 放入西红柿片翻炒。","img":"http:\/\/58.215.185.154\/cookimg\/v201307\/images\/247779_823380.jpg"},{"step":"8. 炒至西红柿变软，放入绿豆芽。","img":"http:\/\/58.215.185.154\/cookimg\/v201307\/images\/247779_823381.jpg"},{"step":"9. 放适量盐调味，翻匀盛出即可。","img":"http:\/\/58.215.185.154\/cookimg\/v201307\/images\/247779_823385.jpg"}]}],"totalNum":"511","pn":"1","rn":"1"},"error_code":0})
+
+*/
+(function(){
+	
+	var Cookbook = {
+		_key : "5c34d0cdd72ee8145f5d4602b69d01bd",
+		_menu : function(){return encodeURI($("#search_inp").val());},
+		_rn : 5,
+		_pn : function(){return $("#listNum").val();},
+		_cb : "cook",
+		url : function(){
+			return "http://apis.juhe.cn/cook/query.php?key="+this._key+"&menu="+this._menu()+"&rn="+this._rn+"&pn="+this._pn()+"&callback="+this._cb;
+		},
+		flag : true,
+		_timeout : 200,
+		tpl : function(data){
+			var list = $("#list");
+			var tpl = $('#listTpl').html();
+			var render = _.template(tpl);
+			var resultArr = data.result.data;
+			var html;
+			jdata = resultArr;
+			html = render(jdata);
+			list.append(html);
+		},
+		data : function(data){
+			
+			var inp = $("#search_inp");
+			var resultcode = data.resultcode;
+			var reason = data.reason;
+			var totalNum = data.result.totalNum;
+			var pn = data.result.pn;
+			var len = data.result.data.length;
+			
+			setTimeout(function(){Cookbook.flag = true;},this._timeout);
+			if(resultcode==200){
+				if(len!=0){
+					this.tpl(data);
+					this.moreBtn();
+				}
+			}else if(resultcode==201){
+				alert("亲，菜谱名没填哦~");
+				inp.focus();
+			}else if(resultcode==202){
+				alert("亲，菜谱查询不到哦，再输入一个吧~");	
+				inp.value = "";
+				inp.focus();
+			}
+		},
+		getJson : function(url){
+			var oScript = document.createElement("script");
+			oScript.type = "text/javascript";
+			oScript.src = url;
+			document.getElementsByTagName("head")[0].appendChild(oScript);	
+		},
+		openList : function(){
+			$("#list").on("click","li",function(){
+				 if($(this).find(".list_title").is(":visible")){
+					$(this).find(".list_title").hide();
+					$(this).find(".list_con").show();
+					$("html,body").animate({scrollTop: $(this).offset().top}, 100);
+				}else{
+					$(this).find(".list_title").show();
+					$(this).find(".list_con").hide();
+				}
+			});
+		},
+		moreBtn : function(){
+			var more = $('<div class="more">加载更多</div>');
+			var This = this;
+			$(".wrap").append(more);
+			more.on('click',function(){
+				$("#listNum").val(parseInt($("#listNum").val()) + Cookbook._rn);
+				Cookbook.flag = false;
+				Cookbook.getJson(Cookbook.url());
+				more.remove();
+			});	
+		},
+		init : function(){
+			this.openList();
+		}
+	}
+	
+	
+	
+	var logo = $("#logo");
+	var logoTxt = $("#logo h1");
+	var searchbox = $("#search");
+	var cook = function(data){
+			Cookbook.data(data);
+	}
+	
+	window.cook = cook;
+	Cookbook.init();
+	
+	setTimeout(function(){
+		logo.animate({top : 150},500,function(){
+			logoTxt.animate({opacity : 100},1000,function(){
+				searchbox.animate({opacity : 150},500);
+			});
+		});
+	},1000);
+	
+	$("#search_btn").click(function(){
+		logo.hide();
+		if(Cookbook.flag){
+			$("#list").html("");
+			$(".more").remove();
+			Cookbook.flag = false;
+			Cookbook.getJson(Cookbook.url());
+			$("#listNum").val(0);
+		}
+		
+	});
+	
+	/*window.onscroll = function(){
+		var num = parseInt(document.getElementById("listNum").value);
+		var loader = document.body.scrollHeight;
+		var iH = document.body.scrollTop + document.documentElement.clientHeight;
+		if(Cookbook.flag && loader - 80 < iH){
+			Cookbook.flag = false;
+			document.getElementById("listNum").value = num + Cookbook._rn;
+			Cookbook.getJson(Cookbook.url());
+				
+		}	
+	}*/
+	
+	document.onkeyup = function(ev){
+		var ev = ev || window.event;
+		if(ev.keyCode == 13 && Cookbook.flag){
+			logo.hide();
+			$("#list").html("");
+			$(".more").remove();
+			Cookbook.flag = false;
+			Cookbook.getJson(Cookbook.url());	
+			$("#listNum").val(0);
+		}
+	}
+	
+	
+	
+	
+})()
+</script>
+</body>
+</html>

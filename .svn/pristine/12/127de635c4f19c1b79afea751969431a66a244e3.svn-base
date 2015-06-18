@@ -1,0 +1,97 @@
+define(["app/tool","app/dialog","app/toast","app/lazyload","lib/swipe","lib/iscroll","lib/fastclick"],function(t,dialog,toast,lazy) {
+	"use strict";
+	var App = {
+		config : {
+			url : 'MOCK/index.json'	
+		},
+		tpl : {
+			bannerItem : '<div><a href="#{url}"><img src="#{img}" /></a></div>',
+			bannerDotItem : '<i></i>',
+			popbox : {
+				"test" : '\
+				<section class="pop_wrap">\
+					<h2 style="padding:20px 0px;">测试弹窗</h2>\
+				</section>'	
+			}
+		},
+		getData : function(){
+			var self = this;
+			$.ajax({
+				url:self.config.url,
+				type:"GET",
+				dataType:"json",
+				success: function(data){
+					self.data = data;
+					self.banner();
+					//self.lv.init();
+				},
+				error: function(){
+						
+				}	
+			});	
+		},
+		banner : function(){
+			var
+			self = this,
+			render = function(){
+				var bannerData = self.data.banner;
+				var bannerList = '';
+				var bannerDotList = '';
+				$.each(bannerData,function(index){
+					bannerList += t.formatTpl(self.tpl.bannerItem,{},bannerData[index]);
+					bannerDotList += t.formatTpl(self.tpl.bannerDotItem,{},{});	
+				});
+				$(".banner_wrap").html(bannerList);
+				$(".banner_dot_wrap").html(bannerDotList).find("i").eq(0).addClass("active");
+				
+				handler();
+			},
+			handler = function(){
+				var bannerObj = document.getElementById("banner");
+				var bannerSwipe = Swipe(bannerObj, {
+					startSlide: 0,
+					auto: 5000,
+					continuous: true,
+					disableScroll: false,
+					stopPropagation: true,
+					callback: function(index, element) {},
+					transitionEnd: function(index, element) {
+						$(".banner_dot_wrap i").removeClass("active");
+						$(".banner_dot_wrap i").eq(index).addClass("active");
+					}
+				});	
+			},
+			init = function(){
+				render();
+			}
+			init();
+		},
+		recommendList : function(){
+			var myScroll = new IScroll('#recommend_wrapper', { scrollX: true, scrollY: false, eventPassthrough: true, preventDefault: false });	
+		},
+		init : function(){
+			this.getData();
+			//this.sideBar();	
+			this.recommendList();
+			dialog.ready();
+			toast.ready();
+			dialog.open(this.tpl.popbox.test);
+			$("#dialogWrapper").click(function(){
+				dialog.close();
+			});
+			toast.show("测试");
+			t.countdown.init('countdown1','2015/5/26 10:00:00',function(){
+				alert(1);	
+			});
+			console.log(t.formatDate('1430370000000','yyyy年MM月dd日 hh:mm:ss'));
+			lazy.init();
+		}
+	}
+		
+	App.init();
+	
+	document.addEventListener('DOMContentLoaded', function() {
+		FastClick.attach(document.body);
+	}, false);
+	
+});

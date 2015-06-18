@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>西门子企业微博</title>
+<!--[if lt IE 9]>
+<script src="http://rm.sina.com.cn/minisite/2013/201308siemens_wap/js/html5shiv.js"></script>
+<![endif]-->
+<link href="http://rm.sina.com.cn/minisite/2013/201308siemens_wap/style/siemens_phone.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://rm.sina.com.cn/minisite/2013/201308siemens_wap/js/eventQueue.js"></script>
+</head>
+
+<body>
+<div class="phone_content">
+<div class="send">
+  <div class="phone"><img src="http://rm.sina.com.cn/minisite/2013/201308siemens_wap/images/phone2.png" width="254" height="382"></div>
+  <div class="text" id="pic">
+    <div class="text_top"><img src="http://rm.sina.com.cn/minisite/2013/201308siemens_wap/images/text1.png" width="237" height="12"></div>
+    <div class="text_middle" id="before"><a onClick="putwb()"><img src="http://rm.sina.com.cn/minisite/2013/201308siemens_wap/images/shake3.png" width="97" height="37" id="shake_pic"><img src="http://rm.sina.com.cn/minisite/2013/201308siemens_wap/images/shake3.gif" id="shake_pic2" style="display:none;" width="97" height="37" /></a></div>
+    <div class="text_middle" style="display:none;" id="after">
+      <p>分享微博失败了，请<a onClick="replay()" style="color:#F00">点击重试</a></p>
+    </div>
+    <div class="text_bottom"><img src="http://rm.sina.com.cn/minisite/2013/201308siemens_wap/images/text2.png" width="237" height="11"></div>
+  </div>
+</div>
+</div>
+<div style="display:none;">
+<audio style="display:none; opacity:0;" id="musicBox" preload="metadata" controls autoplay="autoplay" src=""></audio>
+</div>
+<script type="text/javascript">
+var SHAKE_THRESHOLD = 2000;    
+var last_update = 0;    
+var x=y=z=last_x=last_y=last_z=0;   
+var media = document.getElementById("musicBox");
+var before = document.getElementById('before');	
+var after = document.getElementById('after');
+var pic1 = document.getElementById('shake_pic');
+var pic2 = document.getElementById('shake_pic2');
+var btn = true;
+var oImg = new Image();
+oImg.src = 'http://bcs.duapp.com/lechan/weixin_yaoyiyao.mp3?sign=MBO:B4ad7187fdb786f9e4aa1a958981e564:eUWSAj4o7S8mHbN%2FvbN7PIlMg%2Bw%3D';
+function init(){
+	last_update=new Date().getTime();
+	if (window.DeviceMotionEvent) { 
+		window.addEventListener('devicemotion',deviceMotionHandler, false);  
+	} else{
+		alert('亲，您的设备不支持摇一摇');
+	}
+}
+(function () {
+	var Ajax = {
+		_ajax : null,
+		get : function (url, data, fn) {
+			this.ajax({
+					url : url,
+					data : data,
+					fn : fn,
+					type : 'GET'
+				});
+		},
+		post : function (url, data, fn) {
+			this.ajax({
+					url : url,
+					data : data,
+					fn : fn,
+					type : 'POST'
+				});
+		},
+		ajax : function (obj) {
+			typeof obj.data == 'function' && (obj.fn = obj.data, obj.data = {});
+			if (window.XMLHttpRequest) {
+				this._ajax = new XMLHttpRequest();
+			} else {
+				this._ajax = new ActiveXObject('Microsoft.XMLHTTP');
+			}
+			var para = '';
+			for (var i in obj.data) {
+				para += i + '=' + obj.data[i] + '&';
+			}
+			para = para.substr(0, para.length - 1);
+			this._ajax.open(obj.type || 'GET', obj.type == 'GET' ?
+				obj.url.indexOf('?') != -1 ?
+				(obj.url + '&' + para) :
+				(obj.url + '?' + para) :
+				obj.url, true);
+			obj.type == 'POST' && this._ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			this._ajax.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					obj.fn(this.responseText);
+				}
+			};
+			this._ajax.send(obj.type == 'POST' ? para : null);
+		},
+		abort : function () {
+			this._ajax.abort();
+		}
+	};
+	window.Ajax = Ajax;
+})();
+function deviceMotionHandler(eventData) {    
+	var acceleration =eventData.accelerationIncludingGravity;  
+	var curTime = new Date().getTime(); 
+	if ((curTime - last_update)> 100) {  
+		var diffTime = curTime -last_update;    
+		last_update = curTime;        
+		x = acceleration.x; 
+		y = acceleration.y;   
+		z = acceleration.z;   
+		var speed = Math.abs(x +y + z - last_x - last_y - last_z) / diffTime * 10000;   
+
+		if (speed > SHAKE_THRESHOLD && btn==true) {  
+			btn = false;
+		  	var o = new KEQueue("0"); 
+			o.next(function(d) {
+				media.src="http://bcs.duapp.com/lechan/weixin_yaoyiyao.mp3?sign=MBO:B4ad7187fdb786f9e4aa1a958981e564:eUWSAj4o7S8mHbN%2FvbN7PIlMg%2Bw%3D";
+				media.play();
+				pic1.style.display = 'none';
+				pic2.style.display = 'inline';
+				o.wake();
+			},true)
+			.wait(3000)
+			.next(function(d){
+					/*Ajax.get("hiddphp.php?act=putwb&oauth_token=",function(data){
+						if(data==1 || data=='1'){
+							before.style.display = 'none';
+							after.innerHTML = '<p>感谢你参与#信赖是可以计算的#主题活动。西门子官微将于近期公布抽奖结果，敬请留意，<a onclick="replay()" style="color:#F00">点击再次分享</a></p>';
+							after.style.display = 'block';
+						}else if(data==2 || data=='2'){
+							before.style.display = 'none';
+							after.style.display = 'block';
+						}else{
+							return false;
+						}
+					});*/	
+					
+					
+					alert('摇了');
+					
+			})
+			.go();
+
+			//这里是触发摇一摇后需要执行的方法
+			//alert('摇了')
+
+		}    
+		last_x = x;    
+		last_y = y;    
+		last_z = z; 
+	}
+	}    
+
+window.onload = function(){
+	init();
+} 
+function replay(){
+	document.getElementById("after").style.display="none";
+	document.getElementById("before").style.display="block";
+	pic1.style.display = 'inline';
+	pic2.style.display = 'none';
+	btn=true;
+}
+
+/*//示例1 添加事件、执行事件队列 
+function show(n) { 
+	console.log(n); 
+} 
+var o = new KEQueue("0"); 
+o.next(function(d) { //参数是构造时传递的数据。整个事件队列都会返回该数据作为参数。 
+	show(d + 1); 
+}).next(function(d) { 
+	setTimeout(function() { //模拟延时操作（异步操作） 
+		show(d + 2); 
+		o.result = 0; //更改用以传递的数据，如果不修改，该数据会保持一致一直传递到最后一个事件。 
+		o.wake(); //需要手动唤醒序列 
+	},2000); 
+},true).next(function(d){ 
+	show(d + 3); 
+}).go(); 
+
+o.next(function(d) { 
+	setTimeout(function() {show(d + 4);o.wake(); },1000); 
+},true).wait(1000) //手动推迟1秒执行下面的方法 
+.next(function(d) { 
+	show(d + 5); 
+}).go(); 
+
+//示例2 
+o.next(function() { 
+	show(1); 
+}) 
+setTimeout(function() { 
+	o.next(function(){ 
+		setTimeout(function() { 
+			show(2); 
+			o.wake(); 
+		},2000) 
+	},true).go(); 
+},1000); 
+setTimeout(function() { 
+	o.next(function() { 
+		show(3); 
+	}).go(); 
+},2000);*/
+
+</script>
+</body>
+</html>

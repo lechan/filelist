@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/> 
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script type="text/javascript" src="js/require.js" data-main="js/conf/indexConf"></script>
+</head>
+
+<body data-tracker-name="index">
+<div class="wrap" id="mainPage">
+	<div id="countdown1"></div>
+    <div id="countdown2"></div>
+    <div class="banner" id="banner">
+		<div class="banner_wrap"></div>
+        <div class="banner_dot_wrap"></div>
+    </div>
+</div>
+<div id="recommend_wrapper">
+    <div id="scroller">
+        <ul>
+            <li>Cell 1</li>
+            <li>Cell 2</li>
+            <li>Cell 3</li>
+            <li>Cell 4</li>
+            <li>Cell 5</li>
+            <li>Cell 6</li>
+            <li>Cell 7</li>
+            <li>Cell 8</li>
+            <li>Cell 9</li>
+            <li>Cell 10</li>
+            <li>Cell 11</li>
+            <li>Cell 12</li>
+            <li>Cell 13</li>
+            <li>Cell 14</li>
+            <li>Cell 15</li>
+            <li>Cell 16</li>
+            <li>Cell 17</li>
+            <li>Cell 18</li>
+            <li>Cell 19</li>
+            <li>Cell 20</li>
+        </ul>
+    </div>
+</div>
+<div><a href="http://wpa.qq.com/msgrd?v=3&uin=43204370&site=qq&menu=yes">43204370</a></div>
+<ul class="sidebar fl">
+    <li>左侧边栏列表</li>
+    <li>左侧边栏列表</li>
+    <li>左侧边栏列表</li>
+    <li>左侧边栏列表</li>
+    <li>左侧边栏列表</li>
+    <li>左侧边栏列表</li>
+    <li>左侧边栏列表</li>
+</ul>
+<ul class="sidebar fr">
+    <li>右侧边栏列表</li>
+    <li>右侧边栏列表</li>
+    <li>右侧边栏列表</li>
+    <li>右侧边栏列表</li>
+    <li>右侧边栏列表</li>
+    <li>右侧边栏列表</li>
+    <li>右侧边栏列表</li>
+</ul>
+</body>
+</html>

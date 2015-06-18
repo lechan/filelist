@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>温暖重阳</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="viewport" content="minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no,width=device-width" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta http-equiv="Cache-Control" content="max-age=3600"/>
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<script type="text/javascript">
+var EVENT_ACTION_PAGE = "activity";
+</script>
+</head>
+
+<body>
+<div class="wrap main_bg">
+    <div class="banner">
+    	<div class="banner_top">
+        	<span id="login_box" class="fl"></span>
+            <span id="myPrize" class="fr">
+                <a href="javascript:LENOVO.com.lenovoid.login()"><img src="images/prize_btn.png" /></a>
+                <!--<a href="myprize.html">我的奖品</a>-->
+            </span>
+        </div>
+    </div>
+    <div class="con">
+    	<div class="con_top">
+        	<div class="girl_box"></div>
+            <div class="title title_right">萌妹子任你玩</div>
+        </div>
+        <div class="con_middle">
+        	<div class="puzzle_wrap">
+            	<div class="puzzle_enter"><a id="game_enter">拼图，领大奖</a></div>
+                <div class="puzzle_main">
+                	<div id="play_area"></div>
+                    <div class="puzzle_func">
+                    	<div class="fl">
+                        	<h2>倒计时：<span id="countdown">15&prime;00&Prime;</span></h2>
+                            <div class="countdown_bar_wrap">
+                            	<div class="countdown_bar" id="countdown_bar"></div>
+                            </div>
+                        </div>
+                        <div class="fr">
+                        	<a class="btn" id="play_btn_start">开始</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="puzzle_intro">
+            	<div class="puzzle_intro_left">
+                	<p>活动说明：</p>
+                    <p>1.玩一次拼图需要消耗40个乐豆；</p>
+                    <p>2.拼图速度越快，获得乐豆和大奖的几率越大；</p>
+                </div>
+                <div class="puzzle_intro_right">
+                	<a><img src="images/winner_btn.png" /></a>
+                </div>
+            </div>
+        </div>
+        <div class="con_bottom"></div>
+    </div>
+    
+    <div class="con" style="margin-top:-30px;" id="score_anchor">
+    	<div class="con_top">
+        	<div class="title title_right">快速赚乐豆</div>
+        </div>
+        <div class="con_middle">
+        	<div class="app_title">
+                <h3>成功安装并激活（首次打开）以下应用可获得<strong>40</strong>个乐豆。</h3>
+                <h4>请在wifi环境下下载应用，若选用手机网络请耐心等待。</h4>
+            </div>
+            <ul class="app_list">
+            </ul>
+            <div class="app_func">
+                <h4><a id="changeBtn">换一换</a><!--<a onClick="ending()">换一换</a>--></h4>
+                <h5>说明：已安装打开过的应用不再获得博饼机会</h5>
+            </div>
+        </div>
+    	<div class="con_bottom2"></div>
+    </div>
+    
+    <div class="con" style="margin-top:-30px;">
+    	<div class="con_top2"></div>
+        <div class="con_middle">
+        	<div class="ledou_intro">
+                <div class="title title_left">乐豆使用贴士</div>
+                <h2><a>什么是乐豆？</a></h2>
+            </div>
+            <div class="shareToWeibo">
+                <dl>
+                    <dt>
+                        邀请好友一起来玩萌妹子，赢<strong>20</strong>乐豆
+                    </dt>
+                    <dd id="shareBox">
+                        <a class="btn" onClick="shareweibo()">邀请</a>
+                        <!--<a class="btn_grey" onClick="ending()">已邀请</a>-->
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        去乐豆专区完成每日任务，赚乐豆
+                    </dt>
+                    <dd>
+                        <a class="btn">&nbsp;GO&nbsp;</a>
+                    </dd>
+                </dl>
+            </div>
+            <div class="ledou_link">
+            	<a><img src="images/btn1.png" /></a>
+                <a><img src="images/btn2.png" /></a>
+            </div>
+        </div>
+    </div>
+        
+    <div class="con">
+        <div class="bottom_ad"><a><img src="images/bottom_banner.png" /></a></div>
+    </div>
+        	
+    <div class="con">
+        <div class="footer"><span><img src="images/icon3.png" />客服QQ:2225707002</span></div>
+    </div>
+    
+</div>
+<!--<script type="text/javascript" src="js/jsloader.js"></script>
+<script type="text/javascript">
+var EVENT_ACTION_PAGE = "index";
+jsLoader({
+	name : 'trackers',
+	url : 'js/trackers.js'
+});
+jsLoader({
+	name : 'base',
+	url : 'js/base.js',
+	callback : function(){
+		jsLoader({
+			name : 'common',
+			url : 'js/common.js',
+			callback : function(){
+				jsLoader({
+					name : 'index',
+					url : 'js/index.js',
+					callback : function(){
+						LENOVO.com.lenovoid.init('login_box');
+						LENOVO.act.initail.init();
+						LENOVO.act.list.checkDownload();
+						LENOVO.act.hash.init();
+						updateApp();	
+					}
+				});		
+			}
+		});	
+	}
+});
+</script>-->
+<script type="text/javascript" src="js/trackers.js"></script>
+<!--<script type="text/javascript" src="js/zepto.min.js"></script>-->
+<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

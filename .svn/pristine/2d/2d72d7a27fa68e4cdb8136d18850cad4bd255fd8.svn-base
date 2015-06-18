@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" /> 
+<title>全部</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script type="text/javascript" src="js/lib/require.js" data-main="js/conf/listConf"></script>
+</head>
+
+<body data-tracker-name="list">
+<div class="blankPage blankBg2">
+    <div class="blankIcon blankPos3"></div>
+    <h4>未查询到相关商品</h4>
+    <h3>重新设置筛选条件吧</h3>
+</div>
+<div class="nav">
+    <ul>
+        <li id="tagBtn">
+            <span>全部</span><span><i class="arrow_down pos1"></i></span>
+        </li>
+        <li id="salesBtn"><span>销量</span></li>
+        <li id="priceBtn">
+            <span>价格</span><span><i class="arrow_up pos2"></i><i class="arrow_down pos3"></i></span>
+        </li>
+        <li id="selectBtn">
+            <span>筛选</span><span><i class="arrow_down pos1"></i></span>
+        </li>
+    </ul>
+    <div class="selectedItem">
+        <div class="selectedItemWrap"></div>
+    </div>
+</div>
+<div class="wrap" id="mainPage">
+    <div class="blankbox">
+    	<input type="hidden" id="tagId" />
+        <input type="hidden" id="orderType" />
+        <input type="hidden" id="orderCode" />
+        <input type="hidden" id="prizeType" />
+        <input type="hidden" id="isLv" />
+        <input type="hidden" id="lowScore" />
+        <input type="hidden" id="highScore" />
+        <input type="hidden" id="start" value="0" data-pagenum="10" />
+    </div>
+    <div class="nav_tag" id="nav_tag">
+    	<div class="nav_mask"></div>
+        <ul></ul>
+    </div>
+    <div class="nav_select" id="nav_select">
+    	<div class="nav_mask"></div>
+        <div class="selectWrap">
+            <div class="selectItem">
+                <h3>商品分类</h3>
+                <ul id="prizeTypeSel">
+                    <li class="active"><span>全部</span></li>
+                    <li data-value="virtual"><span>虚拟</span></li>
+                    <li data-value="real"><span>实物</span></li>
+                </ul>
+            </div>
+            <div class="selectItem">
+                <h3>过滤条件</h3>
+                <ul id="isLvSel">
+                    <li class="active"><span>全部</span></li>
+                    <li data-value="false"><span>普通</span></li>
+                    <li data-value="true"><span>LV专区</span></li>
+                </ul>
+            </div>
+            <div class="selectItem">
+                <h3>价格区间（元）</h3>
+                <div class="priceInput">
+                	<input type="tel" id="lowScoreInput" /> - <input type="tel" id="highScoreInput" />
+                </div>
+            </div>
+            <h2 id="selectConfirmBtn">确认</h2>
+        </div>
+    </div>
+    <div class="mainList">
+    	<ul>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

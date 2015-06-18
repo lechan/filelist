@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>Flappy Bird - Random</title>
+        <style type="text/css">
+            .pipe{
+                background : url('./pipe.gif') top center repeat-y;width:93px;height:0px;
+            }
+        </style>
+    </head>
+
+    <body style="background-color:black;margin:0;">
+        <div id="stage" style="background-color:#4fc3dc; width:520px;height:780px;overflow:hidden; position:relative; margin:0 auto;">
+            <div id="pipeContainer" style="position:absolute;display:none;">
+                <div data-node="bottomPipe" style="position:absolute;">
+                    <div style="width:93px;height:42px;background-image: url('./pipeUp.gif');"></div>
+                    <div class="pipe"></div>
+                </div>
+                <div data-node="topPipe" style="position:absolute;">
+                    <div class="pipe"></div>
+                    <div style="width:93px;height:42px;background-image: url('./pipeDown.gif');"></div>
+                </div>
+            </div>
+            <img id="bird" src="./bird.png" style="position:absolute;left:100px; top:300px;z-index:10;"/>
+            <div id="score" style="color:#fff;position:absolute;left:220px;top:80px;font-size:90px;z-index: 20;">0</div>
+            <div style="height:97px;width:100%;position:absolute;top:683px;background:#ddd896;text-align: right;">
+                <div style="height:18px;width:100%;background:url('./ground.gif')"></div>
+            </div>
+        </div>
+        
+        <script type="text/javascript">
+            function Timer(n){
+                var itvID;
+                
+                n = n || 1000 / 60; 
+                
+                return {
+                    start : function(cb){
+                        itvID = window.setInterval(cb, n);
+                    },
+                    
+                    stop : function(){
+                        window.clearInterval(itvID);
+                    }
+                };
+            }
+            
+            function overlay(x1, y1, w1,h1, x2, y2, w2, h2){
+                return  x2 < x1 + w1
+                        && x2 + w2 > x1
+                        && y2 < y1 + h1
+                        && y2 + h2 > y1;
+            }
+            
+            function value(y, h, t, g){
+                g = g || 0.98;
+                function fn(v, t){
+                    return v * t - 0.5 * g * t * t;
+                }
+                function v0(h){
+                    return Math.sqrt(2 * h * g);
+                }
+                
+                return y - fn(v0(h), t);
+            }
+            
+            function rotate(nd, v){
+                nd.style.mozTransform = "rotate(" + v + "deg)";
+                nd.style.oTransform = "rotate(" + v + "deg)"; 
+                nd.style.webkitTransform = "rotate(" + v + "deg)";
+                nd.style.transform = "rotate(" + v + "deg)";
+            }
+            
+            function Pipe(sw, sh, pnd, y, d){
+                var et = pnd.cloneNode(true);
+                var h = 42;
+                var pb = et.querySelector("[data-node='bottomPipe']");
+                var pt = et.querySelector("[data-node='topPipe']");
+                var x = sw;
+                var pbh;
+                var pth;
+                var speed = 5;
+                var baseY;
+                
+                et.removeAttribute("id");
+                et.style.display="";
+                
+                function updateY(y){
+                    pbh = sh - y + h;
+                    pth = y - d - h;
+                    pb.style.top = y + "px";
+                    pb.querySelector(".pipe").style.height = pbh + "px";
+                    pt.querySelector(".pipe").style.height = pth + "px";
+                    baseY = y;  
+                }
+                
+                updateY(y);
+                
+                return {
+                    entity : et,
+                    
+                    updateY : updateY,
+                    
+                    preX : function(){
+                        return preX;
+                    },
+                    
+                    x : function(v){
+                        if(typeof v !== "undefined"){
+                            preX = x;
+                            x = v;
+                            et.style.left = x + "px";
+                        }
+                        return x;
+                    },
+                    
+                    w : function(){
+                        return 93;
+                    },
+                    
+                    topH : function(){
+                        return pth + h;
+                    },
+                    
+                    bottomH : function(){
+                        return pbh + h;
+                    },
+                    
+                    baseY : function(){
+                        return baseY;
+                    }
+                }
+            }
+            
+            function check(b, p){
+                var pipeDeltaH = 200;
+                var v = 3;
+                var pr1 = {
+                    x : p.x() + v,
+                    y : p.baseY() + v,
+                    w : p.w() - 2 * v,
+                    h : p.bottomH() + pipeDeltaH - 2 * v
+                };
+                
+                var pr2 = {
+                    x : p.x() + v,
+                    y : -pipeDeltaH - v,
+                    w : p.w() - 2 * v,
+                    h : p.topH() + pipeDeltaH - 2 * v
+                };
+                
+                return overlay(b.x, b.y, b.w, b.h, pr1.x, pr1.y, pr1.w, pr1.h)
+                    || overlay(b.x, b.y, b.w, b.h, pr2.x, pr2.y, pr2.w, pr2.h);
+            }
+            
+            function checkScore(b, p, s){
+                if(b.x <= p.preX() && b.x > p.x()){
+                    s.add(1);
+                    s.update();
+                }
+            }
+            
+            function PipeManager(stage, sw, sh, bird, n, timer, cb){
+                var list=[];
+                var pcNd = document.getElementById("pipeContainer");
+                var d = 190;
+                var y;
+                var h = 42 * 2;
+                var pipe;
+                var timer;
+                var speed = 3.5;
+                var i;
+                var right = 250;
+                
+                n = n || 3;
+                
+                function getMaxX(){
+                    var i = list.length;
+                    var x = 0;
+                    
+                    while(i--){
+                        list[i].x() > x && (x = list[i].x());
+                    }
+                    
+                    return x;
+                }
+                
+                function startHandle(){
+                    var l = list.length;
+                    var p;
+                    
+                    for(i = 0; i< l; i++){
+                        p = list[i];
+                        p.x(p.x() - speed);
+                        if(p.x() <= -100){
+                            p.updateY(Math.floor(Math.random() * (sh - h - d) + h + d));
+                            p.x(getMaxX() + 280);
+                        }
+                        
+                        if(check(bird, p)){
+                            cb && cb();
+                        }
+                        checkScore(bird, p, Score);
+                    }
+					
+                }
+                
+                for(i = 0; i < n; i++){
+                    y = Math.floor(Math.random() * (sh - h - d) + h + d);
+                    pipe = Pipe(sw, sh, pcNd, y, d);
+                    list.length ? pipe.x(getMaxX() + 280) : pipe.x(sw + right);
+                    list.push(pipe);
+                    stage.appendChild(pipe.entity);
+                }
+				
+                
+                return {
+                    reset : function(){
+                        var l = list.length;
+                        var i;
+                        
+                        list[0].x(sw + right);
+                        for(i = 1; i < l; i++){
+                            list[i].x(getMaxX() + 280);
+                        }
+                        timer.stop();
+                    },
+                    
+                    start : function(){
+                        timer.start(startHandle);
+                    }
+                }
+            }
+            
+            
+            var Bird = {
+                x : 100,
+                y : 300,
+                w : 64,
+                h : 45,
+                
+                fly : function(y, h, dt, btm, timer, cb){
+                    var t = 0;
+                    var v = 0;
+                    var ag = 0;
+                    var agv = 2;
+                    var pv;
+                    var me = this;
+        
+                    timer.stop();
+                    timer.start(function(){
+                        t += dt;
+                        v = value(y, h, t); 
+                        if(v >= btm + 30){
+                            me.died(timer, btm);
+                        }
+                        
+                        if(typeof pv !=="undefined"){
+                            ag = Math.min(Math.max(ag + (v - pv) / agv, angleArr[0]), angleArr[1]);
+                        }
+                        
+                        cb(v, ag);
+                        pv=v;
+                    });
+                },
+                
+                enabled : true,
+                
+                died : function(timer, btm){
+                    var et = this.entity;
+                    var t = 0;
+                    
+                    rotate(et, 90);
+                    
+                    et.style.left = parseInt(et.style.left, 10) + 10 + "px";
+                    et.style.top = parseInt(et.style.top, 10) + 20 + "px";
+                    this.enabled = false;
+                    
+                    timer.stop();
+                    pipeTimer.stop();
+                    
+                    timer.start(function(){
+                        var v;
+                        
+                        t += 0.5;
+                        v = value(parseInt(et.style.top, 10), 0, t, 0.7);
+                        
+                        if(v >= btm + 30){
+                            timer.stop();
+                            v = btm + 30;
+                        }
+                        et.style.top = v + "px";
+                    });
+                    
+                    state = "end";
+                },
+                
+                reset : function(){
+                    this.y = 300;
+                    this.x = 100;
+                    this.entity.style.left = this.x + "px";
+                    this.entity.style.top = this.y + "px";
+                    this.enabled = true;
+                    rotate(this.entity, 0);
+                },
+                
+                entity : document.getElementById("bird")
+            };
+            
+            var Score = {
+                
+                v : 0,
+                
+                entity : document.getElementById("score"),
+                
+                add : function(n){
+                    this.v += n;
+                },
+                
+                update : function(){
+                    this.entity.innerHTML = this.v;
+                },
+                
+                reset : function(){
+                    this.v = 0;
+                    this.update();
+                }
+            };
+            
+            var Stage = {
+                w : 520,
+                h : 600, 
+                entity : document.getElementById("stage")
+            }
+            
+            
+            var angleArr=[-25, 90];
+            var birdTimer = Timer();
+
+            var pipeTimer = Timer();
+            var isStart = false;
+            var state = "start";
+            var pm = PipeManager(Stage.entity, Stage.w, Stage.h, Bird, 3, pipeTimer, function(){
+                Bird.died(birdTimer, Stage.h);
+            });
+            
+            Bird.x = parseInt(Bird.entity.style.left, 10);
+            
+            function game(evt){
+                var y;
+                
+                switch(state){
+                    case "hold" :
+                        pm.reset();
+                        Bird.reset();
+                        Score.reset();
+                        state = "start";
+                        break;
+                        
+                    case "end" :
+                        state = "";
+                        setTimeout(function(){
+                            state = "hold";
+                        },1000);
+                        break;
+                    
+                    case "start" :
+                        pm.start();
+                        state = "play";
+                    
+                    case "play" :
+                        y = parseInt(Bird.entity.style.top, 10);
+                        Bird.enabled && Bird.y >= 0 && Bird.fly(y, 100, 0.9, Stage.h, birdTimer, function(v, ag){
+                            Bird.entity.style.top = v + "px";
+                            Bird.y = v;
+                            rotate(Bird.entity, ag);
+                        });
+                }
+                
+                evt && evt.preventDefault();
+                window.event && (window.event.returnValue = false);
+            };
+
+	    window.onmousedown = game;
+	    window.addEventListener && window.addEventListener("touchstart", game, true);
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,801 @@
+
+  
+<!doctype html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="UTF-8" />
+        <title>小米路由器发烧纪念版——小米手机官网</title>
+        <meta name="description" content="小米路由器发烧纪念版" />
+            <meta name="keywords" content="小米路由器发烧纪念版,小米路由器mini,路由器,路由器mini" />
+            <link rel="shortcut icon" href="http://www.mi.com/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="http://www.mi.com/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="http://www.mi.com/css/base.min.css?2014101704" />
+    <script src="http://www.mi.com/js/libs/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.mi.com/css/product-lybox.min.css?2014110303" />
+<link rel="stylesheet" type="text/css" href="http://www.mi.com/css/webfont/product-miwifibox.min.css?2014092801" />
+</head>
+<body>
+<div class="site-topbar">
+    <div class="container">
+        <div class="topbar-nav">
+                               <a href="http://www.mi.com/index.html"  >小米网</a>
+                                   <span class="sep">|</span><a href="http://www.miui.com/"  target="_blank">MIUI</a>
+                                   <span class="sep">|</span><a href="http://www.miliao.com/"  target="_blank">米聊</a>
+                                   <span class="sep">|</span><a href="http://game.xiaomi.com/"  target="_blank">游戏</a>
+                                   <span class="sep">|</span><a href="http://www.duokan.com/"  target="_blank">多看阅读</a>
+                                   <span class="sep">|</span><a href="http://i.xiaomi.com/"  target="_blank">云服务</a>
+                                   <span class="sep">|</span><a href="http://www.mi.com/c/appdownload/"  target="_blank">小米网移动版</a>
+                                   <span class="sep">|</span><a href="javascript:void(0);"  class="J-modal-globalSites">Select region</a>
+                        </div>
+        <div class="topbar-info J_userInfo">
+                                                    <a data-needlogin="true" href="http://order.mi.com/site/login?ac=1">登录</a>
+                                    <span class="sep">|</span>                    <a  href="https://account.xiaomi.com/pass/register">注册</a>
+                        </div>
+    </div>
+</div>
+<!-- .site-topbar END -->
+
+<div class="site-header container">
+    <div class="site-logo">
+        <a class="logo" href="http://www.mi.com/index.html" title="小米官网"><i class="iconfont">&#xe61d;</i></a>
+            </div>
+    <div class="header-info">
+        <div class="search-section">
+            <form id="J_searchForm" class="search-form clearfix" action="http://search.mi.com/search" method="get">
+                <input class="search-text" type="search" name="keyword" autocomplete="off" data-search-config={'defaultWords':["小米手机3","红米手机","贴膜","后盖","耳机","电池","生活周边","挂饰","米兔"]} placeholder="搜索您需要的商品" />
+                <input type="submit" class="search-btn iconfont" value="&#xe630;" />
+                <!--[if IE 6]><div class="ie6-fix"></div><![endif]-->
+                <div class="hot-words">
+                    <a href=http://search.mi.com/search_%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA4>小米手机4</a><a href=http://search.mi.com/search_%E5%B0%8F%E7%B1%B3%E7%94%B5%E8%A7%86>小米电视</a><a href=http://search.mi.com/search_%E7%BA%A2%E7%B1%B3Note>红米Note</a>                </div>
+            </form>
+        </div>
+        <div class="cart-section">
+            <a id="J_miniCart" class="mini-cart" href="http://cart.mi.com/cart"><i class="iconfont">&#xe609;</i>购物车<span class="mini-cart-num J_cartNum"></span></a>
+            <div id="J_miniCartList" class="mini-cart-list">
+                <p class="loading">数据加载中，请稍后...</p>
+            </div>
+        </div>
+    </div>
+    <div class="header-nav clearfix">
+        <div id="J_categoryContainer" class="nav-category">
+            <a class="btn-category-list" href="http://list.mi.com/">全部商品分类</a>
+            <div class="nav-category-section" style="display: none;">
+                <ul class="nav-category-list"></ul>
+            </div>
+        </div>
+        <div class="nav-main">
+            <ul class="nav-main-list J_menuNavMain clearfix">
+
+        
+                <li class="nav-main-item">
+                    <a href="http://www.mi.com/index.html"><span class="text">首页</span></a>
+                </li>
+                
+                <li class="nav-main-item">
+                    <a href="javascript: void(0);"><span class="text">小米手机</span><span class="arrow"></span></a>
+                    <div class="nav-main-children">
+                        <ul class="children-list clearfix">
+                        
+                            <li class="first">
+                                <a class="item-detail" href="http://www.mi.com/mi4">
+                                    <span class="title" style="font-size:20px;">小米手机4</span>
+                                    <span class="desc">工艺和手感，超乎想象</span>
+                                    <span class="price"><b>1999</b>元起</span>
+                                    <span class="thumb">
+                                        <img src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi4.jpg" srcset="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi4_2x.jpg 2x" alt="小米手机3" width="160" height="160"/>
+                                    </span>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="item-detail" href="http://www.mi.com/mi3/">
+                                    <span class="title" style="font-size:20px;">小米手机3</span>
+                                    <span class="desc">经典旗舰机型性价比之王</span>
+                                    <span class="price">特价：<b>1499</b>元起</span>
+                                    <span class="thumb">
+                                        <img src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi3.jpg" srcset="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi3_2x.jpg 2x" alt="小米手机3" width="160" height="160"/>
+                                    </span>
+                                </a>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                </li>
+                
+                <li class="nav-main-item">
+                    <a href="javascript: void(0);"><span class="text">红米</span><span class="arrow"></span></a>
+                    <div class="nav-main-children">
+                        <ul class="children-list clearfix">
+                        
+                            <li class="first">
+                                <a class="item-detail" href="http://www.mi.com/hongmi1s4g/">
+    <span class="title">红米1S 4G版</span>
+    <span class="desc">千元4G手机性价比之王</span>
+    <span class="price"><b>599</b>元起</span>
+    <span class="thumb">
+        <img src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-hongmi.jpg" srcset="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-hongmi_2x.jpg 2x" alt="红米手机" width="160" height="160"/>
+    </span>
+    <span class="desc">可选4G版 / 3G版</span>
+</a>
+                            </li>
+                        
+                            <li>
+                                <a class="item-detail" href="http://www.mi.com/note4g/">
+    <span class="title">红米Note 4G版</span>
+    <span class="desc">5.5英寸大屏，支持4G网络</span>
+    <span class="price"><b>899</b>元</span>
+    <span class="thumb">
+        <img src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-note.jpg" srcset="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-note_2x.jpg 2x" alt="红米Note" width="160" height="160"/>
+    </span>
+</a>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                </li>
+                
+                <li class="nav-main-item">
+                    <a href="http://www.mi.com/mipad/"><span class="text">小米平板</span></a>
+                </li>
+                
+                <li class="nav-main-item">
+                    <a href="http://www.mi.com/mitv/"><span class="text">小米电视</span></a>
+                </li>
+                
+                <li class="nav-main-item">
+                    <a href="http://www.mi.com/hezis/"><span class="text">盒子</span></a>
+                </li>
+                
+                <li class="nav-main-item">
+                    <a href="javascript: void(0);"><span class="text">路由器</span><span class="arrow"></span></a>
+                    <div class="nav-main-children">
+                        <ul class="children-list clearfix">
+                        
+                            <li class="first">
+                                <a class="item-detail" href="http://www.mi.com/miwifi/">
+                                    <span class="title">小米路由器</span>
+                                    <span class="desc">顶配双频AC智能路由器<br>内置1TB大硬盘</span>
+                                    <span class="price"><b>699</b>元</span>
+                                    <span class="thumb">
+                                        <img src="http://img06.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T17FYvBXWT1RXrhCrK!160x160.jpg"  alt="小米路由器" width="160" height="160"/>
+                                    </span>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="item-detail" href="http://www.mi.com/miwifimini/">
+                                    <span class="title">小米路由器 mini</span>
+                                    <span class="desc">主流双频AC智能路由器<br>性价比之王</span>
+                                    <span class="price"><b>129</b>元</span>
+                                    <span class="thumb">
+                                        <img src="http://img06.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1XsATBCLT1RXrhCrK!160x160.jpg"  alt="小米路由器 mini" width="160" height="160"/>
+                                    </span>
+                                </a>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                </li>
+                
+                <li class="nav-main-item">
+                    <a href="http://heyue.mi.com/"><span class="text">合约机</span></a>
+                </li>
+                
+                <li class="nav-main-item">
+                    <a href="http://www.mi.com/service"><span class="text">服务</span></a>
+                </li>
+                
+                <li class="nav-main-item">
+                    <a href="http://www.xiaomi.cn"><span class="text">社区</span></a>
+                </li>
+                            </ul>
+        </div>
+    </div>
+    <div class="open-buy-info">
+        <a href="http://hd.mi.com/webfile/zt/open/cn/index.html">12月23日开放购买</a>
+    </div>
+</div>
+<!-- .site-header END --><div class="ahz-head cfl container">
+	<h2 class="ahz-head-leftCon"> 
+		小米路由器 发烧纪念版
+		<small>
+			<span class="sep">|</span>
+			<a class="switch-wcdma" href="/miwifi"> 切换至标准版</a>
+		</small>
+	</h2>
+	<div  class="ahz-head-rightCon J_head_rightCon">		
+		<a href="http://www.mi.com/miwifibox/summary" class="f-chanel bold" onclick="_hmt.push(['_trackEvent','PC','产品页_小米路由器发烧纪念版_A_概述']);" >概述</a><b>|</b>		
+
+		<a href="http://www.mi.com/miwifibox/param" class="f-chanel " onclick="_hmt.push(['_trackEvent','PC','产品页_小米路由器发烧纪念版_A_参数']);" >参数</a><b>|</b>
+		
+		<a target="_blank" href="http://bbs.xiaomi.cn/forum-692-1.html" class="f-chanel"  onclick="_hmt.push(['_trackEvent','PC','产品页_小米路由器发烧纪念版_A_评测']);">评测</a><b>|</b>
+        <a target="_blank" href="http://order.mi.com/queue/f2code" class="f-chanel" onclick="_hmt.push(['_trackEvent','PC','产品页_小米路由器发烧纪念版_A_F码通道']);">F码通道</a>
+		<a href="/cart/add/2142500004" class="btn btn-primary btn-small " style="padding-left: 10px;padding-right: 10px;" onclick="_hmt.push(['_trackEvent','PC','产品页_小米路由器发烧纪念版_A_立即购买']);">立即购买</a>
+	</div>
+</div><div class="nav">
+	<div class="bar J_fixed_bar  showbar ahz-head">
+		<div class="container">
+			<h2 class="ahz-head-leftCon">
+				小米路由器 发烧纪念版
+				<small>
+					<span class="sep">|</span>
+					<a class="switch-wcdma" href="/miwifi"> 切换至标准版</a>
+				</small>
+			</h2>
+			<div  class="ahz-head-rightCon J_head_rightCon_b">
+				
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-content clearfix J_miOneScroll">
+    <div  class="section section-01" data-title="头图">
+    	<div class="section-container">
+    		<div class="page-hero">
+	        	<div class="page-hero-content">	
+
+					<h2>嗨，又见面了
+		            </h2>
+		            <h3>小米路由器 发烧纪念版</h3>
+		            <p class="info">顶配双频AC智能路由器／复刻版限量木箱／动手组装的发烧体验</p>
+		            <p class='price'>999元</p>
+		            <p class="page-hero-content-btn">
+		            	<a class=" btn-prebuy " href="http://order.mi.com/cart/add/2142500004">立即购买</a>	
+		            	<a class=" btn-zuzhuang J_byself">亲手组装</a>
+		            </p>
+		            <p class="href">
+		            	<a href="http://order.mi.com/cart/add/2141700001">免预约购买小米路由器 &gt;&gt;</a>	
+		            </p>
+	        	</div>
+	        </div>
+	        <div class="page-sword">
+	        	<div class="page-sword-content">
+	        		<img  src="http://img03.mifile.cn/webfile/images/2014/cn/goods/miwifibox/l-1.png" alt="">
+	        	</div>
+	        </div>
+    	</div>
+    </div>
+    <div  class="section section-02" data-title="开始游戏">
+		<div class="section-container J_horizontalSection" >
+			<div class="section-panel-01 horizontalPanel" >
+				<div class="page-hero">
+					<div class="page-hero-content">
+						<h2>这个世界的美好<br>你亲自玩了才会懂</h2>
+						<div class="title-fu">挑战小米路由器组装世界记录<br>赢小米路由器 发烧纪念版</div>
+						<p class="changle">
+							<a href="" class="J_startGame">立即挑战 &gt;</a>
+						</p>					
+					</div>
+				</div>
+			</div>
+			<div class="section-panel-02 horizontalPanel" >
+				<div class="page-hero loading  J_pageGameHero">
+					<div class="page-hero-loading-cover load-cover ">
+		       			<div class="page-hero-loading-content">
+		       				<h2>准备好，挑战小米路由器世界记录</h2>
+		       				<p class="load-bar J_load_bar">
+		       					<span class="bar-up"></span>
+		       					<span class="bar-down"></span>
+		       				</p>
+		       				<div class="load-font">
+		       					有人1分钟就完成了哦
+		       				</div>
+		       			</div>
+	       			</div>
+	       			<div class="page-exit J_gameExit">
+	       				<b>继续浏览</b>
+	       			</div>
+	       			<div class="page-hero-main-content  J_gameMain">
+	       				<div class="left-block">
+	       					<div class="left-cover ">
+	       						<div class="left-cover-content J_step_1">	
+									<h3>请根据顺序，<br>
+										快速组装好你的小米路由器
+									</h3>
+									<p class="cover-btn">
+										<span class="btn-one videolist"  data-video="XNjQ4Nzg3OTE2">
+											秘籍一  看视频
+										</span>
+										<span class="btn-two J_lookPic">
+											秘籍二  看图纸
+										</span>
+									</p>
+									<div class="cover-start-changle J_start_step">
+										开始挑战 &gt;
+									</div>
+	       						</div>
+	       						<div class="left-cover-tuozhuai hide J_step_3">
+	       							
+	       						</div>
+	       					</div>
+
+							<div class="left-cover-tip hide J_step_2">
+								<div class="game-tip J_miwifiinfo">提示</div>
+								<div class="game-map J_lookPic">图纸</div>
+								<div class="game-tip-a hideStep"></div>
+								<div class="game-tip-b hideStep"></div>
+								<div class="game-nextStep hideStep J_nextStep">
+									下一步
+								</div>
+							</div>
+	       					<div class="left-backImg">
+	       						<div class="warn-info">按住拖动零件，至右方工作区</div>
+	       						<ul class="left-backImg-things J_workflow">
+	       							<li class="thing-fan">
+	       								<b class=""></b>
+	       							</li>
+	       							<li class="thing-gloves">
+	       								<b class=""></b>
+	       							</li>
+	       							<li class="thing-screws-a">
+	       								<b class=""></b>
+	       							</li>
+	       							<li class="thing-screws-b1">
+	       								<b class=""></b>
+	       							</li>
+	       							<li class="thing-screws-b2">
+	       								<b class=""></b>
+	       							</li>
+	       							<li class="thing-screws-c">
+	       								<b class=""></b>
+	       							</li>
+	       							<li class="thing-feet">
+	       								<b class=""></b>
+	       							</li>
+	       							<li class="thing-head">
+	       								<b class=""></b>
+	       							</li>
+	       							<li class="thing-body">
+	       								<b class=""></b>
+	       							</li>
+	       							<li class="thing-harddrive">
+	       								<b class=""></b>
+	       							</li>
+	       							<li class="thing-motherboard">
+	       								<b class=""></b>
+	       							</li>
+	       							<li class="thing-botbracket">
+	       								<b class=""></b>
+	       							</li>
+	       							<li class="thing-chassis">
+	       								<b class=""></b>
+	       							</li>
+	       						</ul>
+	       					</div>
+
+	       				</div> 	
+	       				<div class="right-block J_right_block">
+	       					<div class="time-block">00:00</div>
+	       					<div class="time-block-yu J_right_block_timeyu">+5</div>
+	       					<div class="img-block ">
+	       						<div class="img-block-cover-a J_stage_a img-status-01">
+	       							
+	       						</div>
+	       						<div class="img-block-cover-b J_stage_b ">
+	       							
+	       						</div>
+
+	       						<div class="img-block-cover-c J_stage_c ">
+	       							
+	       						</div>
+	       						<div class="img-block-cover-d J_stage_d ">
+	       							
+	       						</div>
+	       					</div>
+	       				</div>
+	       			</div>
+	       			<div class="page-full-cover J_full_cover hide"></div>
+	       			<div class="page-time-block hide J_countdown">
+	       				<h3>你已经做好所有准备了<br>开始挑战记录吧！</h3>
+	       				<div class="num">3</div>
+	       			</div>
+	       		</div>
+			</div>
+			<div class="section-panel-03 horizontalPanel">
+				<div class="section-container">
+					<div class="page-hero">
+						<div class="page-hero-content">	
+							<h3 class="J_gametime"></h3>
+							<p class="conA">
+								恭喜你！<span class="J_resultStr hide">	击败了全国<span class="J_shenpercent"></span>%的人<br>
+								<b class="J_shenhao"></b>级发烧友</span>
+							</p>
+							<p class="conB">
+								<a  class="btn-left J_sharesina">炫成绩  赢取纪念版</a>
+								<a href="http://a.hd.mi.com/productv2/book/a/5" class="btn-right">立即预约</a>
+							</p>
+							<p class="conC">
+								<a href="" class="J_gameExit">再来一次</a>
+								<span class="border">|</span>
+								<a href="" class="J_nextRound">继续浏览</a>
+							</p>
+							<p class="conD">
+								分享成绩至新浪微博带有 #我爱小米路由器# 话题，<br>
+								既有机会赢取小米路由器纪念版。<a href="http://bbs.xiaomi.cn/forum.php?mod=viewthread&tid=10641860&page=1&extra=#pid299462467" target="_blank"> 详细规则  >></a>
+							</p>
+						</div>
+					</div>
+					<div class="page-share-img">
+						<div class="page-sword-content">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+    <div  class="section section-03" data-title="盒子">
+		<div class="section-container">
+			<div class="page-hero">
+				<div class="page-hero-content">
+					<h3>经典复刻木箱<br>
+						开启你的发烧之旅
+					</h3>
+				</div>
+			</div>
+			<div class="page-sword">
+				<div class="page-sword-content">
+					<img  src="http://img03.mifile.cn/webfile/images/2014/cn/goods/miwifibox/l-3.png" alt="">
+				</div>
+			</div>
+		</div>
+    </div>
+	<div  class="section section-04" data-title="动手组装">
+		<div class="section-container">
+			<div class="page-hero">
+				<div class="page-hero-content">
+					<h3>纯手工打造自己的路由器<br>
+						享受动手组装的乐趣
+					</h3>
+				</div>
+			</div>
+			
+		</div>
+    </div>
+	<div  class="section section-05" data-title="限量版编号">
+		<div class="section-container">
+			<div class="page-hero">
+				<div class="page-hero-content">
+					<h3>可以收藏的路由器<br>
+						纪念版限量编号
+					</h3>
+				</div>
+			</div>
+			<div class="page-sword">
+				<div class="page-sword-content">
+					<img  src="http://img03.mifile.cn/webfile/images/2014/cn/goods/miwifibox/l-4.jpg" alt="">
+				</div>
+			</div>
+		</div>
+    </div>
+	<div  class="section section-06" data-title="介绍">
+		<div class="section-container">
+			<div class="page-hero">
+				<div class="page-hero-content">
+					<h3>小米路由器</h3>
+					<p class="title-sml">顶配双频AC智能路由器, 内置1TB大硬盘</p>
+					<p class="content">最新的设备已普遍支持最新802.11ac Wi-Fi协议，你的路由器是否已经进入AC时代？<br>小米路由器支持最新802.11ac协议，双频并发数据传输率最高可达1167Mbps。配备Broadcom双核CPU及美光／三星 256MB大内存，可稳定高速支持下载、文件读写、预加载、网络加速等，还有丰富的插件应用，完美发挥1TB大容量硬盘性能。</p>
+					<p class="href">
+						<a href="http://www.mi.com/miwifi" target="_blank">详细了解更多玩法 >></a>
+					</p>					
+				</div>
+			</div>
+			<div class="page-sword">
+				<div class="page-sword-content">
+					<img  src="http://img03.mifile.cn/webfile/images/2014/cn/goods/miwifibox/l-5.png" alt="">
+				</div>
+			</div>
+		</div>
+    </div>
+    <div  class="section section-07" data-title="参数">
+		<div class="section-container">
+			<div class="page-hero">
+				<div class="page-hero-content">
+					<ul class="params-list clearfix">
+						<li>
+							<h2>
+								<b>3</b>倍快
+							</h2>
+							<div class="title-sml">使用最新802.11ac WiFi协议，数据传输率达1167Mbps</div>
+							<div class="content">
+								802.11ac的速率是上一代WiFi技术的3倍，真正拓宽了WiFi的应用场景，无论是4K视频，还是大文件传输都更加快速。小米路由器同时支持5GHz和上一代2.4GHz, 两种频段并行数据总带宽达1167Mbps。
+							</div>
+						</li>
+						<li>
+							<h2>
+								<b>1</b>TB大硬盘
+							</h2>
+							<div class="title-sml">远程访问照片视频 / 脱机下载 / 自动备份</div>
+							<div class="content">
+								用小米路由器下载1000部全高清电影，存储4万首无损音乐，或者放10万张RAW格式照片架设你的相册服务器。现在，你的小米手机、电脑、Pad、电视都多了一块1TB大硬盘，随时备份或访问，还可进行远程访问并在你的移动设备上观看。
+							</div>
+						</li>
+						<li>
+							<h2>
+								<b>2</b>x2双频智能天线
+							</h2>
+							<div class="title-sml">超强穿墙模式，独立外置信号放大器</div>
+							<div class="content">
+								采用2 x 2内置天线设计，负责2.4GHz与5GHz的信号传输。采用波束成形Beamforming技术可根据终端设备的位置，进行智能信号跟随。独立外置功率放大器，有效加强信号的强度与穿透力。配备节能、标准、穿墙3种模式可调。
+							</div>
+						</li>
+						<li>
+							<h2>
+								<b>2</b>步上网
+							</h2>
+							<div class="title-sml">专属APP / 远程管理 / 一键修复</div>
+							<div class="content">
+								设置新路由器上网只需2步。基于Open Wrt开发的miwifi智能系统，图形化操作简单易用，每周更新。用手机APP就可以随时随地查看路由器状态，一键诊断、排除故障。
+							</div>
+						</li>
+					</ul>				
+				</div>
+			</div>
+		
+		</div>
+    </div>
+    <div class="section section-08" data-title="各种模式">
+    	<div class="section-container">
+    		<div class="page-hero hero-01 J_myzn">
+    			<div class="page-hero-content  hero-content-01">
+    				<h3>小米路由器 智能家居的控制中心<br>
+    					<b>起床模式，</b>让太阳每天在你家中升起
+    				</h3>
+    				<p class="content">
+    					清晨你还在熟睡，小米路由器就已经将家中电器唤醒。<br>当你睁开眼睛，舒适的光线、音乐、室温甚至早餐都已经准备就绪。
+    				</p>
+
+    			</div>
+    			<div class="page-hero-content  hero-content-02">
+    				<h3>小米路由器 智能家居的控制中心<br>
+    					<b>外出模式，</b>把家装进手机里一目了然
+    				</h3> 
+    				<p class="content">
+    					当你离家时，不必要的设备将自动断电关闭，安防设备启动。<br>你可以在办公室远程控制你的家，可视化的操控家中电器。
+    				</p>
+
+    			</div>
+    			<div class="page-hero-content  hero-content-03">
+    				<h3>小米路由器 智能家居的控制中心<br>
+    					<b>回家模式，</b>为你点亮家的温暖
+    				</h3>
+    				<p class="content">
+    					回家前一键启动，微波炉、热水器提前自动工作，空调开始调整室温。<br>踏进家门那一刻，小米路由器已为你点亮灯光，挑选你喜欢的音乐，欢迎你回家。
+    				</p>
+    			</div>
+    			<ul class="tab-switch clearfix J_tab_switch">
+                    <li class="hero-switch-01">起床模式</li>
+                    <li class="hero-switch-02">外出模式</li>
+                    <li class="hero-switch-03">回家模式</li>
+                </ul>
+    		</div>
+    	</div>
+    </div>
+    <div class="section section-09" data-title="说明书">
+    	<div class="section-container">
+    		<div class="page-hero">
+    			<div class="page-hero-title">	
+					<h3>新玩具安装说明</h3>
+    			</div>
+    			<div class="page-hero-content J_ly_nav_pic pic-1 ">
+    				
+    				<p class="img-list">
+    					
+    				</p>
+    				<p class="nav J_ly_nav">
+    					<a href="" class="prev" data-page="1">&lt;</a>
+    					<a href="" class="num-1" data-page="1">1</a>
+    					<a href="" class="num-2" data-page="2">2</a>
+    					<a href="" class="num-3" data-page="3">3</a>
+    					<a href="" class="num-4" data-page="4">4</a>
+    					<a href="" class="num-5" data-page="5">5</a>
+    					<a href="" class="next" data-page="2">&gt;</a>
+    				</p>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+	<div class="section section-10" data-title="尾图">
+    	<div class="section-container">
+    		<div class="page-hero">
+	        	<div class="page-hero-content">	
+
+					<h2>嗨，又见面了
+		            </h2>
+		            <h3>小米路由器 发烧纪念版</h3>
+		            <p class="info">顶配双频AC智能路由器／复刻版限量木箱／动手组装的发烧体验</p>
+		            <p class='price'>999元</p>
+		            <p class="page-hero-content-btn">
+		            	<a class=" btn-prebuy " href="http://order.mi.com/cart/add/2142500004">立即购买</a>	
+		            	
+		            </p>
+		            <p class="href">
+		            	<a href="http://order.mi.com/cart/add/2141700001">免预约购买小米路由器 &gt;&gt;</a>	
+		            </p>
+	        	</div>
+	        </div>
+	        <div class="page-sword">
+	        	<div class="page-sword-content">
+	        		<img  src="http://img03.mifile.cn/webfile/images/2014/cn/goods/miwifibox/l-1.png" alt="">
+	        	</div>
+	        </div>
+    	</div>
+    </div>
+
+	<div id="hidImg">
+		
+	</div>
+
+</div>
+
+<div id="miwifi_videowrap" class="modal fade hide">
+    <div class="modal-header">
+        <a type="button" data-dismiss="modal" aria-hidden="true" class="close"><i class="iconfont">&#xe617;</i></a>
+        <h3>&nbsp;</h3>
+    </div>
+    <div class="modal-body"></div>
+</div> 
+<div id="miwifi_picInfo" class="modal picInfoModal fade hide ">
+    <div class="modal-header">
+        <h3>新玩具安装说明</h3>
+    </div>
+    <div class="modal-body J_miwifi_picInfo pic-1">
+    	<p class="img-list">
+    					
+		</p>
+		<p class="nav J_miwifi_picInfo_nav">
+			<a href="" class="prev" data-page="1">&lt;</a>
+			<a href="" class="num-1" data-page="1">1</a>
+			<a href="" class="num-2" data-page="2">2</a>
+			<a href="" class="num-3" data-page="3">3</a>
+			<a href="" class="num-4" data-page="4">4</a>
+			<a href="" class="num-5" data-page="5">5</a>
+			<a href="" class="next" data-page="2">&gt;</a>
+		</p>
+    </div>
+</div>  
+<!-- .site-footer END -->
+<div id="loginBox" class="modal modal-login hide" data-width="420" data-width-sns="420"  data-height="430">
+        <a class="close" data-dismiss="modal" href="javascript: void(0);"><i class="iconfont"></i></a>
+        <div class="modal-body" id="loginBox-con">
+            <p class="loginBox-loading">数据加载中，请稍后...</p>
+        </div>
+    </div>
+<!-- .modal-login END -->
+<div id="J_modalWeixin" class="modal fade hide modal-weixin" data-width="480" data-height="520">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal"><i class="iconfont"></i></a>
+            <h3>小米手机官方微信二维码</h3>
+        </div>
+        <div class="modal-body" style="padding-top: 10px;">
+            <p style="margin: 0 0 10px;">打开微信，点击右上角的“+”，选择“扫一扫”功能，<br/>对准下方二维码即可。</p>
+            <img alt="" src="http://img03.mifile.cn/webfile/images/2014/cn/qr.png" />
+        </div>
+    </div>
+<!-- .modal-weixin END -->
+<div class="modal hide xm-dm-queue" id="xmDmQueue">
+        <div class="modal-body">
+            <span class="close" data-dismiss="modal" aria-hidden="true"><i class="iconfont"></i></span>
+            <h3>正在排队，请稍候喔！</h3>
+            <p class="queue-tip">抱歉，由于访问人数太多导致服务器压力山大，请您耐心排队等待，<br/>我们将在稍后告诉您排队结果。</p>
+            <div class="queue-animate">
+                <div id="mituWalking" class="mitu-walk"> </div>
+                <div class="animate-mask animate-mask-left"></div>
+                <div class="animate-mask animate-mask-right"></div>
+            </div>
+        </div>
+    </div>
+<!-- .xm-dm-queue END -->
+<div id="xmDmError" class="modal hide xm-dm-error">
+        <span class="close" data-dismiss="modal" aria-hidden="true"><i class="iconfont"></i></span>
+        <div class="modal-body">
+            <h3>抱歉，网络拥堵无法连接服务器</h3>
+            <p  class="error-tip">由于访问人数太多导致服务器压力山大，请您稍后再重试。</p>
+            <p >
+                <a class="btn btn-primary" id="xmDmReload">重试</a>
+            </p>
+        </div>
+    </div>
+<!-- .xm-dm-error END -->
+<div class="modal fade hide modal-globalSites" data-width="640" id="J_modal-globalSites">
+        <span class="close" data-dismiss="modal"><i class="iconfont"></i></span>
+        <div class="modal-body">
+            <h3>Welcom to Mi.com</h3>
+            <p class="modal-globalSites-tips">Please select your country or region</p>
+            <p class="modal-globalSites-links clearfix">
+                <a href="http://www.mi.com/index.html">Mainland China</a>
+                <a href="http://www.mi.com/hk/">Hong Kong</a>
+                <a href="http://www.mi.com/tw/">TaiWan</a>
+                <a href="http://www.mi.com/sg/">Singapore</a>
+                <a href="http://www.mi.com/my/">Malaysia</a>
+                <a href="http://www.mi.com/ph/">Philippines</a>
+                <a href="http://www.mi.com/in/">India</a>
+                <a href="http://www.mi.com/id/">Indonesia</a>
+                <a href="http://www.mi.com/en/">Global Home</a>
+            </p>
+        </div>
+    </div>
+<!-- .modal-globalSites END -->
+
+    <script src="http://www.mi.com/js/base.min.js?2014112001"></script>
+    <script>
+        XIAOMI.namespace("GLOBAL_CONFIG,GLOBAL_VAR");
+        XIAOMI.GLOBAL_CONFIG = {
+            orderSite:"http://order.mi.com",
+            wwwSite:"http://www.mi.com",
+            cartSite:"http://cart.mi.com",
+            itemSite:"http://item.mi.com",
+            listSite:"http://list.mi.com",
+            searchSite:"http://search.mi.com",
+            mySite:"http://my.mi.com",
+            damiaoSite:"http://tp.hd.mi.com/",
+            damiaoGoodsId:["2135000502","2135000509","2135000510","2135200029","2141300060","2135100067","2141800005","2141800006","2141200012","2141800007","2141800009","2143000004","2143400001","2143100007","2143400004","2143600001","2141700013","2141700014","2143400003","2144100013","2144100014","2144000011","2144100002","2144200002","2144400007","2144000012","2144800007","2144900028","2145000006"],
+            logoutUrl:"http://order.mi.com/site/logout",
+            quickLoginUrl:"https://account.xiaomi.com/pass/static/login.html",
+            //图片上传路径地址
+            uploadUrl:"http://viewapi.xiaomi.com",
+            //图片远程存储地址
+            imgSaveUrl:"http://img06.mifile.cn/v1/MI_574AF0887F5D0",
+            //评论查询地址
+            commentUrl:"http://test.comment.com",
+            //评论Api地址
+            commentApiUrl:"http://comment.order.mi.com",
+            //侧边栏数据接口
+            sideBarApiUrl:"http://prs.www.xiaomi.com"
+        }
+        XIAOMI.app.setLoginInfo.orderUrl = XIAOMI.GLOBAL_CONFIG.orderSite + '/user/order';
+        XIAOMI.app.setLoginInfo.logoutUrl = XIAOMI.GLOBAL_CONFIG.logoutUrl;
+        XIAOMI.app.setLoginInfo.init(XIAOMI.GLOBAL_CONFIG);
+        //全站需要直接执行的函数
+        jQuery(function ($) {
+            var oLogin = new XIAOMI.app.miniLogin();
+            oLogin.init();
+            // 搜索
+            XIAOMI.app.search.init();
+            // miniCart
+            XIAOMI.app.miniCart.init();
+            // 更新miniCart数量
+            XIAOMI.app.updateMiniCart();
+            // 商品分类导航
+            XIAOMI.app.navMenus.init($('.J_menuNavMain'), {
+                menuSelector: '.nav-main-item',
+                submenuSelector: '.nav-main-children',
+                effect: 'slide',
+                triggerEvent: 'hover'
+            });
+            XIAOMI.app.navCategory.init();
+            // 绑定尾部公共事件
+
+            XIAOMI.app.footer.init();
+        });
+    </script>
+    <script type="text/javascript" src="http://www.mi.com/js/libs/imagesloaded.min.js"></script>
+<script type="text/javascript" src="http://www.mi.com/js/libs/mi1scroll.js"></script>
+<script type="text/javascript" src="http://www.mi.com/js/productLybox.min.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        jQuery(function() {
+            //BD流量统计数组定义
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "//hm.baidu.com/hm.js?4982d57ea12df95a2b24715fb6440726";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+        });
+        //流量统计平台
+        var _msq = _msq || [] ;
+        _msq.push(['setDomainId',100]);
+        _msq.push(['trackPageView']);
+        (function() {
+            var ms = document.createElement('script');
+            ms.type ='text/javascript';
+            ms.async = true ;
+            ms.src = 'http://s1.mi.com/js/xmst.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ms,s);
+        })();
+    </script>
+</body>
+</html> 

@@ -1,0 +1,16 @@
+({
+	appDir: './',
+	mainConfigFile : 'js/conf/indexConf.js',
+    dir: "dist",
+ 	optimizeCss: "standard",
+    removeCombined: true,
+	findNestedDependencies: true,
+	modules: [
+        {
+            name:'conf/indexConf',
+            exclude: [
+                "zepto"
+            ]
+        }
+    ]
+})

@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>无标题文档</title>
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="data.js"></script>
+</head>
+
+<body>
+<dl>
+    <dt>省：</dt>
+    <dd><select onchange="changeProvince()" id="province"></select></dd>
+</dl>
+<dl>
+    <dt>市：</dt>
+    <dd><select onchange="changeCity()" id="city"></select></dd>
+</dl>
+<dl>
+    <dt>经销商：</dt>
+    <dd><select id="shop"></select></dd>
+</dl>
+<script type="text/javascript">
+$(function(){
+	//填充省份
+	var parr=new Array();
+	var pstr='';
+	for(var p in x1dl){
+		if(parr[x1dl[p][0]]!=1){
+			pstr+='<option value="'+x1dl[p][0]+'" >'+x1dl[p][0]+'</option>';
+			parr[x1dl[p][0]]=1;
+		}
+	}
+	$("#province").html(pstr);
+	changeProvince();
+});
+
+function changeProvince(){
+	var cstr='';
+	var pValue=$("#province").val();
+	var carr=new Array();
+	for(var p in x1dl)
+		{
+		if(x1dl[p][0]==pValue)
+			{
+			if(carr[x1dl[p][1]]!=1)
+				{
+					cstr+='<option value="'+x1dl[p][1]+'" >'+x1dl[p][1]+'</option>';
+					carr[x1dl[p][1]]=1;
+				}
+
+			}
+
+		}
+	$("#city").html(cstr);
+	changeCity();
+}
+function changeCity(){
+	var sstr='';
+	var cValue=$("#city").val();
+	for(var p in x1dl)
+		{
+		if(x1dl[p][1]==cValue)
+			{
+			sstr+='<option value="'+x1dl[p][3]+'" >'+x1dl[p][2]+'</option>';
+			}
+
+		}
+	$("#shop").html(sstr);
+}
+
+</script>
+</body>
+</html>

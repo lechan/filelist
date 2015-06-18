@@ -1,0 +1,62 @@
+define(function(require, exports, module) {
+	"use strict";
+	/**
+	 * lenovoid登录相关
+	 * @return {Function} login(callback) [登录]
+	 */
+	var lenovoid = (function(){
+		var
+		bBtn = true,
+		checkLogin = function(){
+			$.get('../loginInfo.do?t='+new Date().getTime(),function(data){
+				if(data.status==false){
+					login();
+					return false;
+				}else{
+					return true;
+				}
+			});
+		},
+		login = function(callback){
+			if(global){
+				if(bBtn == true){
+					bBtn = false;
+					setTimeout(function(){
+						bBtn = true;
+						global.showLogin();	
+						var timer = null;
+						if(typeof(global.getLpsUst)!="undefined"){
+							timer = setInterval(function(){
+								//alert("lpsust:"+getLpsUst());
+								if(getLpsUst()!=''){
+									
+									clearInterval(timer);
+									callback();
+									
+									/*if(BASE.currentFn!=null){
+										setTimeout(function(){
+											eval(BASE.currentFn)();
+											BASE.currentFn = null;
+										},200);
+									}*/
+								}
+							},500);
+						}	
+					},500);
+					
+				}
+			}else{
+				var fileurl = (function(){
+					var url = window.location.pathname;
+					while(url.indexOf("/") > -1) {
+						url = url.substring(url.indexOf("/") + 1, url.length);
+					}
+					return url;
+				})()
+				window.location.href = 'lenovoLogin.do?toPath=/'+fileurl;
+			}
+		};
+		return {login:login,checkLogin:checkLogin}
+	}());
+	module.exports = dialog;
+});

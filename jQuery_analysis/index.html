@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<style type="text/css">
+*{ margin:0px; padding:0px;}
+</style>
+<link rel="stylesheet" href="../styles/dark.css">
+<script src="../js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+<div style="width:100%;">
+<pre><code class="javascript">
+/**
+ * 1.定义jQuery变量
+ *  var jQuery = (function () {
+ *     
+ *        //定义一个局部变量jQuery
+ *        var jQuery = function(selector, context) {
+ *            //这是所有jQuery选择器的开始
+ *            return new jQuery.fn.init(selector, context, rootjQuery);
+ *        },
+ *        
+ *        //接着定义其他变量，最主要的是对jQuery函数原型的改造
+ *         //两者皆为指针，并指向同一起始位置，但后续对两个对象的扩充，使得两者能够指向的位置域有所不同
+ *        jQuery.fn = jQuery.prototype = {
+ *            constructor: jQuery,
+ *            init: function(){...},//定义了所有jQuery选择器的开始
+ *            //还定义了其他的基础方法，如
+ *            size: function(){...},
+ *            toArray: function(){...},
+ *            get: function(){...},
+ *            ......
+ *            port: [].sort,
+ *            splice: [].splice
+ *        };
+ *        
+ *        //对上面定义的init函数重置原型
+ *        jQuery.fn.init.prototype = jQuery.fn;
+ *        
+ *        //实现了jQuery原型的扩充
+ *        jQuery.extend = jQuery.fn.extend = function() {
+ *            ......
+ *        }
+ *        
+ *        //定义完jQuery命名空间下的extend方法，就可以直接扩充jQuery原型了
+ *        jQuery.extend({
+ *            noConflict: function(deep){...},
+ *            //一系列方法...
+ *        })
+ *        
+ *        //鉴别构造器语句...
+ *        //鉴别浏览器语句...
+ *        //其他...
+ *        
+ *        //要返回这个局部变量jQuery对象，赋值给外围的jQuery变量
+ *        return jQuery;
+ *    
+ *    )();
+ * 
+ * 2.扩充jQuery变量及jQuery.fn变量(利用jQuery及jQuery.fn命名空间进行方法的填充)
+ *     核心的两个方法——
+ *     jQuery.extend({...})
+ *     jQuery.fn.extend({...})
+ * 
+ * 3.将jQuery置于全局
+ *     在代码的最后——
+ *     window.jQuery = window.$ = jQuery;
+ * 
+ */
+</code></pre>
+<br>
+<pre><code class="javascript">
+(function ($) {
+    
+    /**
+     * 测试-jquery选择器方法(初始化)、测试-append方法，流程解析如下——
+     * 1>$('#test', 'body')调用jQuery函数(var jQuery = function(selector, context) {return new jQuery.fn.init(selector, context, rootjQuery);})
+     *     先对选择器selector(即#test)，进行初始化，即(jQuery.fn.init('#test', 'body', [#document]))
+     *     发现有context(即body)，那么要对body进行初始化，再调用$(context).find(selector)方法(即$('body').find('body'))
+     * 2>对于append方法：会调用jQuery.fn.domManip方法(这个方法会调用jQuery.buildFragment方法)，最终会调用selector的dom元素的appendChild方法进行dom操作
+     */
+    $('#test', 'body').append('&lt;div class="c2">implant content&lt;div>');    
+    
+    /**
+     * 测试-扩展jQuery对象本身，即，用来在jQuery命名空间上增加新函数
+     * 看了源码就会发现：
+     *     它循环了传入的对象参数里面的key-value值，并对jQuery这个函数对象做了扩展，其key值正是传参的key值(min和max)
+     */
+    $.extend({
+        min: function(a, b) { return a < b ? a : b; },
+        max: function(a, b) { return a > b ? a : b; }
+    });
+    $.min(2,3); //2
+    
+    /**
+     * 测试-扩展 jQuery 元素集来提供新的方法（通常用来制作插件）。
+     * 看了源码就会发现：
+     *     它与jQuery.extend的调用方法是同一个方法，只不过它对jQuery.fn这个命名空间做了功能扩展
+     */
+    $.fn.extend({
+        check: function() {
+            return this.each(function() { 
+                this.checked = true; 
+            });
+        },
+        uncheck: function() {
+            return this.each(function() { 
+                this.checked = false; 
+            });
+        }
+    });
+    
+/**
+ * 搜索jQuery变量，只要在这个代码段之前引入jQuery.js框架即可，在这个框架中，会把jQuery变量放置到window对象中
+ * 源码如下：
+ *         // Expose jQuery to the global object
+ *         window.jQuery = window.$ = jQuery;  //这句放在了框架中的最后一句，
+ *                                             //这句之前，在框架中对jQuery这个局部对象变量(命名空间)，做了方法及属性的填充
+ */
+})(jQuery);
+</code></pre>
+<br>
+<pre><code class="javascript">
+/**
+ * 需要的前提知识——
+ * 1.JS执行顺序
+ *         1>预解析
+ *         2>执行
+ * 2.函数作用域
+ *         1>this(深入理解函数调用模式)
+ *         2>变量检索(深入理解变量对象VO)
+ *         3>模块模式(深入理解闭包)
+ * 3.函数原型继承
+ */
+</code></pre>
+<br>
+<pre><code class="javascript">
+/**
+ * 从源码的架构可以学到
+ * 1.对于重复利用的变量，提前重新赋值，置为局部变量，这样就减少了变量查找的过程，提高了性能，如：
+ *     var document = window.document, 
+ *       navigator = window.navigator, 
+ *       location = window.location;
+ * 2.单变量置顶集中声明
+ *     在每一个函数执行域中，把所有该函数所需要的变量在这个函数域的最顶端进行声明，利于变量管理，提高性能，利于维护
+ * 3.绝大部分函数定义用的是函数表达式的方式，而非函数声明的方式，这种方式利于代码维护，值得借鉴
+ * 4.代码组织方式
+ *     1>整体而言，深度利用命名空间的方式管理自己的代码，极大的提高的代码的维护性，值得借鉴
+ *     2>利用模块模式，充分划分哪些变量及函数是私有的。利用命名空间的方式，充分划分哪些变量及函数是公有的。
+ *     3>功能模块化：并没有一次性将所需要的功能函数扩充于jQuery或jQuery.fn命名空间中，而是充分利用模块化思想进行划分。
+ *     4>源码中的每一个函数都是以key-value(这里的value是函数)的形式置于某个命名空间中，而不是简单的功能function的平铺。
+ *         增加了代码的维护性，值得借鉴。
+ */
+</code></pre>
+<br>
+<pre><code class="javascript">
+/**
+ * 研究jquery框架的作用：
+ * 1.在做基于jquery框架的项目时，可依据所需性能合理使用里面的方法，
+ *     例如，能完成同样一项功能的两个方法，我们当然要选择性能高的一个方法
+ * 2.理解了整体架构，对于细节方法的具体实现，可根据应用具体分析
+ * 3.对于以后研究基于jquery的框架(如jquery.validate.js或jquery.ptTimeSelect.js)就不再成为难点
+ * 4.记住jquery框架的编码风格，利于对比其他优秀框架，吸取其精华
+ */
+</code></pre>
+</div>
+</body>
+</html>

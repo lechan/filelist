@@ -1,0 +1,34 @@
+define(['tool','zepto','swipe'], function(tool) {
+	"use strict";
+	function sideBar(){
+		$("#mainPage").on("swipeLeft",function(){
+			var self = $(this);
+			if(self.hasClass("swipeR")){
+				$(this).removeClass("swipeR");
+			}else{
+				$(this).addClass("swipeL");
+			}
+		}).on("swipeRight",function(){
+			var self = $(this);
+			if(self.hasClass("swipeL")){
+				$(this).removeClass("swipeL");
+			}else{
+				$(this).addClass("swipeR");
+			}
+		});
+		$("#mainPage").click(function(){
+			alert(1);	
+		});
+	};
+	function init(){
+		sideBar();	
+	};
+	
+	
+	init();
+	tool.fastClick();
+	tool.cookie.set("abc","123",1)
+	alert(tool.cookie.get("abc"));
+	//console.log(tool.formatTpl);
+	
+});

@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<meta id="viewport" name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0" />
+<title>无标题文档</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#translate_btn").click(function(){
+		var txt = $("#translate_input").val();
+		var url_jp = 'http://openapi.baidu.com/public/2.0/bmt/translate?client_id=6uRBaMdgdA0mqyjVPAvTkuIQ&q='+ encodeURI(txt) +'&from=zh&to=jp';
+		var url_en = 'http://openapi.baidu.com/public/2.0/bmt/translate?client_id=6uRBaMdgdA0mqyjVPAvTkuIQ&q='+ encodeURI(txt) +'&from=zh&to=en';
+		$.ajax({
+			type : "get",
+			async:false,
+			url : url_en,
+			dataType : "jsonp",
+			success : function(json){
+				var result = json.trans_result[0].dst;
+				$("#show_box_en").html(result);
+			}
+        });
+		$.ajax({
+			type : "get",
+			async:false,
+			url : url_jp,
+			dataType : "jsonp",
+			success : function(json){
+				var result = json.trans_result[0].dst;
+				$("#show_box_jp").html(result);
+			}
+        });
+	});
+});
+</script>
+</head>
+
+<body>
+<input type="text" id="translate_input" x-webkit-speech /><input type="button" value="翻译" id="translate_btn" />
+<h3 id="show_box_en"></h3>
+<h3 id="show_box_jp"></h3>
+</body>
+</html>

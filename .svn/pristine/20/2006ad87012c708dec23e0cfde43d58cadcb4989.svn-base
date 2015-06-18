@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>活动规则</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="viewport" content="minimum-scale=1; maximum-scale=1; initial-scale=1; user-scalable=no; width=device-width" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link rel="stylesheet" type="text/css" href="css/base.css" />
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+</head>
+
+<body>
+<div class="wrap">
+	<div class="header">
+    	<a href="index.html" class="back_btn">返回</a>
+    	<h1>活动规则</h1>
+    </div>
+    
+    <div class="content">
+    	<h2>温馨提示：</h2>
+        <p>本次活动奖品量大，并且我们会按时段更新奖品数量，请各位乐友友谊第一奖品第二，不要出现恶意刷奖的情况，否则将会被取消参与活动的资格。</p>
+        
+        <h2>得奖渠道：</h2>
+        <h3>1、其乐无穷，秒杀大奖</h3>
+        <p>活动期间我们将在每天13:00开始秒杀，你需要有10个积分才能参与秒杀，只有秒杀成功（第526位参与秒杀的用户）才会扣除参与秒杀的积分。每一期秒杀活动每个用户只可参与一次。</p>
+     	<p>每一期秒杀开启时长为30分钟，奖品被秒系统将会自动关闭当期秒杀。</p>
+    	<p>特别说明：秒杀区域的奖品都是很有分量的大奖，乐友可得留意秒杀时间，并提前准备好所需的积分哦。</p>
+   		<p>大奖提示：5月26日13点秒杀联想大电视哦。</p>
+        <h3>2、乐此不疲 积分兑好礼</h3>
+        <p>积分就是你的一切，你可以用积分兑换你想要的奖品。</p>
+        <p>积分的获取方式：</p>
+        <p>第一，<strong>拼的是勤劳</strong>。你可以每天到本区领取积分，第一天可以领取1个，连续第二天领取可领积分数量增加1个；</p>
+        <p>第二，<strong>拼的是运气</strong>。你可以通过安装APP或者分享到微博获得刮刮卡，刮刮卡可以随机获得2分、3分、4分、5分、10分。</p>
+        <h3>秘诀：</h3>
+        <p>（1）勤劳可致富，有时间的粉儿一定要坚持。</p>
+        <p>（2）分享到微博每天只有三次机会，一键下载APP可快速致富，乃们不妨多尝试下~.~</p>
+        <h3>3、乐在其中，争当大ｂｏｓｓ！。</h3>
+        <p>只要你将游戏截图分享至新浪微博@乐商店，就可以获得我们的抽奖机会。</p>
+        
+        <h2>特别说明：</h2>
+        <p>本次活动奖品以实物为准，积分兑换奖品处奖品兑完为止，先到先得。未兑换的积分将在本期活动结束时作废。乐商店拥有对本次活动的最终解释权。</p>
+        <h2>乐商店客服</h2>
+        <p>奖品发放和使用情况请至乐商店官方微信查询。</p>
+        <div class="img_wrap"><img src="images/icon7.png" /><span>微信：leshangdian</span></div>
+    </div>
+</div>
+</body>
+</html>

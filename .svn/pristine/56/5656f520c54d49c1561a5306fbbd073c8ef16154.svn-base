@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="v6up_ani_V2.css" />
+</head>
+
+<body>
+<div class="stage6 ani">
+    <!-- space_wrap -->
+    <div class="space_wrap">
+        <!-- 太阳 -->
+        <div class="sun_wrap">
+            <div class="sun"></div>
+            <div class="sun_rotate_wrap">
+                <div class="sun_mask_wrap">
+                    <div class="sun_mask"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 星轨 --> 
+        <!-- mars -->
+        <div class="orbit_mars">
+            <svg class="svg_mars" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="1465px" height="949.72px" viewBox="0 0 1465 549.72" enable-background="new 0 0 1465 549.72" xml:space="preserve">
+                <image xlink:href="http://img.t.sinajs.cn/t6/style/images/special/v6up_ani/ani/planet_mars.png" y="-55px" x="-60px" height="110px" width="121px" class="planet_mars">
+                    <animateMotion path="M690.037,141.454c403.203-130.649,748.513-179.62,771.273-109.382
+            c22.759,70.239-285.651,233.09-688.854,363.739C369.253,526.459,23.942,575.431,1.183,505.192
+            C-21.576,434.953,286.834,272.102,690.037,141.454z" begin="1s" dur="10s" repeatCount="indefinite"/>
+                </image>
+            </svg>
+        </div>
+        <!-- /mars -->
+        <!-- venus -->
+        <div class="orbit_venus">
+            
+            <!-- venus -->
+             <svg class="svg_venus" version="1.1" id="&#x56FE;&#x5C42;_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+             y="0px" width="906px" height="404px" viewBox="0 0 906 404" style="enable-background:new 0 0 906 404;" xml:space="preserve">
+                <image xlink:href="http://img.t.sinajs.cn/t6/style/images/special/v6up_ani/ani/planet_venus.png" y="-46px" x="-46px" height="92px" width="92px" class="planet_venus">
+                    <animateMotion path="M828.937,86.79c9.16,39.767-148.705,122.243-352.601,184.215
+                    C272.44,332.977,99.725,350.978,90.565,311.211 M90.565,311.211c-9.16-39.767,148.705-122.243,352.601-184.215
+                    S819.777,47.023,828.937,86.79" begin="0s" dur="6s" repeatCount="indefinite"/>
+                </image>
+            </svg>
+        </div>
+        <!-- /venus -->
+        <!-- halley -->
+        <div class="orbit_halley">
+            <svg class="svg_halley" version="1.1" id="&#x56FE;&#x5C42;_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                 y="0px" width="3981.008px" height="2350.899px" viewBox="0 0 3981.008 2350.899"
+                 style="enable-background:new 0 0 3981.008 2350.899;" xml:space="preserve">
+                <image xlink:href="http://img.t.sinajs.cn/t6/style/images/special/v6up_ani/ani/planet_halley.png" y="-30px" x="-30px" height="60px" width="60px" class="planet_mars">
+                    <animateMotion path="M2465.027,710.679
+                    c1083.144,518.856,1809.72,1255.711,1622.851,1645.81S2871.46,2642.21,1788.316,2123.353S-21.403,867.642,165.465,477.543
+                    S1381.883,191.822,2465.027,710.679z" begin="0s" dur="8s" repeatCount="indefinite"/>
+                </image>
+            </svg>
+        </div>
+        <!-- halley -->
+        <!-- txt1 -->
+        <div class="stage6_ele1">
+            <div class="stage6_txt1"></div>
+            <div class="stage6_txt2"></div>
+            <div class="stage6_txt3"></div>
+        </div>
+        <!--share -->
+        <div class="stage6_ele2">
+            <div class="stage6_update_btn">
+                                            <!--<a href="http://weibo.com/" class="login_new">进入微博</a>-->
+                <p class="share_check"><a href="" class="refresh_btn"><span class="refresh_icon"></span>再播一遍</a></p>
+                                        </div> 
+        </div>
+    </div>
+</div>
+</body>
+</html>

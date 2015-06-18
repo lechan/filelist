@@ -1,0 +1,9 @@
+define(["app/tool"],function(t) {
+	"use strict";
+	var lpsust = t.getURLParam("lenovoid.wust");
+	var url = t.getURLParam("toPath");
+	t.cookie.set("lpsust",lpsust);
+	if(url){
+		window.location.href = url;
+	}
+});

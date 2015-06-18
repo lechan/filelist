@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" /> 
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script type="text/javascript" src="js/lib/require.js" data-main="js/conf/detailConf"></script>
+</head>
+
+<body data-tracker-name="detail">
+<div class="wrap detailWrap" id="mainPage">
+	<div id="detailImg" class="detailImg">
+        <div class="detailImgWrap">
+        	<div><a href="#"><img src="http://beta.test2.surepush.cn/promotion/prize_img/20.jpg" /></a></div>
+            <div><a href="#"><img src="http://beta.test2.surepush.cn/promotion/prize_img/20.jpg" /></a></div>
+            <div><a href="#"><img src="http://beta.test2.surepush.cn/promotion/prize_img/20.jpg" /></a></div>
+        </div>
+        <div class="detailImgDotWrap"><i class="active"></i><i></i><i></i></div>
+    </div>   
+    <div class="merchInfo">
+    	<div class="merchTitle">
+        	<h1>联想（Lenovo）小新i1000出色版 14英寸笔记本dianaodj电脑（I7-4558U 4G 500G+8G SSHD </h1>
+            <div class="collection">
+            	<i></i>
+            	<span>收藏</span>
+            </div>
+        </div>
+        <h2>500</h2>
+        <div class="lvInfo">
+        	<span>lv7专享价</span>
+            <i>已省<strong>400</strong></i>
+            <b></b>
+        </div>
+        <div class="lvScore">
+        	<ul>
+            	<li><span><strong>800</strong>LV0-LV1</span></li>
+                <li class="active"><span><strong>700</strong>LV2-LV4</span></li>
+                <li><span><strong>600</strong>LV5-LV7</span></li>
+                <li><span><strong>500</strong>LV10-LV12</span></li>
+            </ul>
+        </div>
+        <div class="lvInfo">
+            <i>LV专享价最高省<strong>400</strong></i>
+            <b></b>
+        </div>
+        <h3>
+        	<span>34人已兑</span>
+            <span>234人已收藏</span>
+            <span>剩34件</span>
+        </h3>
+    </div>
+    <div class="merchItem">
+    	<h2>商品详情</h2>
+        <div class="merchDetail">1、魅蓝 note 需要使用 Micro-SIM卡,也就是通常所说的小卡<br/>2、京东商城销售的魅族品牌手机，均为全新机，非RE。<br/>3、魅蓝手机全国联保，如您需要维修时，可到当地魅族授权服务中心维修或魅族专卖店协助送修，详情可电话联系魅族客服：400-788-3333咨询。凭质保证书及京东商城发票，可享受全国联保服务（奢侈品、钟表除外；</div>
+        <div class="merchDetailMore">更多<i></i></div>
+    </div>
+    <div class="merchItem">
+    	<h2>相关推荐</h2>
+        <ul class="relativeRecommend">
+        	<li><a href="#">机器人</a></li>
+            <li><a href="#">机器人</a></li>
+        </ul>
+    </div>
+    <div class="merchItem">
+    	<h2>客服信息</h2>
+        <div class="customService">QQ客服：<a href="mqqwpa://im/chat?chat_type=wpa&uin=927383282&version=1">927383282</a></div>
+    </div>
+    <div class="exchangeBtn">兑换<span>（省<strong>100</strong>）</span></div>
+</div>
+</body>
+</html>

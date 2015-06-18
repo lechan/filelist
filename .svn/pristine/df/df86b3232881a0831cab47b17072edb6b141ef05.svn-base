@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fiedlset,input,textarea,p,blockquote,th,td,figure,button,time,span,i{margin:0; padding:0;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+table{border-collapse:collapse; border-spacing:0;}
+fieldset,img,button{border:0}
+address,b,caption,cite,code,dfn,em,th,var{font-style:normal; font-weight:normal; font-variant:normal}
+ol,ul{list-style:none}
+caption,th{text-align:left}
+h1,h2,h3,h4,h5,h6{font-size:100%; font-weight:normal}
+q:before,q:after{content:""}
+blockquote, q{quotes: none}
+abbr,acronym{border:0}
+a{text-decoration: none; color:inherit}
+i,b,em,strong{font-style:normal}
+input,button,select,textarea{outline:none}
+
+
+html,body{ width:100%; height:100%;}
+.wrap{ width:100%; height:100%; overflow:hidden; position:relative;}
+.content{ width:auto; height:3000px; position:absolute; cursor:move;}
+.img{ width:6000px; height:3000px; float:left; background:url(images/h7.jpg) no-repeat 0 0;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+	<div class="content" id="content">
+		<div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+    </div>
+</div>
+<script type="text/javascript" src="http://lechan.sinaapp.com/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+jQuery(function($){
+	
+	var 
+	content = $('#content'),
+	len = $("#content div").length,
+	conW = 6000 * len,
+	conH = 3000,
+	clientW = document.documentElement.clientWidth,
+	clientH = document.documentElement.clientHeight;
+	content.css({
+		"left" : -(conW - clientW)/2 + 250 + "px",
+		"top" : -(conH - clientH)/2 + "px",
+		"width" : conW + "px"	
+	});
+	
+	var disX=0,disY=0;
+	$('#content').on('mousedown',function(event){
+		disX = event.clientX - $(this).offset().left;
+		disY = event.clientY - $(this).offset().top;        
+
+		$(document).on('mousemove',function(ev) {
+				var left = ev.clientX - disX; 
+				var top = ev.clientY - disY;        
+				/*if (left<=-12000) {
+					$("#content").append($("#content div").eq(0)).css("left","0px");
+				}else if(left >= clientW - conW){
+					$("#content div").eq(2).insertBefore($("#content div").eq(0));
+				};*/
+
+				if(top>0) {
+					top=0;
+				}else if(top <= -(conH - clientH)){
+					top = -(conH - clientH);
+				};
+
+				$('#content').css({
+					left: left ,
+					top: top 
+				});
+		});
+
+		event.preventDefault();
+		return false;
+		
+	}).on('mouseup',function() {
+		$(document).off('mousemove');
+		return false;
+	});
+	
+	
+	$('#content').on('touchstart',function(event){
+		disX = event.clientX - $(this).offset().left;
+		disY = event.clientY - $(this).offset().top;        
+
+		$(document).on('touchmove',function(ev) {
+				var left = ev.clientX - disX; 
+				var top = ev.clientY - disY;        
+				/*if (left<=-12000) {
+					$("#content").append($("#content div").eq(0)).css("left","0px");
+				}else if(left >= clientW - conW){
+					$("#content div").eq(2).insertBefore($("#content div").eq(0));
+				};*/
+
+				if(top>0) {
+					top=0;
+				}else if(top <= -(conH - clientH)){
+					top = -(conH - clientH);
+				};
+
+				$('#content').css({
+					left: left ,
+					top: top 
+				});
+		});
+
+		event.preventDefault();
+		return false;
+		
+	}).on('touchend',function() {
+		$(document).off('mousemove');
+		return false;
+	});
+	
+
+});
+</script>
+</body>
+</html>

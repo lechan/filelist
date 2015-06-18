@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" /> 
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script type="text/javascript" src="js/lib/require.js" data-main="js/conf/detailConf"></script>
+</head>
+
+<body data-tracker-name="detail">
+<div class="wrap detailWrap" id="mainPage">
+	<div class="lvIcon"><i></i><span>LV特供</span></div>
+	<div id="detailImg" class="detailImg">
+        <div class="detailImgWrap"></div>
+        <div class="detailImgDotWrap"></div>
+    </div>   
+    <div class="merchInfo" id="merchInfo"></div>
+    <div class="merchItem">
+    	<h2>商品详情</h2>
+        <div class="merchDetail" id="merchDetail"></div>
+        <div class="merchDetailMore">更多<i></i></div>
+    </div>
+    <div class="merchItem">
+    	<h2>相关推荐</h2>
+        <ul class="relativeRecommend" id="relativeRecommend"></ul>
+    </div>
+    <div class="merchItem">
+    	<h2>客服信息</h2>
+        <div class="customService">QQ客服：<a href="mqqwpa://im/chat?chat_type=wpa&uin=927383282&version=1">927383282</a></div>
+    </div>
+    <div id="exchangeBtn"><div class="exchangeBtn">兑换<span>（省<strong>100</strong>）</span></div></div>
+</div>
+</body>
+</html>

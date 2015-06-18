@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="minimum-scale=1; maximum-scale=1; initial-scale=1; user-scalable=no; width=device-width;" />
+<title></title>
+<style type="text/css">
+    .clearfix:after{
+        content: '.';
+        clear:both;
+        height: 0;
+        width: 0;
+        font-size: 0;
+        display: block;
+        visibility: hidden;
+    }
+    .clearfix{
+        zoom:1;
+    }
+    .ks-randombox-default{
+        width:186px;
+        border: 1px solid #444;
+        background: #ccc;
+        font: 20px Microsoft Yahei;
+        color:#444;
+        text-shadow: 1px 1px 0px #fff;
+        border:1px solid #666;
+        background-color:#e4e4e4;
+        padding:;
+    }
+    .ks-randombox-default span{
+        display:block;
+        width:60px;
+        height:60px;
+        line-height:60px;
+        text-align:center;
+        float: left;
+        border: 1px solid #7f7f7f;
+        border-left: 1px solid #fff;
+        border-top: 1px solid #fff;
+        overflow: hidden;
+    }
+    .ks-randombox-default span.sel-item{
+        background:#DDF1FF;
+        color:#0085DD;
+        border: 1px solid #22A7FF;
+        -moz-box-shadow:0px 0px 8px #22A7FF;
+        -webkit-box-shadow:0px 0px 8px #22A7FF;
+        box-shadow:0px 0px 8px #22A7FF;
+        font-weight: bold;
+
+    }
+</style>
+<script src="http://manhuastatic1.appsina.com/v3/js/production/jquery-1.6.4.min.js" type="text/javascript"></script>
+
+</head>
+<body>
+<div id="container">
+    <div id="demo" class="ks-randombox-default clearfix">
+
+        <span id="b1">1</span>
+        <span id="b2">2</span>
+        <span id="b3">3</span>
+        <span id="b4">4</span>
+        <span id="b5">5</span>
+        <span id="b6">6</span>
+        <span id="b7">7</span>
+        <span id="b8">8</span>
+        <span id="b9">9</span>
+    </div>
+
+
+    <div>
+        <input type="button" value="点击开始" id="start">
+        <input type="button" value="停止" id="stop">
+        <input type="button" value="重置" id="reset">
+        <input type="button" value="在摇一次" id="again">
+    </div>
+</div>
+
+<script type="text/javascript">
+
+function RandomBox(cfg , callback){
+	var self = this,
+		DefaultCfg = {
+			wrapCls : '.ks-randombox-default',
+			rollTimes:2,
+			cls:"sel-item",
+			duration:40,
+			speedSteps:[1,2,5]
+		};
+	//合并配置
+	self.config = $.extend(DefaultCfg,cfg);
+	//id 数组
+	self.list = self.config.list;
+	//dom数量
+	self.domNum = self.list.length;
+	//旋转圈数
+	self.rollTimes = self.config.rollTimes;
+	//样式类名
+	self.cls = self.config.cls;
+	//容器
+	self.wrap = $(self.config.wrapCls);
+	//其实索引
+	self.beginIndex = 0;
+	//正常速度
+	self.duration = self.config.duration;
+	//速度倍率
+	self.speedSteps = self.config.speedSteps;
+	//开始索引位置
+	self.beginIndex = 0;
+	//ajax请求抽奖结果
+	self.queryurl = self.config.queryurl;
+
+	//初始化
+	self._init();
+	//self.finalNum = 75;
+	//定义回调函数
+	self.callback = typeof callback == "function" ? callback : undefined;
+}
+
+RandomBox.prototype = {
+	_init : function(){
+		//初始化数据
+		var self = this,
+			domNums = self.domNum;
+		self.$domLists = [];
+		self.changeTimes = self.rollTimes  * domNums;
+		self.finalId = null;
+		self.beginIndex = 0;
+		self.finalNum = 0;
+		//是否请求抽奖结果
+		self.requested = false;
+		for(var i = 0; i < domNums; i++) {
+			self.$domLists.push($(self.list[i]));
+		}
+	},
+	rolling : function(){
+		var self = this;
+	   // console.log(self.beginIndex % self.domNum);
+		self.choose(self.$domLists[self.beginIndex % self.domNum]);
+		self.beginIndex += 1;
+		self.start();
+		console.log(self.beginIndex, self.finalNum);
+		if(self.beginIndex == self.finalNum){
+			self.stop();
+			self.callback();
+		}
+	},
+	start : function(){
+		var self = this,
+			duration = self.duration,
+			speedSteps = self.speedSteps;
+		if(!self.requested) {
+			setTimeout(function(){
+				self.query();
+			},2000);
+			self.requested = true;
+		}
+		if(self.finalId && !self.finalNum) {
+			//根据 self.finalId 求 self.finalNum
+			self.finalNum = self.indexOfArray(self.list, self.finalId);
+			self.changeTimes = Math.floor(self.beginIndex/self.domNum) * self.domNum;
+			self.finalNum = self.changeTimes + self.domNum + self.indexOfArray(self.list,self.finalId)+1;
+			self.$curTarget = $();
+			console.log('self.finalNum', self.finalNum);
+		}
+		//停止旋转
+		self.stop();
+		if(!self.finalNum) {
+			self._setInterval(duration * speedSteps[0]);
+		} else if(self.beginIndex > self.finalNum - 10){
+			self._setInterval(duration * speedSteps[2]);
+		}
+		else if(self.beginIndex <= self.finalNum - 10 && self.beginIndex >= self.finalNum - 20){
+			self._setInterval(duration * speedSteps[1]);
+		}else{
+			self._setInterval(duration * speedSteps[0]);
+		}
+	},
+	reset : function(){
+		//复位
+		var self = this;
+		self.stop();
+		self._init();
+		//样式重置
+		self.wrap.find('span').removeClass(self.cls);
+	},
+	query : function(){
+		var self = this;
+		data = {'finalId': 'b1'};
+		if(data && data.finalId) {
+			self.finalId = (data.finalId.slice(0,1) != '#' ? '#' : '') + data.finalId;
+		}
+		/*$.ajax({
+			url: self.queryurl,
+			type : 'POST',
+			dataType : 'json',
+			success: function(data){
+				self.finalNumId = data.finalNumId;
+			},
+			error: function() {
+
+			}
+		});*/
+	},
+	stop  : function(){
+		var self = this;
+		self._clearInterval();
+	},
+	//设置定时器
+	_setInterval:function(duration){
+		var self = this;
+		self.interval = setInterval(function(){self.rolling();}, duration);
+	},
+	//清除定时器
+	_clearInterval:function(){
+		var self = this;
+		clearInterval(self.interval);
+	},
+	choose : function(obj){
+		var self = this;
+		self.wrap.find('span').removeClass(self.cls);
+		obj.addClass(self.cls);
+	},
+	indexOfArray : function(arr, str){
+		for(var i = 0, len = arr.length; i < len; i++) {
+			if(arr[i] == str) {
+				return i;
+			}
+		}
+		return -1;
+	}
+};
+
+var box = new RandomBox({
+list:["#b1","#b2","#b3","#b6","#b9","#b8","#b7","#b4"]
+}, function(){
+	//alert(this.finalId);
+	var self = this;
+	setTimeout(function(){alert("你中了"+$(self.finalId).html());},400);
+});
+
+$("#start").bind('click', function(){
+	//开始摇奖
+	box.reset();
+	box.start();
+});
+
+$("#stop").bind('click', function(){
+	//停止摇奖
+	box.stop();
+});
+
+$("#reset").bind('click', function(){
+	//复位
+	box.reset();
+});
+
+$("#again").bind('click', function(){
+	box.reset();
+	box.start();
+});
+
+
+/*  (function(S){
+var $ = S.all,
+		E = S.Event,
+		box;
+S.use("gallery/randombox/1.0/index",function(S,RandomBox){
+	box = new RandomBox({
+		//配置id数组   "#"号勿忘
+		list:["#b1","#b2","#b3","#b4","#b5",
+			"#b10","#b15","#b20","#b25","#b24",
+			"#b23","#b22","#b21","#b16","#b11",
+			"#b6","#b7","#b8","#b9","#b14",
+			"#b19","#b18","#b17","#b12","#b13"],
+		//配置旋转圈数
+		rollTimes:2,
+		//配置CSS类名  （选中时效果）
+		cls:"sel-item",
+		//配置动画周期 (ms)
+		duration:40
+		//配置最终选中的id "#"号勿忘 不填为随机
+		//finalId:"#b6"
+	},function(targetId){
+		//执行选中后的回调函数
+		setTimeout(function(){alert("你选中了"+$(targetId).html());},400);
+	});
+
+	E.on($("#start"),'click',function(){
+		//开始摇奖
+		box.start();
+	});
+	E.on($("#stop"),'click',function(){
+		//停止摇奖
+		box.stop();
+	});
+	E.on($("#reset"),'click',function(){
+		//复位
+		box.reset();
+	});
+	E.on($("#again"),'click',function(){
+		box.reset();
+		box.start();
+	});
+});
+})(KISSY);*/
+
+</script>
+
+</body>
+</html>

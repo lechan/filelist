@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>无标题文档</title>
+</head>
+
+<body>
+<style type="text/css">
+#flower{ width:320px; height:300px; margin:0 auto; position:relative;}
+#flower i{ display:block; position:absolute; left:0; top:0; width:20px; height:15px; pointer-events:none;}
+#flower i.style1{ background:url(images/flower.png) no-repeat; background-size:contain;}
+#flower i.style2{ background:url(images/flower2.png) no-repeat; background-size:contain;}
+</style>
+<div id="flower"></div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/iphone.leaf.js"></script>
+<script>
+$(document).ready(function(e) {
+	/*
+	参数说明：
+	number:数量，默认20
+	x:起始点X坐标，
+	y:起始点Y坐标，
+	speed：速度，默认1，
+	ratio：层级，默认5，
+	roll:是否3D翻转，默认true，
+	skew:是否扭曲，默认true，
+	type:有几种样式，默认1
+	style:样式class名称，默认'style'
+    */
+	//$('#skyBox').snowOn({number:40,roll:true,type:3});
+	$('#flower').leafOn({number:30,x:$("#flower").width()*0.5,y:-10,speed:0.4,skew:false,type:2});
+});
+</script>
+</body>
+</html>

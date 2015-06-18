@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" /> 
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script type="text/javascript" src="js/lib/require.js" data-main="js/conf/detailConf"></script>
+</head>
+
+<body data-tracker-name="detail">
+<div class="wrap" id="mainPage">
+	<div id="detailImg" class="detailImg">
+        <div class="detailImgWrap">
+        	<div><a href="#"><img src="http://beta.test2.surepush.cn/promotion/prize_img/20.jpg" /></a></div>
+            <div><a href="#"><img src="http://beta.test2.surepush.cn/promotion/prize_img/20.jpg" /></a></div>
+            <div><a href="#"><img src="http://beta.test2.surepush.cn/promotion/prize_img/20.jpg" /></a></div>
+        </div>
+        <div class="detailImgDotWrap"><i class="active"></i><i></i><i></i></div>
+    </div>   
+    <div class="merchInfo">
+    	<div class="merchTitle">
+        	<h1>联想（Lenovo）小新i1000出色版 14英寸笔记本dianaodj电脑（I7-4558U 4G 500G+8G SSHD </h1>
+            <div class="collection">
+            	<i></i>
+            	<span>收藏</span>
+            </div>
+        </div>
+        <h2>500</h2>
+        <div class="lvInfo">
+        	<span>lv7专享价</span>
+            <i>已省<strong>400</strong></i>
+        </div>
+        <h3>
+        	<span>34人已兑</span>
+            <span>234人已收藏</span>
+            <span>剩34件</span>
+        </h3>
+    </div>
+</div>
+</body>
+</html>

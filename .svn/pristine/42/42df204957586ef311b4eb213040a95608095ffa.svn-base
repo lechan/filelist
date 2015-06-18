@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,maximum-scale=1" />
+	<title>榜单</title>	
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/toplist.css">
+</head>
+<body>
+<div class='nav-justified-outer' id='header'>
+	<div class='nav-justified-ctnr'>
+		<ul id='navList' class='nav nav-justified'>
+			<li><a href='javascript:void(0)'></a></li>
+		</ul>
+	</div>
+</div>
+<div id='navListCtnr' class='nav-ctn'>
+	<div class='tpl top-list'>
+		<a class='blk top-list-item multi-clm-box' href='detail.html?aid='>
+			<div class='top-list-flag top-list-flag-member'></div>
+			<div class='top-list-item-poster'>
+				<img src='' class='poster'>
+				<div class='top-list-score'></div>
+			</div>
+			<div class='top-list-item-detail'>
+				<button class='top-list-play btn1'></button>
+				<div class='top-list-tit'></div>
+				<div class='top-list-subtit'>
+					<span class='top-list-offline'></span>
+					<span class='latest'>更新至<span class='latest-num'></span>集<span>
+						</div>
+						<div class='top-list-synopsis'></div>
+					</div>
+				</a>
+			</div>
+		</div>
+<script type="text/javascript" src='js/zepto.js'></script>
+<script type="text/javascript" src='js/video.js'></script>
+<script type="text/javascript" src='js/toplist.js'></script>
+<script type="text/javascript">
+//page tracking
+var EVENT_ACTION='topList';
+window.Avatar= [];
+Avatar.push([document.querySelectorAll("#navList"), {selector:"a", parser:'clickvideoRank'}]);
+(function(){
+	var scriptTag = document.createElement('script');
+	scriptTag.type = 'text/javascript';
+	scriptTag.async = true;
+	scriptTag.src = 'js/avatarCfg.js';
+	var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(scriptTag,t);
+})()
+</script>
+</body>
+</html>
+

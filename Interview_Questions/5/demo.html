@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+*{ margin:0px; padding:0px; border:0 none;}
+.intro{ width:600px; margin:0 auto; position:relative; top:100px;}
+.intro h2{ text-align:left; margin-bottom:10px;}
+.intro p{ margin-bottom:10px;}
+.intro pre{ width:600px; margin:0 auto;}
+</style>
+</head>
+
+<body>
+<div class="intro">
+    <h2>跨栏效果</h2>
+    <p>使用下面的数据格式实现跨栏效果（只做素材为图片的形式），鼠标移入两侧的广告出现中间的广告，移出5秒后隐藏，用户自行点击关闭按钮后隐藏</p>
+    <pre>
+var data = [];
+data.push({
+	left : 'http://d2.sina.com.cn/201310/25/518166_120x270-1026skd.jpg', //左素材
+	right : 'http://d2.sina.com.cn/201310/25/518166_120x270-1026skd.jpg', //右素材
+	main : 'http://d1.sina.com.cn/201310/25/518167_1000x90-1026skd.jpg',  //中素材
+	url : 'http://www.sina.com.cn/', //点击链接
+	startTime : '2013-10-27', //开始时间
+	endTime : '2013-11-1' //结束时间
+});
+    </pre>
+    <h3>关闭按钮使用下面的地址：</h3>
+    <img src="http://d9.sina.com.cn/litong/zhitou/test/images/close-h.jpg" />
+    <img src="http://d2.sina.com.cn/d1images/lmt/cls_66x22.gif" />
+</div>
+
+<script type="text/javascript">
+var data = [];
+data.push({
+	left : 'http://d2.sina.com.cn/201310/25/518166_120x270-1026skd.jpg', //左素材
+	right : 'http://d2.sina.com.cn/201310/25/518166_120x270-1026skd.jpg', //右素材
+	main : 'http://d1.sina.com.cn/201310/25/518167_1000x90-1026skd.jpg',  //中素材
+	url : 'http://www.sina.com.cn/', //点击链接
+	startTime : '2013-10-27', //开始时间
+	endTime : '2013-11-1' //结束时间
+});
+
+
+</script>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<style>
+	.l {position:absolute;left:0;top:0;text-align:right;}
+	.r {position:absolute;right:0;top:0;text-align:right;}
+	.m {text-align:center;display:none;}
+	a.close {display:block;width:120px; height:18px; background:url(http://d9.sina.com.cn/litong/zhitou/test/images/close-h.jpg) no-repeat right center; }
+</style>
+<script type="text/javascript">
+<!--
+	var left="<div class='l'><img src="+(data[0].left)+" /><a href='#' class='close'></a></div>",
+		right="<div class='r'><img src="+(data[0].right)+" /><a href='#' class='close'></a></div>",
+		main="<div class='m'><img src="+(data[0].main)+" /></div>";
+	document.write(left+right);
+	$('.intro').before(main);
+	$('.l, .r').hover(function(){
+		$('.m').show();
+	},function(){
+		 setTimeout(function(){
+			$('.m').hide();
+		 },5000)		
+	})
+	$('.close').click(function(){
+		$('.l, .r, .m').hide();
+	})
+//-->
+</script>
+</body>
+</html>

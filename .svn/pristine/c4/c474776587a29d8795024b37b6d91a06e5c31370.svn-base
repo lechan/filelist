@@ -1,0 +1,67 @@
+{
+	"tags": [{
+		"id": 1,
+		"moreUrl": "http://localhost:8080/jfshop-web?id=1",
+		"name": "11",
+		"orderNum": 111,
+		"state": 1,
+		"url": "11"
+	}],
+	"normalTopics": [{
+		"code": 1,
+		"id": 1,
+		"list": [{
+			"descr": "descr-test",
+			"endTime": 1431598497172,
+			"iconAddr": "http://gtms03.alicdn.com/tps/i3/TB1VnBbHVXXXXb1XFXXqAiWGpXX-700-380.png",
+			"id": 3,
+			"lv": false,
+			"lvExchange": false,
+			"name": "测试商品2",
+			"promotionWords": "市场价100元",
+			"scorePrice": 100,
+			"startTime": 1431598497172,
+			"type": 0
+		}, {
+			"descr": "descr-test",
+			"endTime": 1431598497172,
+			"iconAddr": "http://gtms03.alicdn.com/tps/i3/TB1VnBbHVXXXXb1XFXXqAiWGpXX-700-380.png",
+			"id": 3,
+			"lv": false,
+			"lvExchange": false,
+			"name": "测试商品2",
+			"promotionWords": "市场价100元",
+			"scorePrice": 100,
+			"startTime": 1431598497172,
+			"type": 0
+		}],
+		"moreUrl": "http://www.baidu.com",
+		"name": "专区1",
+		"orderNum": 1,
+		"state": 1,
+		"type": 1
+	}],
+	"lvTopics": [],
+	"banners": [{
+		"id": 1,
+		"imgUrl": "http://gw.alicdn.com/tps/i4/TB10Q4nHFXXXXXjXpXXdIns_XXX-1125-352.jpg_q50.jpg",
+		"name": "1",
+		"orderNum": 1,
+		"state": 1,
+		"url": "http://www.baidu.com"
+	}, {
+		"id": 2,
+		"imgUrl": "http://i.mmcdn.cn/simba/img/TB1Fh_RGFXXXXcmaXXXSutbFXXX.jpg_q50.jpg",
+		"name": "1",
+		"orderNum": 1,
+		"state": 1,
+		"url": "http://www.baidu.com"
+	}, {
+		"id": 3,
+		"imgUrl": "http://img04.taobaocdn.com/imgextra/i4/130974249/TB2wzk1cXXXXXaGXpXXXXXXXXXX_!!130974249.jpg_q50.jpg",
+		"name": "1",
+		"orderNum": 1,
+		"state": 1,
+		"url": "http://www.baidu.com"
+	}]
+}

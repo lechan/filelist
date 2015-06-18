@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题 1</title>
+</head>
+
+<body>
+<script type="text/javascript" language="javascript">
+
+///@定义一个迭代器对象
+function Iterator(arr){
+	this.obj=arr;
+	this.length=this.obj.length;
+	this.index=0; //从前往后
+}
+
+Iterator.prototype = {
+	current:function(){
+		return this.obj[this.index-1];
+	},
+	first:function(){
+		return this.obj[0];
+	},
+	last:function(){
+		return this.obj[this.length-1];
+	},
+	hasNext:function(){
+		this.index=this.index+1;
+		if(this.index>this.length || null==this.obj[this.index-1])
+			return false;
+		return true;
+	}
+}
+
+Array.prototype.createIterator=function(){
+	return new Iterator(this);
+}
+
+var test=['abc1','abc2','abc3'];
+var iter=test.createIterator();
+while(iter.hasNext()){
+	var tempArr=iter.current();
+	alert(tempArr);
+}
+</script>
+</body>
+
+</html>

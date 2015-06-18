@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+*{ margin:0px; padding:0px; border:0 none;}
+#btn{ float:left; margin:10px; cursor:pointer;}
+#pic{ float:left; margin:10px 0px 0px 0px;}
+</style>
+</head>
+
+<body>
+<h2>鼠标延迟效果</h2>
+<img src="1.jpg" id="btn" />
+<img src="2.jpg" id="pic" style="display:none;" />
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+	var b;
+     $("#btn, #pic").mouseleave(function(){
+         b=setTimeout(function(){
+			$('#pic').hide();
+         },300) ;
+     });
+	$("#btn, #pic").mouseenter(function(){
+         clearTimeout(b);
+		 $('#pic').show();
+        });
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+define(['tool','zepto','swipe'], function(tool) {
+	"use strict";
+	var App = {
+		sideBar : function(){
+			$("#mainPage").on("swipeLeft",function(){
+				var self = $(this);
+				if(self.hasClass("swipeR")){
+					$(this).removeClass("swipeR");
+				}else{
+					$(this).addClass("swipeL");
+				}
+			}).on("swipeRight",function(){
+				var self = $(this);
+				if(self.hasClass("swipeL")){
+					$(this).removeClass("swipeL");
+				}else{
+					$(this).addClass("swipeR");
+				}
+			});
+			$("#mainPage").click(function(){
+				alert(1);	
+			});
+		},
+		init : function(){
+			this.sideBar();	
+			tool.fastClick();
+			tool.countdown.init('countdown1','2015/5/26 10:00:00',function(){
+				alert(1);	
+			});
+			console.log(tool.formatDate('1430370000000','yyyy年MM月dd日 hh:mm:ss'));
+		}
+	}
+		
+	App.init();
+		
+});

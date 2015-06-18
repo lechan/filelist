@@ -1,0 +1,289 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no,width=device-width" />
+<title>无标题文档</title>
+<style type="text/css">
+/* CSS reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fiedlset,input,textarea,p,blockquote,th,td,figure,button,time,span,i{margin:0; padding:0;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+table{border-collapse:collapse; border-spacing:0;}
+fieldset,img,button{border:0}
+address,b,caption,cite,code,dfn,em,th,var{font-style:normal; font-weight:normal; font-variant:normal}
+ol,ul{list-style:none}
+caption,th{text-align:left}
+h1,h2,h3,h4,h5,h6{font-size:100%; font-weight:normal}
+q:before,q:after{content:""}
+blockquote, q{quotes: none}
+abbr,acronym{border:0}
+a{text-decoration: none; color:inherit}
+i,b,em,strong{font-style:normal}
+input,button,select,textarea{outline:none}
+
+.page_nav{ width:100%; height:50px; background:#efefef; border-bottom:1px solid #cccccc; position:relative;}
+.nav_wrap{ width:100%; height:50px; color: #333333; text-align: center; position:relative;}
+.page_sub_nav{ width:100%; height:30px; background:#efefef; position:relative;}
+.sub_nav_wrap{ width:100%; height:30px; color:#333; text-align:center; position:relative;}
+.bar {position: absolute;height: 6px;bottom: 0;overflow: hidden;-webkit-box-sizing: border-box;-webkit-transition: left 200ms ease-out;left:0px; width: 72px; border-bottom:2px solid #3994e0; background-size:auto 6px;}
+.swiper-slide{ text-align:left; position:relative;}
+.swiper-slide > div{ position:absolute; top:0px; left:0px; width:100%; height:100%;}
+.swiper-slide > div > div{ position:absolute; width:100%;}
+.swiper-slide .title {font-size: 16px;margin-bottom: 0;line-height: 50px;text-align: center;}
+.swiper-slide .sub_title {font-size: 14px;margin-bottom: 0;line-height: 30px;text-align: center;}
+.pagination {position: absolute;z-index: 20;left: 10px;bottom: 10px;}
+.swiper-slide .current{color:#3994e0;}
+.swiper-container {width: 100%;height: 100%;color: #000;text-align: center; background:#f6f6f6;}
+
+.swiper-slide h1{ font-size:100px; font-weight:bold; text-align:center; line-height:200px;}
+
+/*
+ * Swiper - Mobile Touch Slider CSS
+ * http://www.idangero.us/sliders/swiper
+ *
+ * Vladimir Kharlampidi, The iDangero.us
+ * http://www.idangero.us/
+ * 
+ * Copyright 2012-2013, Vladimir Kharlampidi
+ * The iDangero.us
+ * http://www.idangero.us
+ *
+ * Licensed under GPL & MIT
+ *
+*/
+
+/* ===============================================================
+Basic Swiper Styles 
+================================================================*/
+.swiper-container {
+    margin:0 auto;
+	position:relative;
+	overflow:hidden;
+	-webkit-backface-visibility:hidden;
+	-moz-backface-visibility:hidden;
+	-ms-backface-visibility:hidden;
+	-o-backface-visibility:hidden;
+	backface-visibility:hidden;
+	/* Fix of Webkit flickering */
+	z-index:1;
+}
+.swiper-wrapper {
+	position:relative;
+	width:100%;
+	-webkit-transition-property:-webkit-transform, left, top;
+	-webkit-transition-duration:0s;
+	-webkit-transform:translate3d(0px,0,0);
+	-webkit-transition-timing-function:ease;
+	
+	-moz-transition-property:-moz-transform, left, top;
+	-moz-transition-duration:0s;
+	-moz-transform:translate3d(0px,0,0);
+	-moz-transition-timing-function:ease;
+	
+	-o-transition-property:-o-transform, left, top;
+	-o-transition-duration:0s;
+	-o-transform:translate3d(0px,0,0);
+	-o-transition-timing-function:ease;
+	-o-transform:translate(0px,0px);
+	
+	-ms-transition-property:-ms-transform, left, top;
+	-ms-transition-duration:0s;
+	-ms-transform:translate3d(0px,0,0);
+	-ms-transition-timing-function:ease;
+	
+	transition-property:transform, left, top;
+	transition-duration:0s;
+	transform:translate3d(0px,0,0);
+	transition-timing-function:ease;
+}
+.swiper-free-mode > .swiper-wrapper {
+	-webkit-transition-timing-function: ease-out;
+	-moz-transition-timing-function: ease-out;
+	-ms-transition-timing-function: ease-out;
+	-o-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+	margin: 0 auto;
+}
+.swiper-slide {
+	float: left;
+}
+
+/* IE10 Windows Phone 8 Fixes */
+.swiper-wp8-horizontal {
+	-ms-touch-action: pan-y;
+}
+.swiper-wp8-vertical {
+	-ms-touch-action: pan-x;
+}
+
+/* ===============================================================
+Your custom styles, here you need to specify container's and slide's
+sizes, pagination, etc.
+================================================================*/
+.swiper-container {
+	/* Specify Swiper's Size: */
+
+	/*width:200px;
+	height: 100px;*/
+}
+.swiper-slide {
+	/* Specify Slides's Size: */
+	
+	/*width: 100%;
+	height: 100%;*/
+}
+.swiper-slide-active {
+	/* Specific active slide styling: */
+	
+}
+.swiper-slide-visible {
+	/* Specific visible slide styling: */	
+
+}
+/* ===============================================================
+Pagination Styles
+================================================================*/
+.swiper-pagination-switch {
+	/* Stylize pagination button: */	
+
+}
+.swiper-active-switch {
+	/* Specific active button style: */	
+	
+}
+.swiper-visible-switch {
+	/* Specific visible button style: */	
+	
+}
+</style>
+</head>
+
+<body>
+<nav class="page_nav">
+	<div class="nav_wrap">
+        <div class="swiper-wrapper" id="page_nav_con">
+			<div class="swiper-slide" id="slide0">
+                <div class="title current" name="title">页面1</div>
+            </div>
+            <div class="swiper-slide" id="slide1">
+                <div class="title" name="title">页面2</div>
+            </div>
+            <div class="swiper-slide" id="slide2">
+                <div class="title" name="title">页面3</div>
+            </div>
+            <div class="swiper-slide" id="slide3">
+                <div class="title" name="title">页面4</div>
+            </div>
+            <span class="bar"></span>
+        </div>
+        <div class="pagination" style="display: none;"></div>
+    </div>
+</nav>
+<div class="swiper-container">
+    <div class="swiper-wrapper" id="list_wrap">
+    	<div class="swiper-slide">
+            <div id="wrapper0"><h1>0</h1></div>
+        </div>
+        <div class="swiper-slide">
+            <div id="wrapper1"><h1>1</h1></div>
+        </div>
+        <div class="swiper-slide">
+            <div id="wrapper2"><h1>2</h1></div>
+        </div>
+        <div class="swiper-slide">
+            <div id="wrapper3"><h1>3</h1></div>
+        </div>
+    </div>
+    <div class="pagination" style="display: none;"></div>
+</div>
+<script type="text/javascript" src="http://lechan.sinaapp.com/haieryuntu/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="http://lechan.sinaapp.com/haieryuntu/js/idangerous.swiper.min-2.4.1.js"></script>
+<script type="text/javascript" src="http://lechan.sinaapp.com/haieryuntu/js/iscroll.js"></script>
+<script type="text/javascript">
+(function(){
+	var mySwiper,mySwiper1;
+	
+	//顶部导航初始化(联动list页wrap初始化)
+	function page_nav(){
+		mySwiper1 = new Swiper('.nav_wrap', {
+			pagination : '.pagination',
+			paginationClickable : true,
+			slidesPerView : 4
+		});	
+		
+		$("div[name='title']").each(function(index, el) {
+			$(el).click(function(){
+				goLocation(index);
+	
+				var slidleft = $("#slide" + index).offset().left;
+				$(".bar").offset({
+					left : slidleft
+				});
+			});
+		});
+		
+		$(".bar").css("width",$(".nav_wrap .swiper-slide").outerWidth(true)+"px");
+	}
+	
+	//设置导航current
+	function setNavCurrent(i) {
+		$("div[name='title']").each(function(index, el) {
+			if (index != i) {
+				if ($(el).hasClass("current")) {
+					$(el).removeClass("current");
+				}
+			} else {
+				$(el).addClass("current");
+			}
+		});
+	}
+	
+	//全屏切换
+	function goLocation(i){
+		mySwiper.swipeTo(i, 300, function(){});
+		setNavCurrent(i);
+	}
+	
+	//页面切换初始化
+	function page_list(){
+		
+		$("#list_wrap").css("height",($(document).outerHeight(true)-51)+"px");
+		
+		mySwiper = new Swiper('.swiper-container', {
+			pagination : '.pagination',
+			paginationClickable : true
+		});
+		mySwiper.params.onSlideNext = function() {
+			var index = mySwiper.activeIndex;
+			mySwiper1.swipeTo(index, 300, function() {
+				
+			});
+			var slidleft = $("#slide" + index).offset().left;
+			$(".bar").offset({
+				left : slidleft
+			});
+			setNavCurrent(index);
+			
+		}
+		mySwiper.params.onSlidePrev = function() {
+			var index = mySwiper.activeIndex;
+			mySwiper1.swipeTo(index, 300, function() {
+					
+			});
+			var slidleft = $("#slide" + index).offset().left;
+			$(".bar").offset({
+				left : slidleft
+			});
+			setNavCurrent(index);
+		}
+				
+	}
+	
+	$(function(){
+		page_nav();
+		page_list();	
+	})
+	
+})()
+</script>
+</body>
+</html>

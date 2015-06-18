@@ -1,0 +1,152 @@
+@charset "gb2312";
+/* reset */
+body,form,h1,h2,h3,h4,h5,ul,ol,li,dl,dt,dd,p,input,textarea,table,th,td,iframe{margin:0;padding:0}
+body,input,textarea{font-size:12px;font-family:microsoft yahei}
+input,textarea{outline:none;}
+textarea{ resize:none;}
+ul,ol{list-style:none}
+img{border:0}
+button,input {line-height:normal;*overflow:visible}
+a{ text-decoration:none; cursor:pointer;}
+
+
+/*¸¡²ã*/
+#popMask{ width:100%; height:100%; background-color:rgba(0,0,0,0.5); background:#000\9; filter:alpha(opacity=50); position:absolute; left:0px; top:0px; display:none; z-index:2000;}
+
+
+.agnc{text-align:center;}
+.agnR{text-align:right;}
+.lt{float:left;}
+.rt{float:right;}
+.posR{position:relative;}
+.clearfix{overflow:hidden;zoom:1;}
+
+.basicDialog{width:300px;height:300px; font-family:'ËÎÌå';font-size:12px;}
+.bdgtpl,.bdgtpr,.bdgbtl,.bdgbtr{width:5px;height:5px;background:url('http://rm.sina.com.cn/minisite/2012/baoma_html/images/logoNew_nocache.png') no-repeat 0 0;overflow:hidden;}
+.bdgtp,.bdgbt{width:100%;border-collapse:collapse;}
+.bdgtpct{height:5px;background:url('http://rm.sina.com.cn/minisite/2012/baoma_html/images/wraplayer_09.png') repeat;line-height:5px;font-size:0;}
+.bdgtpl{background-position:-5px 0;}
+.bdgtpr{background-position:0 0;}
+
+.bdgbtct{height:5px;background:url('http://rm.sina.com.cn/minisite/2012/baoma_html/images/wraplayer_09.png') repeat;line-height:5px;font-size:0;}
+.bdgbtl{background-position:-5px -5px;}
+.bdgbtr{background-position:0 -5px;}
+
+.bdgct{background:url('http://rm.sina.com.cn/minisite/2012/baoma_html/images/wraplayer_09.png') repeat;padding:0 5px;}
+.bgdline{border:1px solid #a0a0a0;}
+.basicDialogBd{padding:10px;background-color:#fff;}
+.basicDialogTle{background:url('http://rm.sina.com.cn/minisite/2012/baoma_html/images/basicDialogTle.jpg') repeat-x 0 0;height:28px;line-height:28px;padding:0 5px;}
+.basicDialogTle2{background:#fff;height:15px;}
+
+.dialogcls{width:15px;height:15px;margin-top:5px;}
+.dialogcls a{display:block;width:15px;height:15px;background:url('http://rm.sina.com.cn/minisite/2012/baoma_html/images/dialogcls.jpg') no-repeat 0 0;}
+.basicDialogBd{color:#999;line-height:20px;}
+.basicDialogBd em{font-style:normal;}
+.layerMedia_tip02{color:#999;}
+.basicDialog .basicDialogBd a{color:#0082CB;}
+.vBasicDialog{width:380px;left:-120px;}
+.layerMedia_tip02 .title{color:#333;}
+.layerMedia_input{padding:10px 0;}
+.layerMusic_txt{border:1px solid #000;height:20px;width:200px;border-color: #C4C7BD #EFEFEF #F2F2F2 #D2D5CA;}
+
+#loginDialog{top:-100px;}
+#loginForm .inp{width:225px;background-color:#f8fbef;margin-bottom:8px;border:1px solid #c4c7bd;height:22px;line-height:22px;border-color:#C4C7BD #EFEFEF #F2F2F2 #D2D5CA;}
+.logincolleft{width:250px;padding: 10px 15px;}
+.logincolright{width:185px;padding:10px;}
+#mod_login_submit{float:left;}
+
+.header{ width:100%; height:80px; background:#000;}
+.wrap{ width:950px; margin:0 auto;}
+.header_wrap{ width:100%; height:auto; overflow:hidden;}
+.header_wrap h1{ float:left; width:163px; height:80px; overflow:hidden;}
+.header_con{ width:787px; float:left;}
+.login_box{ width:100%; height:50px; background:url(http://rm.vic.sina.com.cn/minisite/2013/201308lfy/images/login_box.png) no-repeat center bottom; text-align:right;}
+.login_box img{ margin-top:10px;}
+.nav{ width:100%; height:30px; line-height:30px; font-size:16px; color:#CCC;}
+.nav a{ color:#fff; font-size:16px; padding:5px 20px;}
+.nav a.cur{ background:url(http://rm.vic.sina.com.cn/minisite/2013/201308lfy/images/cur.png) no-repeat center; padding:5px 45px;}
+.content{ width:100%; background:url(http://rm.vic.sina.com.cn/minisite/2013/201308lfy/images/bg.jpg) no-repeat center top #C51F2C fixed;}
+.content .wrap{ background:#fff; padding-bottom:10px; margin-bottom:10px;}
+.banner{ padding:10px; height:255px; overflow:hidden;}
+.focus_box{ width:580px; height:255px; float:left;}
+#slider{ width:580px; height:255px; position:relative;}
+#slider li{ width:580px; height:255px; float:left;}
+#slider img{ width:580px; height:255px;}
+#sub_nav li.nav{background:#fff; color:#d94b01;}
+#sub_nav li{ border:1px solid #f47500; color:#fff; background:#000;font-size:12px; height:20px;width:20px;float:left;margin-left:5px;display:inline;text-align:center; line-height:20px; cursor:pointer;}
+.video_box{ width:340px; height:255px; float:right; position:relative;}
+.video_box h2{ background:#000; width:100%; height:37px; position:absolute; z-index:10001; bottom:0px; left:0px;}
+.video_box h2 span{ float:left; display:inline; width:160px; margin-left:10px; color:#fff; line-height:37px; font-size:14px; font-weight:100;}
+.video_box h2 img{ float:right; margin-top:10px; margin-right:10px;}
+.title{ width:905px; height:30px; border-bottom:1px dotted #DC315D; margin:10px auto 10px;}
+.title h2{ padding-left:40px; background:url(http://rm.vic.sina.com.cn/minisite/2013/201308lfy/images/icon.png) no-repeat center left; height:30px;}
+.title h2 img{ vertical-align:middle;}
+.pic_list{ width:920px; margin:0 auto; overflow:hidden;}
+.pic_list ul li{ width:170px; height:300px; float:left; margin:0px 5px; text-align:center;}
+.pic_list ul li h3{ font-size:12px; font-weight:100; color:#666666; line-height:30px;}
+.intro{ width:900px; margin:0 auto; overflow:hidden;}
+.intro_l{ width:449px; float:left; border-right:1px dotted #000; position:relative;}
+.intro_r{ width:450px; float:right;}
+.intro h3{ padding-left:20px;}
+.intro p{ width:390px; line-height:24px; color:#666666; margin-left:20px;}
+.intro_l dl{ margin-left:20px; overflow:hidden; margin-top:20px;}
+.intro_l dl dt{ width:80px; margin-right:10px; float:left;}
+.intro_l dl dd{ padding:10px; border:1px solid #ccc; width:173px; float:left;}
+.intro_l dl dd h4{ font-size:12px; margin-bottom:15px;}
+.logo_box{ margin-left:20px;}
+.logo_box img{ float:left; margin-right:10px; margin-top:20px;}
+
+.waterfall{ width:920px; margin:0 auto;}
+.cell_item{ width:220px; margin:5px; overflow:hidden; background:#C51F2C; padding-top:10px; position:relative;}
+.cell_item .pic_wrap{ width:200px; margin:0 auto;}
+.cell_item .pic_wrap img{ vertical-align:top; width:200px;}
+.func_box{ width:200px; line-height:30px; height:30px; margin:0 auto;}
+.func_box span{ float:left; color:#fff; font-size:12px;}
+.func_box i{ float:left; color:#fff; font-size:12px; font-style:normal; margin-left:10px}
+.func_box img{ float:right; margin-top:8px;}
+.footer{ text-align:center; padding:10px 0px;}
+.footer p{ line-height:20px; color:#fff;}
+
+.pop{ width:530px; background:#fff; padding:20px 0px; border:10px solid #C51F2C; display:none; z-index:20000; position:absolute;}
+.close_btn{ position:absolute; top:10px; right:10px;}
+.pop h2{ font-size:14px; color:#c51f2c; text-align:center; margin-bottom:20px;}
+.table_title{ width:500px; margin:0 auto; height:275px; overflow-y:scroll;}
+.table_title table{ width:480px; text-align:center;}
+.table_title table tr th{ background:#C51F2C; padding:5px 0px; color:#fff;}
+.table_title table tr td{ text-align:center; color:#999999; padding:5px 0px;}
+.table_title table tr td.title_t{ background:#F2F0F0; border:1px solid #CCCCCC;}
+.pop_con{ width:415px; margin:0 auto;}
+.pop_con h3{ color:#c51f2c; font-size:14px; margin-bottom:5px; padding-top:10px;}
+.pop_con p{ color:#999999; font-size:12px; line-height:24px;}
+.pop_con .txt textarea{ width:400px; padding:5px; border:1px solid #ccc; height:60px;}
+.friend_box{ width:100%; overflow:hidden;}
+.friend_box textarea{ width:100px; float:left; margin-right:10px; height:20px; resize:none; overflow:hidden; line-height:20px;}
+.pop_con h4{ margin-top:10px; text-align:center;}
+.upload{ width:408px; height:27px; margin:0 auto; overflow:hidden; background:url(http://rm.vic.sina.com.cn/minisite/2013/201308lfy/images/upload_bg.png) no-repeat 0 0; position:relative;}
+.upload input{ font-size:20px; opacity:0; filter:alpha(opacity=0); position:absolute; top:0px; right:0px; cursor:pointer;}
+
+/*¶þ¼¶Ò³*/
+.blank{ height:30px; width:100%; position:relative;}
+.icon4{ position:absolute; top:20px; right:20px;}
+.title2{ width:800px; height:30px; border-bottom:1px dotted #DC315D; margin-left:20px;}
+.title2 h2{ padding-left:40px; background:url(http://rm.vic.sina.com.cn/minisite/2013/201308lfy/images/icon.png) no-repeat center left; height:30px;}
+.title2 h2 img{ vertical-align:middle;}
+
+.intro_txt{ width:720px; margin:0 auto; overflow:hidden;}
+.intro_txt h2{ font-size:14px; color:#c51f2c; margin-bottom:10px; padding-top:20px; font-weight:100;}
+.intro_txt p{ font-size:12px; color:#999999; line-height:24px;}
+.icon5{ text-align:center; padding:20px 0px;}
+.line{ width:100%; height:0px; border-bottom:1px dotted #DC315D; border-top:1px dotted #F2AFC1; margin-top:10px;}
+.star{ width:860px; margin:0 auto; overflow:hidden; padding-top:50px;}
+.star_pic img{ vertical-align:top;}
+.star ul{ width:100%; overflow:hidden; padding-bottom:20px;}
+.star ul li{ width:167px; float:left; margin-right:6px; position:relative;}
+.star ul li div.star_info h2{ font-size:14px; color:#c51f2c; line-height:30px;}
+.star ul li div.star_info p{ font-size:12px; color:#666666; width:110px;}
+.star ul li div.star_info img{ position:absolute; top:35px; right:0px;}
+.star_topic{ width:167px; height:110px; padding-top:15px; background:url(http://rm.vic.sina.com.cn/minisite/2013/201308lfy/images/pic3.png) no-repeat 0 0;}
+.star_topic p{ color:#fff; font-size:12px; padding:0px 15px; line-height:20px;}
+
+/*2013/8/11 ZCY*/
+.info_list {list-style:decimal;padding-left:30px;}
+.info_list li {color:#999999;line-height:20px;padding-bottom:3px;}

@@ -1,0 +1,315 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="cache-control" content="no-cache"/>
+<meta http-equiv="expires" content="0" />
+<meta name="Keywords" content="西藏旅游"/>
+<meta name="Description" content="西藏旅游" />
+<title>西藏旅游</title>
+<link href="css/main.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+var uname = "黄金的拂晓";
+var uface = "http://tp2.sinaimg.cn/1854818673/180/5670862409/1";
+</script>
+<script type="text/javascript">
+//微信相关
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+	WeixinJSBridge.call('hideToolbar');
+});	 
+</script>
+</head>
+
+<body>
+<header class="header">
+	<h1>约伴-快速搜索</h1>
+</header>
+<div class="wrap">
+	<div class="tips">家猫帮你快速组团</div>
+    <div class="travel_list" id="scrollbox">
+    	<ul id="searchpricelist">
+        	<li>
+            	<a>
+                    <h2>纳木错1日游</h2>
+                    <div><label>出发时间：</label><span>每天</span></div>
+                    <div><label>出发地点：</label><span>拉萨</span></div>
+                    <div><label>行程规划：</label><span>拉萨-羊八井-纳木错-羊八井...</span></div>
+                    <div><label>费用：</label><span>1000元/人</span></div>
+                    <h3><img src="images/icon4.png" width="75" /></h3>
+                </a>
+            </li>
+            <li>
+            	<a>
+                    <h2>纳木错1日游</h2>
+                    <div><label>出发时间：</label><span>每天</span></div>
+                    <div><label>出发地点：</label><span>拉萨</span></div>
+                    <div><label>行程规划：</label><span>拉萨-羊八井-纳木错-羊八井...</span></div>
+                    <div><label>费用：</label><span>1000元/人</span></div>
+                    <h3><img src="images/icon4.png" width="75" /></h3>
+                </a>
+            </li>
+            <li>
+            	<a>
+                    <h2>纳木错1日游</h2>
+                    <div><label>出发时间：</label><span>每天</span></div>
+                    <div><label>出发地点：</label><span>拉萨</span></div>
+                    <div><label>行程规划：</label><span>拉萨-羊八井-纳木错-羊八井...</span></div>
+                    <div><label>费用：</label><span>1000元/人</span></div>
+                    <h3><img src="images/icon4.png" width="75" /></h3>
+                </a>
+            </li>
+            <li>
+            	<a>
+                    <h2>纳木错1日游</h2>
+                    <div><label>出发时间：</label><span>每天</span></div>
+                    <div><label>出发地点：</label><span>拉萨</span></div>
+                    <div><label>行程规划：</label><span>拉萨-羊八井-纳木错-羊八井...</span></div>
+                    <div><label>费用：</label><span>1000元/人</span></div>
+                    <h3><img src="images/icon4.png" width="75" /></h3>
+                </a>
+            </li>
+            <li>
+            	<a>
+                    <h2>纳木错1日游</h2>
+                    <div><label>出发时间：</label><span>每天</span></div>
+                    <div><label>出发地点：</label><span>拉萨</span></div>
+                    <div><label>行程规划：</label><span>拉萨-羊八井-纳木错-羊八井...</span></div>
+                    <div><label>费用：</label><span>1000元/人</span></div>
+                    <h3><img src="images/icon4.png" width="75" /></h3>
+                </a>
+            </li>
+            <li>
+            	<a>
+                    <h2>纳木错1日游</h2>
+                    <div><label>出发时间：</label><span>每天</span></div>
+                    <div><label>出发地点：</label><span>拉萨</span></div>
+                    <div><label>行程规划：</label><span>拉萨-羊八井-纳木错-羊八井...</span></div>
+                    <div><label>费用：</label><span>1000元/人</span></div>
+                    <h3><img src="images/icon4.png" width="75" /></h3>
+                </a>
+            </li>
+        </ul>
+        <div class="more"><a id="more">查看更多</a></div>
+    </div>
+    
+    <div class="tips">网友的约伴行程</div>
+    <div class="travel_list">
+    	<ul id="searchtravelerlist">
+        	<!--<li>
+            	<h2>纳木错1日游</h2>
+                <dl>
+                	<dt><img src="http://tp2.sinaimg.cn/1854818673/180/5670862409/1" width="60" /></dt>
+                    <dd>阿甘</dd>
+                </dl>
+                <div><label>出发时间：</label><span>每天</span></div>
+                <div><label>出发地点：</label><span>拉萨</span></div>
+                <div><label>备注：</label><span>目前已经有车，行程规划为xxxx，目前2人，征...</span></div>
+            </li>
+            <li>
+            	<h2>纳木错1日游</h2>
+                <dl>
+                	<dt><img src="http://tp2.sinaimg.cn/1854818673/180/5670862409/1" width="60" /></dt>
+                    <dd>阿甘</dd>
+                </dl>
+                <div><label>出发时间：</label><span>每天</span></div>
+                <div><label>出发地点：</label><span>拉萨</span></div>
+                <div><label>备注：</label><span>目前已经有车，行程规划为xxxx，目前2人，征...</span></div>
+            </li>
+            <li>
+            	<h2>纳木错1日游</h2>
+                <dl>
+                	<dt><img src="http://tp2.sinaimg.cn/1854818673/180/5670862409/1" width="60" /></dt>
+                    <dd>阿甘</dd>
+                </dl>
+                <div><label>出发时间：</label><span>每天</span></div>
+                <div><label>出发地点：</label><span>拉萨</span></div>
+                <div><label>备注：</label><span>目前已经有车，行程规划为xxxx，目前2人，征...</span></div>
+            </li>-->
+        </ul>
+    </div>
+</div>
+
+<aside class="sidebar2" id="sidebar">
+	<h2>修改搜索条件</h2>
+	<div class="search_list" id="scrollbox1">
+    	<ul>
+        	<li><label>出发地点：</label><span>拉萨</span></li>
+            <li>
+            	<h3>行程方向：（请选择一条线路可成行的景点）<a class="clear_btn">清空</a></h3>
+                <div class="way_box">
+                    <span><input name="way" type="checkbox" value="1">1</span>
+                    <span><input name="way" type="checkbox" value="2">2</span>
+                    <span><input name="way" type="checkbox" value="3">3</span>
+                    <span><input name="way" type="checkbox" value="4">4</span>
+                    <span><input name="way" type="checkbox" value="5">5</span>
+                    <span><input name="way" type="checkbox" value="6">1</span>
+                    <span><input name="way" type="checkbox" value="7">2</span>
+                    <span><input name="way" type="checkbox" value="8">3</span>
+                    <span><input name="way" type="checkbox" value="9">4</span>
+                    <span><input name="way" type="checkbox" value="1">1</span>
+                    <span><input name="way" type="checkbox" value="2">2</span>
+                    <span><input name="way" type="checkbox" value="3">3</span>
+                    <span><input name="way" type="checkbox" value="4">4</span>
+                    <span><input name="way" type="checkbox" value="5">5</span>
+                    <span><input name="way" type="checkbox" value="6">1</span>
+                    <span><input name="way" type="checkbox" value="7">2</span>
+                    <span><input name="way" type="checkbox" value="8">3</span>                 
+                    <span><input name="way" type="checkbox" value="其他">其他</span>
+                </div>
+                <input type="text" placeholder="请填写行程地点" class="otherplace" id="search_otherplace" />
+            </li>
+            <li><label>出发时间：</label><input class="inp_date" name="star_tim" type="date" placeholder="请输入出发时间" id="search_startdate" value="yyyy-mm-dd" /></li>
+        </ul>
+    </div>
+</aside>
+
+
+<aside class="sidebar2" id="create_path">
+	<h2>创建我的行程</h2>
+	<div class="search_list" id="scrollbox2">
+    	<ul>
+        	<li><label>出发地点：</label><span>拉萨</span></li>
+            <li>
+            	<h3>行程方向：（请选择一条线路可成行的景点）<a class="clear_btn">清空</a></h3>
+            	<div class="way_box">
+                    <span><input name="way" type="checkbox" value="1">1</span>
+                    <span><input name="way" type="checkbox" value="2">2</span>
+                    <span><input name="way" type="checkbox" value="3">3</span>
+                    <span><input name="way" type="checkbox" value="4">4</span>
+                    <span><input name="way" type="checkbox" value="5">5</span>
+                    <span><input name="way" type="checkbox" value="6">1</span>
+                    <span><input name="way" type="checkbox" value="7">2</span>
+                    <span><input name="way" type="checkbox" value="8">3</span>
+                    <span><input name="way" type="checkbox" value="9">4</span>
+                    <span><input name="way" type="checkbox" value="1">1</span>
+                    <span><input name="way" type="checkbox" value="2">2</span>
+                    <span><input name="way" type="checkbox" value="3">3</span>
+                    <span><input name="way" type="checkbox" value="4">4</span>
+                    <span><input name="way" type="checkbox" value="5">5</span>
+                    <span><input name="way" type="checkbox" value="6">1</span>
+                    <span><input name="way" type="checkbox" value="7">2</span>
+                    <span><input name="way" type="checkbox" value="8">3</span>
+                    <span><input name="way" type="checkbox" value="其他">其他</span>
+                </div>
+                <input type="text" placeholder="请填写行程地点" class="otherplace" id="otherplace" />
+            </li>
+            <li><label>出发时间：</label><input class="inp_date" type="date" name="startim" placeholder="请输入出发时间" id="startdate" value="yyyy-mm-dd" /></li>
+            <li><label>联系方式：</label><input type="number" placeholder="QQ号/微信号/手机" id="tel" value="QQ号/微信号/手机" /></li>
+            <li><label>备注：</label><textarea id="target" rows="5" placeholder="请输入行程细节、约伴人数、联系方式等" id="remarks" class="remarks"></textarea></li>
+        </ul>
+    </div>
+</aside>
+
+
+<div class="mask" id="mask2"></div>
+<input type="hidden" id="pageNum" value="1" />
+<footer class="footer">
+	<div class="func_box">
+    	<a class="left_btn search_btn" id="search_btn"></a>
+        <a class="middle_btn" style="display:none;" id="search_sub" onClick="searchTravel()">搜索</a>
+        <a class="middle_btn" id="create_sub" href="#searchtravelerlist">创建行程</a>
+        <a class="middle_btn" style="display:none;" id="path_sub" onClick="createTravel()">发布行程</a>
+        <a class="right_btn back_btn" id="back_btn2"></a>
+    </div>
+</footer>
+
+<script type="text/template" id="priceTpl">
+<li>
+	<h2><%=way %></h2>
+	<div>
+		<label>出发时间：</label>
+		<span><%=startim %></span>
+	</div>
+	<div>
+		<label>出发地点：</label>
+		<span><%=starcity %></span>
+	</div>
+	<div>
+		<label>行程规划：</label>
+		<span><%=travel %></span>
+	</div>
+	<div>
+		<label>费用：</label>
+		<span><%=price %></span>
+	</div>
+	<h3><img src="images/icon4.png" width="75" /></h3>
+</li>
+</script>
+<script  type="text/template" id="travelerTpl2">
+<% for(var i = 0; i < data.length; i++) { %>
+<% var item = data[i] %>
+	<li>
+		<h2><%=item.way %></h2>
+		<dl>
+			<dt><img src="<%=item.uface %>" width="60" /></dt>
+			<dd><%=item.uname %></dd>
+		</dl>
+		<div>
+			<label>出发时间：</label>
+			<span><%=item.startim %></span>
+		</div>
+		<div>
+			<label>出发地点：</label>
+			<span>拉萨</span>
+		</div>
+		<div>
+			<label>联系方式：</label>
+			<span><%=item.touch %></span>
+		</div>
+		<div>
+			<label>备注：</label>
+			<span><%=item.content %></span>
+		</div>
+	</li>
+<% } %>
+</script>
+<script  type="text/template" id="travelerTpl2">
+<li>
+	<h2><%=way %></h2>
+	<dl>
+		<dt><img src="<%=uface %>" width="60" /></dt>
+		<dd><%=uname %></dd>
+	</dl>
+	<div>
+		<label>出发时间：</label>
+		<span><%=startim %></span>
+	</div>
+	<div>
+		<label>出发地点：</label>
+		<span>拉萨</span>
+	</div>
+	<div>
+		<label>联系方式：</label>
+		<span><%=touch %></span>
+	</div>
+	<div>
+		<label>备注：</label>
+		<span><%=content %></span>
+	</div>
+</li>
+</script>
+<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="js/underscore.js"></script>
+<script type="text/javascript" src="js/backbone.js"></script>
+<script type="text/javascript" src="js/backbone.localStorage.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/model.js"></script>
+<script type="text/javascript" src="js/searchview.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<!--<script type="text/javascript">
+var myScroll,myScroll2;
+function loaded() {
+	myScroll = new iScroll('scrollbox');
+	myScroll2 = new iScroll('scrollbox2');
+}
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+</script>-->
+
+
+</body>
+</html>

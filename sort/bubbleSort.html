@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<script type="text/javascript">
+var arr = [49, 38, 65, 97, 76, 13, 27, 49, 55, 04];
+
+function bubbleSort(arr){
+	var len = arr.length;
+	for(var i=0;i<len;i++){
+		for(var j=0;j<len-i-1;j++){
+			if(arr[j]>arr[j+1]){
+				var temp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp; 	
+			}
+		}
+	}
+	return arr;
+}
+
+window.onload = function(){
+	document.getElementById('sort_box').innerHTML = arr +'<br>' + bubbleSort(arr);
+}
+</script>
+</head>
+
+<body>
+<div id="sort_box"></div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+</head>
+
+<body>
+<input type="date" />
+<input type="number" min="0" max="100" />
+<select>
+	<option>1</option>
+    <option>2</option>
+    <option>3</option>
+</select>
+</body>
+</html>

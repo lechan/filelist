@@ -1,0 +1,110 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body,nav,dl,dt,dd,p,h1,h2,h3,h4,ul,ol,li,input,button,textarea,footer{margin:0;padding:0}
+html{font-size:62.5%;}
+body{font:1.2rem/1.5 'Microsoft Yahei','helvetica','arial';color:#333;background:#f8f8f8;-webkit-text-size-adjust:none;min-width:320px}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+form{display:inline}
+ul,ol{list-style:none}
+a{text-decoration:none;color:#000; cursor:pointer;}
+a:hover{text-decoration:none}
+img{vertical-align:middle;border:0;-ms-interpolation-mode:bicubic;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+button,input,select,textarea{font-size:100%;vertical-align:middle;outline:0}
+textarea{resize:none}
+button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button;-moz-appearance:button}
+input:focus:-moz-placeholder,input:focus::-webkit-input-placeholder{color:transparent}
+button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}
+table{border-collapse:collapse;border-spacing:0}
+a,button,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+.fl{float:left}
+.fr{float:right}
+.hide{display:none}
+.show{display:block}
+.ellipsis{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.break{word-break:break-all;word-wrap:break-word}
+header,footer,article,section,nav,menu,hgroup{display:block;clear:all}
+body{ background:#f5ecdd;}
+.header{ width:100%; height:40px; background:url(../images/header.png) no-repeat center; background-size:cover; position:fixed; top:0px; z-index:10;}
+.header h1{ line-height:40px; padding-left:20px; font-size:1.8rem; color:#fff; font-weight:100;}
+.wrap{ width:100%; min-width:320px; padding:40px 0px 100px 0px;}
+.footer{ width:100%; height:40px; background:url(../images/header.png) no-repeat center; background-size:cover; position:fixed; bottom:0px; z-index:10;}
+.func_box{ width:100%; height:40px;}
+.left_btn{ width:20%; height:40px; float:left;}
+.right_btn{ width:20%; height:40px; float:right;}
+.middle_btn{ width:60%; height:50px; background:url(../images/main_btn.png) no-repeat center; background-size:cover; position:absolute; bottom:0px; left:20%; font-size:2.2rem; color:#fff; text-align:center; line-height:50px; font-weight:bold; display:block;}
+.middle_btn_false{ width:60%; height:60px; background:url(../images/main_btn2.png) no-repeat center; background-size:cover; position:absolute; bottom:0px; left:20%; font-size:3rem; color:#fff; text-align:center; line-height:80px; font-weight:bold; display:block;}
+.search_btn{ background:url(../images/search_btn.png) no-repeat center; background-size:20px;}
+.back_btn{ background:url(../images/back_btn.png) no-repeat center; background-size:20px;}
+.func_btn{ background:url(../images/func_btn.png) no-repeat center; background-size:20px;}
+.func_btn_active{ background:url(../images/func_btn_active.png) no-repeat center #dedddd;}
+.travel_list ul li{ width:100%; border-bottom:2px solid #dccdc2; padding:10px 0px; position:relative; overflow:hidden;}
+.travel_list ul li h2{ padding-left:20px; font-size:2rem; color:#792240; margin-bottom:10px; margin-top:25px;}
+.travel_list ul li div{ font-size:1.6rem; line-height:30px; padding-left:20px;}
+.travel_list ul li div label{ color:#792240; text-align:right; width:80px; float:left;}
+.travel_list ul li div span{ color:#555555;}
+.travel_list ul li div strong{ color:#ff0000;}
+.travel_list ul li div strong.price{ color:#ff0000; font-size:3rem; vertical-align:baseline;}
+.travel_list ul li div.edit{ margin-bottom:10px;}
+.travel_list ul li div.edit input{ height:30px; background:#bb1e42; border:0 none; border-radius:4px; font-size:1.6rem; color:#fff; padding:0px 10px;}
+.travel_list ul li div.edit b{ width:40px; height:40px; display:inline-block; text-align:center; line-height:35px; background:url(../images/icon3.png) no-repeat center; font-size:2rem; color:#bb1e42; cursor:pointer;}
+.travel_list ul li div.edit i{ font-style:normal; padding:0px 10px; background:#bb1e42; color:#fff; font-size:1.4rem; line-height:25px; display:inline-block;}
+.travel_list ul li div.edit span{ cursor:pointer;}
+.travel_list ul li div.edit textarea{ background:#bb1e42; border:0 none; border-radius:4px; font-size:1.4rem; color:#fff; padding:10px; width:60%; height:80px; vertical-align:bottom; margin:5px 0px;}
+.travel_list ul li h3{ position:absolute; top:0px; right:10px;}
+.travel_list ul li a.edit_btn{ position:absolute; top:30px; right:10px; width:84px; height:45px; background:url(../images/edit_btn.png) no-repeat center; background-size:cover; text-align:center; line-height:40px; font-size:1.8rem; color:#808080;}
+.tips{ text-align:center; font-size:2rem; color:#958c7c; padding:5px 0px;}
+.tips2 p{ text-align:center; font-size:1.4rem; color:#555555; padding:0px; line-height:24px;}
+.more a{ width:100%; height:40px; display:none; line-height:40px; text-align:center; font-size:2rem; color:#fff; background:#9b8e8e;}
+.travel_list dl{ width:60px; margin-left:20px; float:left; margin-right:10px; height:120px; padding-top:8px;}
+.travel_list dl dt{ width:60px; height:60px; margin-bottom:5px; display:block;}
+.travel_list dl dd{ font-size:1.6rem; text-align:center; color:#792240;}
+.travel_list ul li.no_border{ border:0 none;}
+.travel_list ul li.no_border div{ clear:both;}
+.travel_list ul li.no_border div span{ float:left; width:70%;}
+.travel_list ul li.no_border div em{ color:#000000; margin-left:80px; font-style:normal; display:block; margin-bottom:20px;}
+.pop{ width:100%; height:180px; background:#dedddd; position:fixed; bottom:40px; z-index:8; display:none;}
+.pop h2{ font-size:2rem; text-align:center; padding-top:20px; margin-bottom:5px; color:#ff0000;}
+.pop h3{ font-size:1.4rem; text-align:center; color:#5b0221; font-weight:100;}
+.pop h4{ font-size:1.2rem; text-align:left; color:#5b0221; font-weight:100; padding:0px 20px;}
+.banner{ width:100%; height:200px; overflow:hidden;}
+.intro{ padding:5%;}
+.intro img{ width:100%; margin:0 auto;}
+.intro h2{ font-size:2rem; color:#6d1f39; margin-bottom:5px; font-weight:100;}
+.intro h3{ font-size:1.6rem; color:#6d1f39; margin-bottom:10px; font-weight:100;}
+.intro p{ font-size:1.4rem; color:#888888; font-weight:100; margin-bottom:20px; line-height:2.4rem;}
+.intro p.text_indent{ text-indent:2em;}
+.sidebar{ width:100%; background:#dedddd; padding-bottom:20px; position:fixed; bottom:40px; left:0px; z-index:8; display:none;}
+.sidebar2{ width:100%; background:#dedddd; position:fixed; top:40px; left:0px; z-index:8; display:none; height:100%;}
+.sidebar2 h2{ font-size:2rem; padding:10px 20px;}
+.tourist_list{ width:100%; height:320px; overflow-y:auto;}
+.tourist_list li{ padding-left:20px; line-height:38px; height:38px; border-bottom:2px solid #bab0b2;}
+.tourist_list li a{ font-size:1.6rem; color:#555555;}
+.search_list{ width:100%; overflow-y:auto; height:320px;}
+.search_list ul{ padding-bottom:300px;}
+.search_list li{ padding-left:20px; margin-bottom:10px; padding-bottom:10px; height:auto; border-bottom:2px solid #bab0b2; font-size:1.6rem; }
+.search_list li label{ color:#792240; text-align:right; width:80px; float:left;}
+.search_list li span{ color:#555555;}
+.search_list li input,.search_list li select{ height:30px; background:#bb1e42; border:0 none; border-radius:4px; font-size:1.6rem; color:#fff; padding:0px 10px; width:60%;}
+.search_list li .way_box{ clear:both; overflow:hidden;}
+.search_list li .way_box span{ width:50%; float:left; line-height:20px;}
+.search_list li .way_box input{ width:auto; margin:0px 5px 0px 10px;}
+.search_list li textarea{ background:#bb1e42; border:0 none; border-radius:4px; font-size:1.4rem; color:#fff; padding:10px; width:60%; height:80px; vertical-align:bottom; margin:5px 0px;}
+.otherplace{ display:none;}
+.travel_list{ background:#fff; margin:0px 10px 10px;}
+.mask{ width:100%; height:100%; position:fixed; top:0px; left:0px; z-index:5; background:#000; opacity:0.5; filter:alpha(opacity=50); display:none;}
+.invite_box{ text-align:center; margin:5px 0px;}
+.invite_box input{ width:80%; height:30px; background:#bb1e42; border:0 none; border-radius:4px; font-size:1.6rem; color:#fff; padding:0px 10px;}
+
+.confirm_btn{ width:140px; height:40px; background:url(../images/main_btn.png) no-repeat center; background-size:cover; font-size:1.6rem; color:#fff; text-align:center; line-height:40px; display:block; margin-left:120px;}
+
+.scrollhide{ overflow-y:hidden;}
+
+#make_friends{ margin-left:20px; color:#bb1e42; text-decoration:underline;}
+
+.num_box{ line-height:30px; margin-bottom:5px;}
+.scrollbox{ height:370px; overflow:hidden;}
+
+#searchpricelist a{ display:block; width:100%;}
+.search_list h3{ font-weight:100; color:#792240;}
+.clear_btn{ margin-right:20px; float:right;}

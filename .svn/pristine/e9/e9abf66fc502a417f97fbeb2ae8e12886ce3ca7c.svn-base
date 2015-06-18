@@ -1,0 +1,31 @@
+<!DOCTYPE html public "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="简单的XHTML页面" />
+<meta name="Description" content="这是一个简单的XHTML页面" />
+<title>简单的XHTML页面</title>
+</head>
+<body>
+<style type="text/css">
+.box {
+display: table-cell;
+vertical-align:middle;
+width:200px;
+height:200px;
+text-align:center;
+/* hack for ie */
+*display: block;
+*font-size: 175px;
+/* end */
+border: 1px solid red;
+}
+.box img {
+vertical-align:middle;
+}
+</style>
+<div class="box">
+<img src="http://www.w3cfuns.com/uc_server/avatar.php?uid=3&size=middle"  alt="" />
+</div>
+</body>
+</html>

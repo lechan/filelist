@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style type="text/css">
+/* 重置 */
+body,div,form,h1,h2,h3,h4,h5,ul,ol,li,dl,dt,dd,p,span,input,textarea,table,th,td,iframe{ margin:0; padding:0;}
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+ul, ol { list-style:none;}
+a { text-decoration: none; cursor:pointer; }
+a:hover { text-decoration: none; }
+img,iframe,table,textarea{ border:none;}
+input,button,textarea,select{ outline:none;}
+textarea{resize:none}
+address, cite, dfn, em, var, i { font-style: normal; }
+.clear{ clear:both; height:0px; border:none; font-size:0px;}
+
+.wrap{ width:950px; height:1000px; margin:0 auto;}
+#mask{ width:420px; height:600px; border:1px solid #333; margin:0 auto; position:relative; overflow:hidden;}
+#content{ width:380px; height:auto; position:absolute; top:0px; left:0px; padding:10px; z-index:1;}
+#content p{ width:380px; line-height:20px; font-size:14px; color:#000000; font-family:"微软雅黑";}
+#scroll_bar{ width:20px; height:600px; background-color:#F0F0F0; position:absolute; top:0px; right:0px; z-index:10;}
+#slider{ width:20px; height:50px; border:1px solid #979797; background-color:#D5D5D8; position:absolute; top:0px; left:0px;}
+</style>
+<script type="text/javascript">
+window.onload = function(){
+	var bar = document.getElementById("scroll_bar");
+	var slider = document.getElementById("slider");
+	var mask = document.getElementById("mask");
+	var content = document.getElementById("content");
+	//alert(content.offsetHeight);
+	scrollBar(slider,bar,mask,content);
+	
+	//自定义滚动条结合鼠标滚动事件（4参数分别为：oSlider滑块；oBar滚动条；oMask蒙板层；oContent内容层）
+	function scrollBar(oSlider,oBar,oMask,oContent){
+		var disY = 0;
+		var bBtn = true;
+		
+		oSlider.onmousedown = function(ev){
+			var ev = ev || window.event;
+			disY = ev.clientY - oSlider.offsetTop;
+			if(oSlider.setCapture){
+				oSlider.setCapture();
+			}
+			document.onmousemove = function(ev){
+				var ev = ev || window.event;
+				var T = ev.clientY - disY;
+				if(T<0){
+					T = 0;
+				}
+				else if(T>oBar.offsetHeight - oSlider.offsetHeight){
+					T = oBar.offsetHeight - oSlider.offsetHeight;
+				}
+				oSlider.style.top = T + 'px';
+				var soleY = T/(oBar.offsetHeight - oSlider.offsetHeight);
+				
+				oContent.style.top = -soleY * (oContent.offsetHeight - oMask.offsetHeight) + 'px';
+				
+			};
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+				if(oSlider.releaseCapture){
+					oSlider.releaseCapture();
+				}
+			};
+			return false;
+		};
+		
+		if(oContent.addEventListener){
+			oContent.addEventListener('DOMMouseScroll',toRun,false);
+		}
+		oContent.onmousewheel = toRun;
+		function toRun(ev){
+			var ev = ev || window.event;
+			if(ev.detail){
+				bBtn = ev.detail>0 ? true : false; 
+			}
+			else{
+				
+				bBtn = ev.wheelDelta<0 ? true : false; 
+			}
+			
+			if(bBtn){
+				var T = oSlider.offsetTop + 10;
+			}
+			else{
+				var T = oSlider.offsetTop - 10;
+				
+			}
+			if(T<0){
+				T = 0;
+			}
+			else if(T>oBar.offsetHeight - oSlider.offsetHeight){
+				T = oBar.offsetHeight - oSlider.offsetHeight;
+			}
+			oSlider.style.top = T + 'px';
+			
+			var soleY = T/(oBar.offsetHeight - oSlider.offsetHeight);
+			
+			oContent.style.top = -soleY * (oContent.offsetHeight - oMask.offsetHeight) + 'px';
+			
+			if( ev && ev.preventDefault){
+			　　//阻止默认浏览器动作(W3C) 
+			　　ev.preventDefault()
+			}else{
+			　　//IE中阻止函数器默认动作的方式 
+			　　window.event.returnValue = false;
+			}
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+<div class="wrap">
+	<div id="mask">
+    	<div id="content">
+            <p>　　没有强行指定，没有细则文件，没有财政拨款，面对公务员聘任制这样一块难啃的骨头，各大省市却趋之若鹜进行试点。</p>
+            
+            <p>　　“就目前而言，人保部针对公务员聘任制暂没有统一的试点文件，实施办法都是地方自己制定的。”3月14日，人力资源和社会保障部劳动工资研究所所长苏海南接受记者采访时表示，此次改革试点不光没有针对试点城市制定统一的指导性文件，甚至连试点的区域都是各省市自行申请的，而非国家强行指定。</p>
+            
+            <p><strong>　　多地表示将试点</strong></p>
+            
+            <p>　　记者查阅了大量资料发现，人保部除了在2011年2月发布了一个《聘任制公务员管理试点办法》外，并无针对试点区域划分的具体实施细则出台。</p>
+            
+            <p>　　所谓公务员聘任制是指国家机关根据工作需要，经省级以上公务员主管部门批准，对不涉及国家秘密的专业性较强的职位和辅助性职位，按照平等自愿、协商一致的原则以合同的方式进行聘用的制度，合同期一般为1-5年。</p>
+            
+            <p>　　据记者了解，江苏、湖北、河南、四川等地均表示年内将试点聘任制公务员制度，并正在纷纷根据自身特点酝酿试点相关的地方性文件。</p>
+            
+            <p>　　其实，公务员实行聘任制这一做法，深圳、上海等地3年前就分别有所涉及。它们纷纷采取的是一个增量的改革，也就是说原来的公务员队伍不动，只对新公务员试行聘任制，签订聘任合同，实行协议工资，建立养老保险制度。</p>
+            
+            <p>　　经过3年的试点，尤其是深圳的试点效果得到了人保部的肯定，并引得各地纷纷效仿。</p>
+            
+            <p>　　广东省人力资源和社会保障厅的一位工作人员告诉记者，广东是去年年底开始试点的，今年的整体基调是扩大公务员聘任制范围，并已将此改革纳入了《广东省人力资源和社会保障事业发展“十二五”规划》，但全省普及尚需时日。</p>
+            
+            <p>　　苏海南同样向记者表示，试点刚刚开始，公务员聘任制“十二五”期间能否实现全国普及暂无定论。</p>
+            
+            <p><strong>　　有利减少财政支出</strong></p>
+            
+            <p>　　“深圳的试点结果算是比较好的，它打破了公务员体制‘能进不能出、能上不能下’的弊端，激活了公务员体制的活力，对那些生活在‘保险箱’里的在编公务员形成了一定的压力。”苏海南表示，公务员聘任制在降低机关用人成本的同时也能聘到专业性比较强的人才，从而提高政府行政效率。</p>
+            
+            <p>　　据记者了解，由于缺乏灵活的激励机制，公务员的职级工资制无法为特殊岗位需要的专业人才单独规定工资水平，使得公务员队伍中大量的专业人才流失，从而导致政府机关的人才资源结构性矛盾比较突出，而聘任制公务员恰恰弥补了这一点。同时，公务员聘用关系终止后聘任制公务员即与机关脱离关系，机关免去了“进一个人就要终身负责”的后顾之忧，从而大大降低了机关的用人成本。</p>
+            
+            <p>　　“从长远来看，聘任制公务员有利于减少财政支出。”北京市人力资源和社会保障局的一位工作人员告诉记者，对于聘任制公务员，相关部门可以根据自己的工作需要考虑人员的增减，从而有利于控制编制，减少费用。同时，聘任制公务员的待遇取决于自身的工作业绩，相关部门可以根据不同的职位给予不同的价值回报，在发挥激励作用的同时，达到节约工资成本、减少国家财政支出的目的。</p>
+            
+            <p>　　但上述工作人员告诉记者，北京市人力资源和社会保障局并未接到相关进行公务员聘任制试点的通知，北京何时进行试点暂无时间表。</p>
+            
+            <p>　　据记者了解，各地区的公务员编制均由国家统一下达，然后根据编制进行财政拨款。国家并未对公务员聘任制的试点地区有任何财政倾斜，对于超出编制的财政支出部分均由地方自行解决。</p>
+            
+            <p><strong>　　为“养老金并轨”铺路</strong></p>
+            
+            <p>　　试点地区各自吃着各自的螃蟹，但试点一旦成功，无疑会成为全国公务员体制改革的标杆，并将会为公务员的后续改革铺平道路。</p>
+            
+            <p>　　“公务员聘任制采取的是新人新办法，老人老办法，也就是暂时只对新人试行聘任制，对于老公务员依然按照原有的管理机制。”苏海南表示，全民热考公务员并不是一个好的导向，公务员聘任制有利于人们更加理性地看待这个群体。</p>
+            
+            <p>　　记者从广东省人力资源和社会保障厅工作人员处了解到，广东实行聘任制公务员首次聘期为3年，期满后相关部门会根据公务员的表现情况解除或者续签合同。续聘的聘期一般为5年，符合条件的聘任制公务员连续聘满10年的，可和单位签订无固定期限聘任合同。但聘任制公务员退休后，社会基本养老保险、地方补充养老保险和职业年金相结合的养老保障制度，并非按照老公务员的退休制度执行。</p>
+            
+            <p>　　有媒体统计，深圳已有1800余名聘任制公务员参加社会保险，其中就包括养老保险。缴纳的标准和比例与当地企业员工一样，基本养老保险费缴费比例为其缴费工资的18%，其中个人按本人缴费工资的8%缴纳，财政按个人缴费工资的10%缴纳；地方补充养老保险费缴费比例为其缴费工资的1%，由财政缴纳。</p>
+            
+            <p>　　“退休待遇差距的产生是因为我国现有退休制度不同所造成的，解决这一问题的关键就是要推进机关和事业单位养老保险制度的改革。”北京市人保局上述人员明确表示，如果试点成功，光是养老制度这一块就将会为后续打破“养老保险双轨制”做出充分的准备工作。</p>
+            
+            <p>　　(据《华夏时报》)</p>
+            
+            <p><strong>　　相关链接</strong></p>
+            
+            <p><strong>　　江苏省正研究聘任公务员试点办法</strong></p>
+            
+            <p>　　今年年内，江苏省将试点公务员聘任制的消息备受各方关注。3月16日，记者从江苏省人力资源和社会保障厅召开的新闻发布会上获悉，江苏省正在研究制定《江苏省聘任制公务员管理试点办法》(试行)，拓宽选人渠道、健全用人机制，吸引优秀的组织管理和专业人才进入公务员队伍，年内将在部分地区和单位试点。</p>
+            
+            <p>　　(据《金陵晚报》)</p>
+            
+            <p><strong>　　延伸阅读</strong></p>
+            
+            <p><strong>　　北京打破公务员“铁饭碗”</strong></p>
+            
+            <p><strong>　　连续两年不合格将辞退</strong></p>
+            
+            <p>　　在很多人看来，当上公务员就等于端上“铁饭碗”，这种局面有望被打破。北京近日出台政策，首次明确建立健全公务员平时考核制度，考核从“德能勤绩廉”五方面评分，考核结果与晋升和待遇挂钩，年度考核连续两年不称职的将予辞退。</p>
+            
+            <p>　　此次出台的《关于进一步加强北京市公务员考核工作的意见》提出公务员年度考核基本称职、不称职等次标准。出现因个人原因未完成本职位年度工作任务量，直接造成本部门绩效管理任务不能完成的；工作中经常推诿扯皮，服务态度恶劣，违反工作程序或行政不作为等，被投诉两次以上的等八种情形之一且经查属实的，年度考核一般确定为不称职。对于年度考核被定为基本称职的，予以行政告诫；对于年度考核被定为不称职的，予以降职；对于年度考核连续两年不称职的，予以辞退。</p>
+            
+            <p>　　(据《人民日报》)</p>
+        </div>
+        <div id="scroll_bar">
+            <div id="slider"></div>
+        </div>
+    </div>
+    
+</div>
+</body>
+</html>

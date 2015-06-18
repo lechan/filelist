@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script type="text/javascript">
+alert(navigator.userAgent);
+</script>
+</head>
+
+<body>
+
+<button id="abc">按钮</button>
+<script type="text/javascript">
+document.getElementById("abc").onclick = function(){
+	window.location.href = 'https://itunes.apple.com/us/app/bei-jing-fu-cai-shou-ji-bao/id943689959?l=zh&ls=1&mt=8';	
+}
+</script>
+</body>
+</html>

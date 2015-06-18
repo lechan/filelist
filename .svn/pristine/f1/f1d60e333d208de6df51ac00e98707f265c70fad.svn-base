@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<script type="text/javascript">
+var arr = [49, 38, 65, 97, 76, 13, 27, 49, 55, 04];
+
+function selectSort(arr){
+	var len = arr.length;
+	for(var i=0;i<len;i++){
+		for(var j=i+1;j<len;j++){
+			if(arr[i]>arr[j]){
+				var temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp; 	
+			}
+		}
+	}
+	return arr;
+}
+
+window.onload = function(){
+	document.getElementById('sort_box').innerHTML = arr +'<br>' + selectSort(arr);
+}
+</script>
+</head>
+
+<body>
+<div id="sort_box"></div>
+</body>
+</html>

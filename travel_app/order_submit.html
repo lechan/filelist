@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="cache-control" content="no-cache"/>
+<meta http-equiv="expires" content="0" />
+<meta name="Keywords" content="西藏旅游"/>
+<meta name="Description" content="西藏旅游" />
+<title>西藏旅游</title>
+<link href="css/main.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+var data = {
+	"type" : "circle", //状态： normal or circle
+	"price" : 5000, //单价
+	"num" :  5 //人数
+}
+</script>
+<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body>
+<header class="header">
+	<h1>林芝-山南-日喀则</h1>
+</header>
+<div class="wrap">
+	<div class="travel_list">
+    	<ul>
+        	<li class="no_border">
+                <div><label>费用：</label><span><strong class="price" id="price"></strong>元/人</span></div>
+                <div><label>启程时间：</label><span>随时成团</span></div>
+                <div><label>餐饮：</label><span>拉萨-羊八井-纳木错-羊八井-拉萨</span></div>
+                <div><label>住宿：</label><span>20元/人/正餐×9餐，10元/人/早餐×4餐<br/>鲁朗藏民宿1晚，八一、泽当、日喀则3晚标间（单方差自理）</span></div>
+                <div><label>门票：</label><span>卡定沟、派镇9大峡谷、南迦巴瓦峰）、羊卓雍错、扎什伦布寺</span></div>
+                <div><label>备注：</label><span>费用包含：门票、车费；不包含：餐费、住宿</span></div>
+                <div class="edit"><label>出发时间：</label><input type="date" /></div>
+                <div class="edit"><label>购买人数：</label><b class="minus">-</b><i>1人</i><b class="plus">+</b><input type="hidden" value="1" id="num" /><a id="make_friends" style="display:none;">约个伴？</a></div>
+                <div class="edit"><label>联系方式：</label><input type="tel" /><em>家猫1小时内电话与您确认订单</em></div>
+                <div><label>总价：</label><strong class="price" id="total"></strong><em id="tips_price">（￥10000/人×1）</em></div>
+            </li>
+        </ul>
+    </div>
+    <div class="tips2">
+    	<p>如有疑问请联系家猫 TEL:13613630662<br/>（私人定制、紧急服务等）</p>
+    </div>
+</div>
+<aside class="sidebar" id="sidebar">
+	<div class="tourist_list">
+    	<ul>
+        	<li><a>日喀则</a></li>
+            <li><a>日喀则</a></li>
+            <li><a>日喀则</a></li>
+            <li><a>日喀则</a></li>
+            <li><a>日喀则</a></li>
+            <li><a>日喀则</a></li>
+            <li><a>日喀则</a></li>
+            <li><a>日喀则</a></li>
+            <li><a>日喀则</a></li>
+            <li><a>日喀则</a></li>
+            <li><a>日喀则</a></li>
+        </ul>
+    </div>
+</aside>
+
+<div class="mask" id="mask"></div>
+
+<footer class="footer">
+	<div class="func_box">
+    	<a class="left_btn func_btn" id="func_btn"></a>
+        <a class="middle_btn" id="submit_btn">提交订单</a>
+        <!--<a class="middle_btn_false" id="submit_btn">提交订单</a>-->
+        <a class="right_btn back_btn"></a>
+    </div>
+</footer>
+</body>
+</html>

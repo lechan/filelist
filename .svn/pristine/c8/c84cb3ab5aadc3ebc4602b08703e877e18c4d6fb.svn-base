@@ -1,0 +1,49 @@
+{
+    "data": {
+        "albumId": 112,
+        "albumImgH": "http://img.lenovomm.com/crawler@cluster-1/ams/fileman/img/snap/2014-12-12061929-_1418379569668_9821.jpg?isCompress=true&width=240&height=330&quantity=0.8",
+        "albumImgV": "http://img.lenovomm.com/crawler@cluster-1/ams/fileman/img/snap/2014-12-12061929-_1418379569668_9822.jpg?isCompress=true&width=240&height=180&quantity=0.8",
+        "albumName": "武媚娘传奇",
+        "albumTitle": "武媚娘",
+		"updateDesc":"更新到22集",
+        "channelId": 1,
+            "desList": [
+            {
+                "key": "主演",
+                "value": "姚晨,吴秀波"
+            },
+            {
+                "key": "导演",
+                "value": ""
+            },
+            {
+                "key": "地区",
+                "value": "大陆2014"
+            },
+            {
+                "key": "分类",
+                "value": "历史,宫斗"
+            }
+        ],       
+ "feeType": 0,
+        "isDownload": 0,
+        "isOver": 1,
+        "score": "9.0分",
+        "source": [
+            {
+                "definition": [
+                    {
+                        "desc": "搜狐-超清",
+                        "isDownload": 0,
+                        "stream": 4
+                    }
+                ],
+                "iconAddr": "img/sohu.png",
+                "name": "搜狐视频",
+                "pn": "goodteamstudio.sohuvideo.full.chs",
+                "sourceCode": 1
+            }
+        ]
+    },
+    "success": true
+}

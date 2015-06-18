@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script type="text/javascript">
+var Days = 30;
+var expr = new Date(); 
+expr.setTime(expr.getTime() + Days*24*60*60*1000);
+document.cookie = "activity_first=false;expires=" + expr.toGMTString(); 
+</script>
+</head>
+
+<body>
+</body>
+</html>

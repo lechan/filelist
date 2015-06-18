@@ -1,0 +1,125 @@
+@charset "utf-8";
+
+/* CSS reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fiedlset,input,textarea,p,blockquote,th,td,figure,button,time,span,i{margin:0; padding:0;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+table{border-collapse:collapse; border-spacing:0;}
+fieldset,img,button{border:0}
+address,b,caption,cite,code,dfn,em,th,var{font-style:normal; font-weight:normal; font-variant:normal}
+ol,ul{list-style:none}
+caption,th{text-align:left}
+h1,h2,h3,h4,h5,h6{font-size:100%; font-weight:normal}
+q:before,q:after{content:""}
+blockquote, q{quotes: none}
+abbr,acronym{border:0}
+a{text-decoration: none; color:inherit}
+i,b,em,strong{font-style:normal}
+input,button,select,textarea{outline:none}
+
+.fb{font-weight:bold;}
+
+/*position*/
+.bcenter{margin:0 auto}
+.tcenter{text-align:center}
+.fl{float:left}
+.fr{float:right}
+.pr{position:relative}
+.pa{position:absolute}
+.pf{position:fixed}
+.oh{overflow:hidden}
+.none{display:none; visibility:hidden; width:0; height:0; overflow:hidden;}
+.block{display:block}
+
+
+/* CSS Document */
+html{ height:100%;}
+body{ background:#fff1bb; line-height:1; height:100%;}
+#masking{width:100%; top:0; left:0; background-color:#000; opacity: .6; filter: alpha(opacity=60) \9; z-index:1000; display:none}
+#toast{z-index:999; padding:10px; color:#fff; font-size:16px; background-color:#000; opacity:.8; +filter: alpha(opacity=80); border-radius:6px; box-shadow: 0px 1px 5px 0px #000; display:none; bottom:75px}
+.icon{background:url(../images/icons.png) no-repeat; display:block}
+a{ cursor:pointer;}
+/*animation & transition*/
+.toastAnimation{-webkit-animation:toast 3s linear 1;}
+@-webkit-keyframes toast{
+	0%{opacity:0;}
+	30%{opacity:1;}
+	70%{opacity:1;}
+	100%{opacity:0;}
+}
+.wrap{ max-width:640px; margin:0 auto; background:#fff1bb;}
+.wrap header{ height:24px; background:#f2f2f2; color:#e0641a; font-size:22px; padding:15px 30px; overflow:hidden;}
+.wrap header a{ color:#e0641a; text-decoration:underline; font-weight:bold;}
+.wrap header em{ color:#1e1e1e;}
+.banner{ width:100%; position:relative;}
+.banner_wrap{ width:100%; overflow:hidden;}
+.banner_wrap img{ width:100%; vertical-align:top;}
+
+.btn{ height:54px; line-height:54px; text-align:center; padding:0px 20px; display:inline-block; background:#e0641a; color:#fff; font-size:30px; overflow:hidden; font-weight:bold;}
+.btn_blue{ height:54px; line-height:54px; text-align:center; padding:0px 30px; display:inline-block; background:#e0641a; color:#fff; font-size:30px; overflow:hidden; font-weight:bold;}
+.btn_grey{ height:54px; line-height:54px; text-align:center; padding:0px 30px; display:inline-block; background:#DADADA; color:#757575; font-size:30px; overflow:hidden; font-weight:bold;}
+.btn_red{ height:42px; line-height:42px; text-align:center; padding:0px 20px; display:inline-block; background:#e0641a; color:#fff; font-size:22px; overflow:hidden; font-weight:bold;}
+
+.pop_wrap{ padding:10px; width:90%;}
+.pop_wrap h2{ font-size:18px; margin-bottom:10px;}
+.pop_wrap h3{ font-size:12px; width:90%; line-height:20px;}
+.pop_wrap h4{ font-size:12px; margin-top:10px; width:90%;}
+.pop_wrap h5{ font-size:15px; width:90%; font-weight:bold;}
+.pop_wrap p{ font-size:12px; line-height:20px; margin-bottom:10px; width:90%;}
+.pop_intro p{ margin-bottom:0px;}
+
+/*分享 提示对画框*/
+.dialog{width:300px; top:0px; left:0px; z-index:1500; color:#191919; background-color:#fff;-webkit-transform-style:preserve-3d;}
+.dialog p,.dialog h3{height:60px; line-height:60px;}
+.dialog .title{font-size:22px}
+.dialog .cancel, .dialog .confirm{font-size:18px; cursor:pointer}
+.dialog .confirm{color:#fe8800}
+#share{display:none}
+#share ul{border-bottom:1px solid #a3a3a3; border-top:1px solid #a3a3a3; font-size:16px; width:100%; position:relative; z-index:2; overflow:hidden;}
+#share li{ width:33.33%; height:100px; float:left; background:#fff; text-align:center; font-size:14px;}
+#share li a{cursor:pointer; width:100%; display:block;}
+#share li i{width:54px; height:54px; margin:15px auto 5px;}
+#share li i.qzone{background-position:0px -380px}
+#share li i.sina{background-position:-54px -380px}
+#share li i.txwb{background-position:-108px -380px}
+#share li i.rr{background-position:-162px -380px}
+#share li i.db{background-position:-216px -380px}
+#share li i.qq{background-position:-270px -380px}
+#share li i.wx{background-position:-324px -380px}
+#share li i.pyq{background-position:-378px -380px}
+/*提示对话框*/
+#tipDialog, #updateDialog{display:none}
+#tipDialog .cancel, #tipDialog .confirm, #updateDialog .cancel, #updateDialog .confirm{float:left; width:49.5%; text-align:center}
+#tipDialog .content, #updateDialog .content{font-size:14px; border-bottom:1px solid #a3a3a3; border-top:1px solid #a3a3a3; height:80px; line-height:80px}
+#tipDialog .splitLine, #updateDialog .splitLine{width:1px; background-color:#ccc; height:30px; left:50%; top: 14px}
+#mmTip{background-image:url(../images/mm.png); background-size:232px 100px; width:235px; height:102px; top:0; right:0; z-index:1600; display:none}
+.animate_popOn{-webkit-animation:dialogPopOn 0.5s ease-in-out;}
+.animate_popOff{-webkit-animation:dialogPopOff 0.2s ease-in-out;}
+.animate_maskOn{-webkit-animation:maskOn 0.2s ease-in-out;}
+.animate_maskOff{-webkit-animation:maskOff 0.2s ease-in-out;}
+@-webkit-keyframes dialogPopOn {
+  	0% { -webkit-transform: scale(3,3); opacity: 0; }
+   60% { -webkit-transform: scale(0.8,0.8); opacity: 0.8; }
+  100% { -webkit-transform: scale(1,1); opacity: 1; }
+}
+@-webkit-keyframes dialogPopOff {
+  	0% { -webkit-transform: scale(1,1); opacity: 1; }
+  100% { -webkit-transform: scale(0.8,0.8); opacity: 0; }
+}
+@-webkit-keyframes maskOn{
+	0% { opacity: 0; }
+  100% { opacity: 0.6;}	
+}
+@-webkit-keyframes maskOff{
+	0% { opacity: 0.6; }
+  100% { opacity: 0;}	
+}
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5){
+#share li i{ background-size:700px auto;}
+#share li i.qzone{background-position:0px -186px;}
+#share li i.sina{background-position:-54px -186px;}
+#share li i.txwb{background-position:-108px -186px;}
+#share li i.rr{background-position:-162px -186px;}
+#share li i.db{background-position:-216px -186px;}
+#share li i.qq{background-position:-270px -186px;}
+#share li i.wx{background-position:-324px -186px;}
+#share li i.pyq{background-position:-378px -186px;}	
+}

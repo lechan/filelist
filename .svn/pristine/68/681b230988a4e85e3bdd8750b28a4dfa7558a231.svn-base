@@ -1,0 +1,18 @@
+var cookCtrls = angular.module('cookCtrls', []);
+
+cookCtrls.controller('startAnimeCtrl',['$scope',function($scope){
+	var logo = $("#logo"),logoTxt = $("#logo h1"),searchbox = $("#search");
+	setTimeout(function(){
+		logo.animate({top : 150},500,function(){
+			logoTxt.animate({opacity : 100},1000,function(){
+				searchbox.animate({opacity : 150},500);
+			});
+		});
+	},1000);	
+}]);
+
+cookCtrls.controller('itemListCtrl', ['$scope',function($scope){
+	$scope.searchBtn = function(){
+		
+	}
+}]);

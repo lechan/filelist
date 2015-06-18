@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+*{ margin:0px; padding:0px;}
+</style>
+<link rel="stylesheet" href="../styles/dark.css">
+<script src="../js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+var myBrowser =(function (ua) {
+	/**
+	 * @lends sinaadToolkit.browser
+	 */
+	var browser = {
+		/**
+		 * 是否是andriod系统
+		 * @type {Boolean}
+		 */
+		android : /(Android)\s+([\d.]+)/i.test(ua),
+		/**
+		 * @type {Boolean}
+		 */
+		ipad : /(iPad).*OS\s([\d_]+)/i.test(ua),
+		/**
+		 * @type {Boolean}
+		 */
+		webos : /(webOS|hpwOS)[\s\/]([\d.]+)/i.test(ua),
+		/**
+		 * @type {Boolean}
+		 */
+		kindle : /Kindle\/([\d.]+)/i.test(ua),
+		/** 
+		 * @type {Boolean}
+		 */
+		silk : /Silk\/([\d._]+)/i.test(ua),
+		/** 
+		 * @type {Boolean}
+		 */
+		blackberry : /(BlackBerry).*Version\/([\d.]+)/i.test(ua),
+		/** 
+		 * @type {Boolean}
+		 */
+		bb10 : /(BB10).*Version\/([\d.]+)/i.test(ua),
+		/** 
+		 * @type {Boolean}
+		 */
+		rimtabletos : /(RIM\sTablet\sOS)\s([\d.]+)/i.test(ua),
+		/** 
+		 * @type {Boolean}
+		 */
+		playbook : /PlayBook/i.test(ua),
+		/** 
+		 * 如果是chrome浏览器，返回浏览器当前版本号
+		 * @type {Number}
+		 */
+		chrome : /chrome\/(\d+\.\d+)/i.test(ua) ? + RegExp.$1 : undefined,
+		/**
+		 * 如果是firefox浏览器，返回浏览器当前版本号
+		 * @type {Number}
+		 */
+		firefox : /firefox\/(\d+\.\d+)/i.test(ua) ? + RegExp.$1 : undefined,
+		/**
+		 * 如果是ie返回ie当前版本号
+		 * @type {Number}
+		 */
+		ie : /msie (\d+\.\d+)/i.test(ua) ? (document.documentMode || + RegExp.$1) : undefined,
+		/**
+		 * @type {Boolean}
+		 */
+		isGecko : /gecko/i.test(ua) && !/like gecko/i.test(ua),
+		/**
+		 * @type {Boolean}
+		 */
+		isStrict : document.compatMode === "CSS1Compat",
+		/**
+		 * @type {Boolean}
+		 */
+		isWebkit : /webkit/i.test(ua),
+		/**
+		 * 如果是opera,返回opera当前版本号
+		 * @type {Number}
+		 */
+		opera : /opera(\/| )(\d+(\.\d+)?)(.+?(version\/(\d+(\.\d+)?)))?/i.test(ua) ?  + (RegExp.$6 || RegExp.$2) : undefined
+	};
+
+	/**
+	 * @type {Boolean}
+	 */
+	browser.iphone = !browser.ipad && /(iPhone\sOS)\s([\d_]+)/i.test(ua);
+	/**
+	 * @type {Boolean}
+	 */
+	browser.touchpad = browser.webos && /TouchPad/.test(ua);
+	/**
+	 * @type {Boolean}
+	 */
+	browser.tablet = !!(browser.ipad || browser.playbook || (browser.android && !/Mobile/.test(ua)) || (browser.firefox && /Tablet/.test(ua)));
+	/**
+	 * @type {Boolean}
+	 */
+	browser.phone  = !!(!browser.tablet && (browser.android || browser.iphone || browser.webos || browser.blackberry || browser.bb10 || (browser.chrome && /Android/.test(ua)) || (browser.chrome && /CriOS\/([\d.]+)/.test(ua)) || (browser.firefox && /Mobile/.test(ua))));
+
+	try {
+		if (/(\d+\.\d+)/.test(window.external.max_version)) {
+			/**
+			 * 如果是遨游浏览器，返回遨游版本号
+			 * @type {Number}
+			 */
+			browser.maxthon = + RegExp.$1;
+		}
+	} catch (e) {}
+
+	/**
+	 * 如果是safari浏览器，返回safari版本号
+	 * @type {Number}
+	 */
+	browser.safari = /(\d+\.\d)?(?:\.\d)?\s+safari\/?(\d+\.\d+)?/i.test(ua) && !/chrome/i.test(ua) ? + (RegExp.$1 || RegExp.$2) : undefined;
+	/**
+	 * 是否支持position:fixed属性
+	 * @type {Boolean}
+	 */
+	browser.isSupportFixed = !browser.ie || browser.ie >= 7;
+
+	return browser;
+
+})(navigator.userAgent);
+
+window.onload = function(){
+	if(!myBrowser.ie){
+		console.log(myBrowser);
+	}
+	var content = '';
+	for(var attr in myBrowser){
+		content += attr +' : '+ myBrowser[attr] + '\n';	
+	}
+	alert(content);
+}
+</script>
+</head>
+
+<body>
+<div style="width:100%;">
+<pre><code class="javascript">
+var myBrowser = (function (ua) {
+    /**
+     * @lends sinaadToolkit.browser
+     */
+    var browser = {
+        /**
+         * 是否是andriod系统
+         * @type {Boolean}
+         */
+        android : /(Android)\s+([\d.]+)/i.test(ua),
+        /**
+         * @type {Boolean}
+         */
+        ipad : /(iPad).*OS\s([\d_]+)/i.test(ua),
+        /**
+         * @type {Boolean}
+         */
+        webos : /(webOS|hpwOS)[\s\/]([\d.]+)/i.test(ua),
+        /**
+         * @type {Boolean}
+         */
+        kindle : /Kindle\/([\d.]+)/i.test(ua),
+        /** 
+         * @type {Boolean}
+         */
+        silk : /Silk\/([\d._]+)/i.test(ua),
+        /** 
+         * @type {Boolean}
+         */
+        blackberry : /(BlackBerry).*Version\/([\d.]+)/i.test(ua),
+        /** 
+         * @type {Boolean}
+         */
+        bb10 : /(BB10).*Version\/([\d.]+)/i.test(ua),
+        /** 
+         * @type {Boolean}
+         */
+        rimtabletos : /(RIM\sTablet\sOS)\s([\d.]+)/i.test(ua),
+        /** 
+         * @type {Boolean}
+         */
+        playbook : /PlayBook/i.test(ua),
+        /** 
+         * 如果是chrome浏览器，返回浏览器当前版本号
+         * @type {Number}
+         */
+        chrome : /chrome\/(\d+\.\d+)/i.test(ua) ? + RegExp.$1 : undefined,
+        /**
+         * 如果是firefox浏览器，返回浏览器当前版本号
+         * @type {Number}
+         */
+        firefox : /firefox\/(\d+\.\d+)/i.test(ua) ? + RegExp.$1 : undefined,
+        /**
+         * 如果是ie返回ie当前版本号
+         * @type {Number}
+         */
+        ie : /msie (\d+\.\d+)/i.test(ua) ? (document.documentMode || + RegExp.$1) : undefined,
+        /**
+         * @type {Boolean}
+         */
+        isGecko : /gecko/i.test(ua) && !/like gecko/i.test(ua),
+        /**
+         * @type {Boolean}
+         */
+        isStrict : document.compatMode === "CSS1Compat",
+        /**
+         * @type {Boolean}
+         */
+        isWebkit : /webkit/i.test(ua),
+        /**
+         * 如果是opera,返回opera当前版本号
+         * @type {Number}
+         */
+        opera : /opera(\/| )(\d+(\.\d+)?)(.+?(version\/(\d+(\.\d+)?)))?/i.test(ua) ?  + (RegExp.$6 || RegExp.$2) : undefined
+    };
+    
+    /**
+     * @type {Boolean}
+     */
+    browser.iphone = !browser.ipad && /(iPhone\sOS)\s([\d_]+)/i.test(ua);
+    /**
+     * @type {Boolean}
+     */
+    browser.touchpad = browser.webos && /TouchPad/.test(ua);
+    /**
+     * @type {Boolean}
+     */
+    browser.tablet = !!(browser.ipad || browser.playbook || (browser.android && !/Mobile/.test(ua)) || (browser.firefox && /Tablet/.test(ua)));
+    /**
+     * @type {Boolean}
+     */
+    browser.phone  = !!(!browser.tablet && (browser.android || browser.iphone || browser.webos || browser.blackberry || browser.bb10 || 
+    (browser.chrome && /Android/.test(ua)) || (browser.chrome && /CriOS\/([\d.]+)/.test(ua)) || (browser.firefox && /Mobile/.test(ua))));
+    
+    try {
+        if (/(\d+\.\d+)/.test(window.external.max_version)) {
+            /**
+             * 如果是遨游浏览器，返回遨游版本号
+             * @type {Number}
+             */
+            browser.maxthon = + RegExp.$1;
+        }
+    } catch (e) {}
+    
+    /**
+     * 如果是safari浏览器，返回safari版本号
+     * @type {Number}
+     */
+    browser.safari = /(\d+\.\d)?(?:\.\d)?\s+safari\/?(\d+\.\d+)?/i.test(ua) && !/chrome/i.test(ua) ? + (RegExp.$1 || RegExp.$2) : undefined;
+    /**
+     * 是否支持position:fixed属性
+     * @type {Boolean}
+     */
+    browser.isSupportFixed = !browser.ie || browser.ie >= 7;
+    
+    return browser;
+    
+})(navigator.userAgent);
+</code></pre>
+</div>
+</body>
+</html>

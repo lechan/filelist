@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>学做菜</title>
+<link type="text/css" rel="stylesheet" href="css/main.css" />
+</head>
+
+<body ng-app="cookApp">
+<div id="logo" ng-controller="startAnimeCtrl">
+	<h1>学做菜</h1>
+</div>
+<div ng-controller="listCtrl">
+    <header id="search">
+        <input type="text" id="search_inp" placeholder="请输入菜品名" x-webkit-speech />
+        <button id="search_btn" ng-click="searchBtn()">搜索</button>
+        <input type="hidden" value="0" id="listNum" />
+    </header>
+    <section class="wrap">
+    <ul id="list">
+        <li ng-repeat="item in list track by item.id">
+            <div class="list_title show">
+                <div class="img_wrap"><img ng-src="{{item.albums[0]}}" alt="{{item.title}}" /></div>
+                <h2>{{item.title}}</h2>
+            </div>
+            <div class="list_con hide">
+                <h2>{{item.title}}</h2>
+                <h3>
+                    <b>关键字：</b>
+                    {{item.tags}}
+                </h3>
+                <h4>菜谱介绍：</h4>
+                <p>{{item.imtro}}</p>
+                <h4>需要的素材及调料：</h4>
+                <dl class="resource">
+                    <dt>{{item.ingredients}}</dt>
+                    <dd>{{item.burden}}</dd>
+                </dl>
+                <div class="step">
+                    <dl ng-repeat="stepItem in item.steps">
+                        <dt>{{stepItem.step}}</dt>
+                        <dd><img ng-src="{{stepItem.img}}" alt="{{stepItem.step}}" /></dd>
+                    </dl>
+                </div>
+            </div>
+        </li>
+    </ul>
+    </section>
+</div>
+<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/controllers.js"></script>
+</body>
+</html>

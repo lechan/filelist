@@ -1,0 +1,1 @@
+var cookApp = angular.module('cookApp', ['cookCtrls']);

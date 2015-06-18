@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>预热</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="viewport" content="minimum-scale=1; maximum-scale=1; initial-scale=1; user-scalable=no; width=device-width" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link rel="stylesheet" type="text/css" href="css/base.css" />
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+</head>
+
+<body>
+<div class="wrap">
+	<div class="preview_banner">
+    	<img src="images/banner3.png" />
+    </div>
+    <div class="preview_tips">
+    	<div class="tips_top"></div>
+        <div class="tips_con">
+        	乐商店四岁啦！至此，乐商店内应用总下载量已过80亿次，日下载量超2千万，应用突破80万。值此生日之际，乐商店准备了大量奖品诚意回馈广大乐友。
+        </div>
+        <div class="tips_bottom"></div>
+    </div>
+    <div class="count_down_box">
+    	<img src="images/countdown.png" />
+        <div id="clock"></div>
+    </div>
+    <div class="preview_prize">
+    	<img src="images/prize1.png" />
+        <img src="images/prize2.png" />
+        <img src="images/prize3.png" />
+        <img src="images/prize4.png" />
+    </div>
+    <div class="preview_intro">
+    	<img src="images/intro1.png" />
+        <img src="images/intro2.png" />
+    </div>
+    <div class="preview_download">
+    	<div class="download_box"><img src="images/preview_bottom.png" /></div>
+    </div>
+</div>
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript">
+/**
+ * 倒计时
+ * @param {String} id [倒计时容器id]
+ * @param {String} deadtime [最终日期：e.g. 2014/5/26 10:00:00]
+ * @param {Function} fn [回调函数]
+ * @usage
+ *		LENOVO.com.countdown.init(id,deadtime,fn)
+ */
+LENOVO.namespace('LENOVO.com.countdown');
+LENOVO.com.countdown = (function(){
+
+var 
+doubleNum = function(num){ 
+	num<10?num = '0'+num:num = ''+num;
+	return num;
+},
+timeCalc = function(timing){
+	var
+	days = Math.floor(timing / (1000 * 60 * 60 * 24)),
+	hours = Math.floor(timing/(1000 * 60 * 60))%24,
+	minutes = Math.floor(timing/(1000 * 60))%60,
+	seconds = Math.floor((timing/1000))%60,
+	numString = doubleNum(days*24+hours)+"小时"+doubleNum(minutes)+"分"+doubleNum(seconds)+"秒";
+	return numString;
+},
+play = function(id,deadtime,fn){
+	//deadtime = '2013/1/18 10:00:00';
+	var timer = null,
+	timing = 0,
+	t = new Date(deadtime).getTime(),
+	curTime = new Date().getTime(),
+	clock_con = document.querySelector('#'+id);
+	if(clock_con && t - curTime>=0){
+		timer = setInterval(function(){
+			timing = t - curTime;
+			if(timing>=0){
+				clock_con.innerHTML = timeCalc(timing);
+			}else{
+				clearInterval(timer);
+				if(fn && '[object Function]' === Object.prototype.toString.call(fn)){
+					fn();
+					return false;
+				}
+			}
+			curTime = curTime + 1000;
+		},1000);
+	}else{
+		clock_con.innerHTML = timeCalc(timing);	
+	}
+},
+init = function(id,deadtime,fn){
+	play(id,deadtime,fn);
+};
+return {init:init};
+
+})()
+document.addEventListener('DOMContentLoaded', function(){
+	LENOVO.com.countdown.init("clock","2014-05-24 00:00:00");
+});
+
+
+</script>
+</body>
+</html>

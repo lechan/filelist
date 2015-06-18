@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,maximum-scale=1" />
+<title></title>	
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<link rel="stylesheet" type="text/css" href="css/toplist.css">
+<link rel="stylesheet" type="text/css" href="css/detail.css">
+<link rel="stylesheet" type="text/css" href="css/drama.css">
+</head>
+<body>
+<div id='detailUpper' >
+	<div id='detail-top'>
+		<div class='multi-clm-box' id='detail-top-upper'>
+			<div class='detail-poster'>
+				<img id='poster' src=''>
+				<div id='score' class='detail-score'></div>
+			</div>
+			<ul class='detail-info' id='info'>
+				<li>
+					<label></label><span></span>
+				</li>
+				<li class='detail-source-line'>
+				<label>来源：</label><div class='box source-box' id='detailSourceBox'>
+					<span class='box source-logo' ><img src='' id='detailSourceLogo'/>
+					</span><span class='box' id='detailSourceName'>
+					</span><span class='box source-arrow'></span>
+				</div>
+				</li>
+			</ul>
+		</div>
+		<div>
+			<!--span class='box detail-top-lft detail-follow-box'>
+				<button class='btn1 detail-follow-btn'></button>
+			</span-->
+			<a href='report.html?t=' class='detail-lk-report' id='btnError' class='btn'>报错</a>
+			<button class='detail-lk-share' id='btnShare'></button>
+		</div>
+	</div>
+	<div class='nav-justified-outer'>
+		<div class='nav-justified-ctnr'>
+			<ul id='navList' class='nav nav-justified'>
+				<li><a href='javascript:void(0)'>剧集</a></li>
+				<li><a href='javascript:void(0)'>推荐</a></li>
+				<li><a href='javascript:void(0)'>评论</a></li>
+				<li><a href='javascript:void(0)'>简介</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div id='navListCtnr' class='nav-ctn'>
+	<div>
+		<div id='dramaHead' class='list-drama-top'>
+			<div class='tpl tplDrama multi-clm-box'>
+				<div class='list-drama-top-lft' id='latestDesc'>
+					<span class='list-drama-top-num'></span>集全
+				</div>
+				<div class='list-drama-top-rgt'>
+					<button class='list-drama-sort' id='btnSort'>排序</button>
+				</div>
+			</div>
+			<div class='tpl tplEnt list-drama-top-lft' id='latestDesc'>
+				更新至 <span class='list-drama-top-num'>2014-09-15</span> 期
+			</div>
+		</div>
+		<div id='dramaBody'>
+			<div class='tpl tplDrama drama-nums' id='videoList'>
+				<a href='javascript:void(0)' class='drama-item'></a>
+			</div>
+			<div class='tpl tplEnt drama-dates' id='videoList'>
+				<div><a href='javascript:void(0)'  class='drama-item'>
+						<div class='drama-date'></div>
+						<div class='drama-tit'></div>
+				</div></a>
+			</div>
+		</div>
+	</div>
+	<div class='top-list ' id='proposal'>
+		<a class='blk top-list-item multi-clm-box' href='detail.html?aid='>
+			<div class='top-list-flag top-list-flag-member'></div>
+			<div class='top-list-item-poster'>
+				<img src='' class='poster'>
+				<div class='top-list-score'></div>
+			</div>
+			<div class='top-list-item-detail'>
+				<span class='top-list-play btn1'></span>
+				<div class='top-list-tit'></div>
+				<div class='top-list-subtit'>
+					<span class='top-list-offline'></span>
+					<span class='latest'>更新至<span class='latest-num'></span>集<span>
+						</div>
+						<div class='top-list-synopsis'></div>
+					</div>
+				</a>
+			</div>
+	<div >
+		<div class="review-general multi-clm-box">
+			<div class="review-score-avg">
+				<div class="review-score-avg-tit">综合评分</div>
+				<div class="review-score-avg-body">
+					<div class='review-score-avg-num' id='avgScore'></div>
+					<div><span class="appStars" id='star'></span></div>
+				</div>
+			</div>
+			<div class='review-score-detail'>
+				<div class='review-score-detail-top'><label>乐友评分：</label><span class='score' id='leScore'></span></div>
+				<ul class='review-score-detail-mid' id='scoreList'>
+					<li class='tpl'><label>爱奇艺：</label><span class='score'>80</span></li>
+				</ul>
+				<div id='reviewFullScores' class='hidden multi-clm-box'><div>...</div><div class='review-score-detail-btm-more'>更多</div></div>
+			</div>
+		</div>
+		<div class='review-btn'>
+			<a href="review.html?aid=" id='btnCmt' class="btn btn1">我要评论</a>
+		</div>
+		<ul id='reviewList' class="review-list">
+			<li class='tpl'>
+			<div class="recContent">
+				<div><span class="appStars"></span> <span class="userName"></span></div>
+				<div><span class="time"></span><span class="model"></span> 版本:<span class="ver"></span></div>
+				<div class="review-list-desc"></div>
+			</div>
+			<a href="review.html?aid=" class="icon-comment"></a>
+			<div class="recSub">
+				<span class="arrowTop"></span><span class="arrowTopIn"></span>
+				<ul>
+					<li>
+					<div class="recSubContent">
+						<div><span class="userName"></span><span class="model"></span></div>
+						<div class="review-list-desc">@<span class="atUserName"></span><span class="content"></span></div>
+					</div>
+					<a href="review.html?aid=" class="icon-comment"></a>
+					</li>
+				</ul>
+			</div>
+			</li>
+		</ul>
+	</div>
+
+	<div  id='synopsisCtn'>
+		<div class='lk multi-clm-box tpl'>
+			<label class='lbl'></label>
+			<div class='val'><a class='keyword' href=''></a></div>
+		</div>
+		<div class='kw multi-clm-box tpl'>
+			<label class='lbl'></label>
+			<div class='val'><span class='keyword'></span></div>
+		</div>
+		<div class='desc tpl'>
+			<label class='lbl'></label>
+			<span  class='val'></span>
+		</div>
+	</div>
+</div>
+<div id='detailFooter'>
+	<div class='detail-footer-btn detail-footer-btn1'>
+		<div>
+			<a  href='offline.html' id='btnOL' class='btn'>离线</a>
+		</div>
+	</div>
+	<div class='detail-footer-btn detail-footer-btn2'>
+		<div>
+			<button id='btnPlay' class='btn'>播放</button>
+		</div>
+	</div>
+</div>
+
+<section class="tpl dilogWrap dialogCityWrap" id='sourceDlg'>
+	<div class="dialogCityTit" id="DialogCityTit">请选择来源</div>
+	<div class="dialogCityCon" id="DialogCityCon">
+		<div class="cityList" id="detailSourceDd">
+			<a>
+			<span class='box source-logo'><img src='' class='source-logo-img'/>
+			</span><span class='box source-name'>爱奇艺－标清</span>
+			</a>
+		</div>
+	</div>
+</section>
+
+
+<!--div id='boxError'>
+	<div class='boxError-box'>
+		<form id='errForm' onsubmit='return false'>
+			<div class='multi-clm-box'>
+				<label>标题</label><div><input type='text' value='' id='errTit' required/></div>
+			</div>
+			<div class='multi-clm-box'>
+				<label>内容</label><div><textarea id='errBody' required></textarea> </div>
+			</div>
+			<div class='err-btm'>
+				<button id='btnSendErr' class='btn1'>发送</button>
+				<button id='btnCancelErr' class='btn1'>取消</button>
+			</div>
+		</form>
+	</div>
+</div-->
+<script type="text/javascript" src='js/zepto.js'></script>
+<script type="text/javascript" src='js/video.js'></script>
+<script type="text/javascript" src='js/detail.js'></script>
+<script type="text/javascript">
+//page tracking
+var EVENT_ACTION='detail';
+window.Avatar= [];
+Avatar.push([document.querySelectorAll("#navList a"), 'clickDetailTab']);
+Avatar.push([document.querySelector("#btnError"), 'clickWrongReport']);
+Avatar.push([document.querySelector("#btnSort"), 'clickVideoOrder']);
+Avatar.push([document.querySelector("#btnShare"), 'clickVideoShare']);
+Avatar.push([document.querySelector("#detailSourceBox"), 'changeVideoSource']);
+Avatar.push([document.querySelector("#btnOL"), 'clickOffline']);
+Avatar.push([document.querySelector("#btnPlay"), 'clickPlayVideo']);
+Avatar.push([document.querySelectorAll("#videoList"), {selector:".drama-item", parser:'clickPlayVideo'}]);
+Avatar.push([document.querySelector("#btnCmt"), 'clickCommentBtn']);
+Avatar.push([document.querySelectorAll("#reviewList"),  {selector:".icon-comment", parser:'clickCommentListBtn'}]);
+(function(){
+	var scriptTag = document.createElement('script');
+	scriptTag.type = 'text/javascript';
+	scriptTag.async = true;
+	scriptTag.src = 'js/avatarCfg.js';
+	var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(scriptTag,t);
+})()
+</script>
+</body>
+</html>
+

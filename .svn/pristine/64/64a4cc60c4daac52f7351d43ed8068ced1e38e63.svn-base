@@ -1,0 +1,15 @@
+{
+	"status": true,
+	"data": {
+		"userName" : "测试者",
+		"address": "二环路东三段18号2-2-3",
+		"city": "成都市",
+		"orderId": 0,
+		"phoneNumber": "13718866431",
+		"province": "四川省",
+		"qqNum": "111111",
+		"region": "成华区",
+		"userId": 1111111111
+	},
+	"code": "GET_DELIVERY_ADDR_SUCCESS"
+}

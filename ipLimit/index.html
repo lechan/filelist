@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>无标题文档</title>
+<script type="text/javascript" src="ipLimit.js"></script>
+
+</head>
+
+<body>
+两次限制：<input type="button" id="btn" value="点击" />
+<script type="text/javascript">
+var btn = document.getElementById('btn');
+btn.onclick = function(){
+	if(ipLimit.init('video_ad',2)){
+		alert('还没到限制');
+	}else{
+		alert('到限制了')	
+	}
+}
+</script>
+</body>
+</html>

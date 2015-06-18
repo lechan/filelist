@@ -1,0 +1,53 @@
+{	
+	"status":true,
+	"data":{
+		"descr": "descr-test",
+		"endTime": 1431598497172,
+		"iconAddr": "http://gtms03.alicdn.com/tps/i3/TB1VnBbHVXXXXb1XFXXqAiWGpXX-700-380.png",
+		"imgs" : [
+			{"url":"http://beta.test2.surepush.cn/promotion/prize_img/20.jpg","orderNum":0},
+			{"url":"http://beta.test2.surepush.cn/promotion/prize_img/20.jpg","orderNum":1},
+			{"url":"http://beta.test2.surepush.cn/promotion/prize_img/20.jpg","orderNum":2}
+		],
+		"detail" : "1、魅蓝 note 需要使用 Micro-SIM卡,也就是通常所说的小卡\n2、京东商城销售的魅族品牌手机，均为全新机，非RE。\n2、京东商城销售的魅族品牌手机，均为全新机，非RE。\n2、京东商城销售的魅族品牌手机，均为全新机，非RE。\n2、京东商城销售的魅族品牌手机，均为全新机，非RE。\n2、京东商城销售的魅族品牌手机，均为全新机，非RE。\n3、魅蓝手机全国联保，如您需要维修时，可到当地魅族授权服务中心维修或魅族专卖店协助送修，详情可电话联系魅族客服：400-788-3333咨询。凭质保证书及京东商城发票，可享受全国联保服务（奢侈品、钟表除外；",
+		"id": 3,
+		"isFavorite": true,
+		"lv": true,
+		"lvExchange": false,
+		"lvs": [{
+			"lv" : 0,
+			"scorePrice" : 800
+		},{
+			"lv" : 1,
+			"scorePrice" : 800
+		},{
+			"lv" : 2,
+			"scorePrice" : 700
+		},{
+			"lv" : 3,
+			"scorePrice" : 700
+		},{
+			"lv" : 4,
+			"scorePrice" : 700
+		},{
+			"lv" : 5,
+			"scorePrice" : 600
+		},{
+			"lv" : 6,
+			"scorePrice" : 500
+		}],
+		"marketPrice": 200,
+		"name": "联想（Lenovo）小新i1000出色版 14英寸笔记本dianaodj电脑（I7-4558U 4G 500G+8G SSHD",
+		"promotionWords": "价值39元",
+		"favoriteAmount":40,
+		"remainAmount": 20,
+		"saleAmount": 60,
+		"savePrice": 300, 
+		"scorePrice": 800,
+		"startTime": 1431598497172,
+		"type": 0,
+		"appInfo" : "com.leapp|70000|大众点评",
+		"tags":[{"name":"机器人","moreUrl":"http://www.baidu.com"},{"name":"机器人2","moreUrl":"http://www.baidu.com"}],
+		"url": "http://localhost:8080/jfshop-web?id=3"
+	}
+}

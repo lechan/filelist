@@ -1,0 +1,128 @@
+define(["app/tool","app/dialog","app/toast","lib/swipe","lib/fastclick"],function(t,dialog,toast,lazy) {
+	"use strict";
+	var App = {
+		config : {
+			detailUrl : 'MOCK/detail.json'+'?t='+new Date().getTime(),
+			loginUrl : ''+'?t='+new Date().getTime()
+		},
+		tpl : {
+			detailImgCon : '\
+			<div id="detaiImg" class="detaiImg">\
+				<div class="banner_wrap"></div>\
+				<div class="banner_dot_wrap"></div>\
+			</div>',
+			detailImgItem : '<div><a href="#{url}"><img src="#{imgUrl}" /></a></div>',
+			detailImgDotItem : '<i></i>',
+			more : '<a class="more" href="#{moreUrl}"></a>',
+			popbox : {
+				"test" : '\
+				<section class="pop_wrap">\
+					<h2 style="padding:20px 0px;">测试弹窗</h2>\
+				</section>'	
+			}
+		},
+		getDetailData : function(){
+			var self = this;
+			$.ajax({
+				url:self.config.detailUrl,
+				type:"GET",
+				dataType:"json",
+				success: function(data){
+					self.data = data;
+					self.renderMainCon();
+				},
+				error: function(){
+					alert("数据错误");	
+				}	
+			});	
+		},
+		renderMainCon : function(){
+			var self = this,i,topicNum = self.data.normalTopics.length;
+			$("#mainPage").append(self.tpl.userCon).append(self.tpl.lvCon);
+			for(i=0;i<topicNum;i++){
+				$("#mainPage").append(self.tpl.topicCon);
+				self.topicItem(i);	
+			}
+			$(self.tpl.bannerCon).insertBefore($("#mainPage div.topicItem").eq(1));
+			$(self.tpl.tagCon).insertBefore($("#mainPage div.topicItem").eq(1));
+			
+			self.user();
+			self.lv();
+			self.banner();
+			self.tag();
+			self.countdownHandler();
+			lazy.init();
+		},
+		detailImg : function(){
+			var
+			self = this,
+			render = function(){
+				var detailImgData = self.data.banners;
+				var detailImgList = '';
+				var detailImgDotList = '';
+				$.each(detailImgData,function(index){
+					detailImgList += t.formatTpl(self.tpl.detailImgItem,{},detailImgData[index]);
+					detailImgDotList += t.formatTpl(self.tpl.detailImgDotItem,{},{});	
+				});
+				$(".detailImgWrap").html(bannerList);
+				if(detailImgData.length>1){
+					$(".detailImgDotWrap").html(detailImgDotList).find("i").eq(0).addClass("active");
+					handler();
+				}
+			},
+			handler = function(){
+				var bannerObj = document.getElementById("detailImg");
+				var bannerSwipe = Swipe(bannerObj, {
+					startSlide: 0,
+					auto: 5000,
+					continuous: true,
+					disableScroll: false,
+					stopPropagation: true,
+					callback: function(index, element) {},
+					transitionEnd: function(index, element) {
+						$(".detailImgDotWrap i").removeClass("active");
+						$(".detailImgDotWrap i").eq(index).addClass("active");
+					}
+				});	
+			},
+			init = function(){
+				render();
+			}
+			init();
+		},
+		init : function(){
+			//this.getDetailData();
+			
+			var bannerObj = document.getElementById("detailImg");
+			var bannerSwipe = Swipe(bannerObj, {
+				startSlide: 0,
+				auto: 5000,
+				continuous: true,
+				disableScroll: false,
+				stopPropagation: true,
+				callback: function(index, element) {},
+				transitionEnd: function(index, element) {
+					$(".detailImgDotWrap i").removeClass("active");
+					$(".detailImgDotWrap i").eq(index).addClass("active");
+				}
+			});
+			
+			
+			dialog.ready();
+			toast.ready();
+			//dialog.open(this.tpl.popbox.test);
+			$("#dialogWrapper").click(function(){
+				dialog.close();
+			});
+			//toast.show("测试");
+			console.log(t.formatDate('1437370000000','yyyy/MM/dd hh:mm:ss'));
+			
+		}
+	}
+		
+	App.init();
+	
+	document.addEventListener('DOMContentLoaded', function() {
+		FastClick.attach(document.body);
+	}, false);
+});

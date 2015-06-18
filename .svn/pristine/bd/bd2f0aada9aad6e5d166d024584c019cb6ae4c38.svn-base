@@ -1,0 +1,22 @@
+$(function(){
+	initLocalInfo();
+	page_nav();
+	page_list();
+	detail();
+	subscribe();
+	main_nav();
+	backBtn();
+	page_login_register();
+	page_search();
+	
+	
+	mainConIscroll('wrapper0');
+	mainConIscroll('wrapper1');
+	
+	toast("测试toast");
+	
+});
+
+document.addEventListener('touchmove', function(e) {
+	e.preventDefault();
+}, false);

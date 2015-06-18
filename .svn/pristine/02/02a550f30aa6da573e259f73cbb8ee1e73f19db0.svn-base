@@ -1,0 +1,315 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>首页</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="viewport" content="minimum-scale=1; maximum-scale=1; initial-scale=1; user-scalable=no; width=device-width;" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link rel="stylesheet" type="text/css" href="css/base.css" />
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<script type="text/javascript">
+var myData = {
+	score : 100,
+	cardNum : 2,
+	first : false	
+};
+</script>
+</head>
+
+<body>
+<div class="wrap">
+	
+    <div class="banner">
+    	<div class="banner_wrap"><img src="images/banner.png" /></div>
+        <a href="prize.html#myprize"><img src="images/prize_btn.png" class="prize_btn" /></a>
+        <a href="intro.html" class="intro_btn">活动规则</a>
+    </div>
+
+    <div class="marquee_wrap">
+        <div id="marquee">
+        	<div class="marquee_con">
+                <span>恭喜乐友[1061314]获得50元联通电话充值卡；</span>
+                <span>恭喜乐友[10023399257]获得50元移动电话充值卡；</span>
+            </div>
+            <div class="marquee_con"></div>
+        </div>
+    </div>
+    
+    <div class="scrollList_wrap">
+        <div id="scrollList">
+        	<div class="scrollList_con">
+                <span>恭喜乐友[1061314]获得50元联通电话充值卡；</span>
+                <span>恭喜乐友[10023399257]获得50元移动电话充值卡；</span>
+                <span>恭喜乐友[1061314]获得50元联通电话充值卡；</span>
+                <span>恭喜乐友[10023399257]获得50元移动电话充值卡；</span>
+                <span>恭喜乐友[1061314]获得50元联通电话充值卡；</span>
+                <span>恭喜乐友[10023399257]获得50元移动电话充值卡；</span>
+                <span>恭喜乐友[1061314]获得50元联通电话充值卡；</span>
+                <span>恭喜乐友[10023399257]获得50元移动电话充值卡；</span>
+                <span>恭喜乐友[1061314]获得50元联通电话充值卡；</span>
+                <span>恭喜乐友[10023399257]获得50元移动电话充值卡；</span>
+                <span>恭喜乐友[1061314]获得50元联通电话充值卡；</span>
+                <span>恭喜乐友[10023399257]获得50元移动电话充值卡；</span>
+                <span>恭喜乐友[1061314]获得50元联通电话充值卡；</span>
+                <span>恭喜乐友[10023399257]获得50元移动电话充值卡；</span>
+                <span>恭喜乐友[1061314]获得50元联通电话充值卡；</span>
+                <span>恭喜乐友[10023399257]获得50元移动电话充值卡；</span>
+            </div>
+            <div class="scrollList_con"></div>
+        </div>
+    </div>
+    
+    <div class="con1">
+    	<div class="title"><h2><img src="images/title1.png" /></h2></div>
+    	<div class="fl con1_l">
+            <h3><img src="images/pic1.jpg" /></h3>
+        </div>
+        <div class="fr con1_r">
+        	<p class="p1">开始时间</p>
+            <p class="p2"><strong>今日15:00</strong></p>
+            <p class="p3">你还差<strong>30</strong>个积分才能参与秒杀，先去赚积分吧~</p>
+            <p class="p4">下期秒杀奖品</p>
+            <p class="p5"><strong>iPad mini2</strong></p>
+        </div>
+        <div class="con1_b" id="entrance">
+        	<a class="btn" href="activity.html">查看详情</a>
+        </div>
+    </div>
+    <div class="con2">
+    	<div class="con2_wrap">
+        	<div class="con2_item">
+            	<dl>
+                	<dt>
+                    	<h3>我的积分：<span id="score">1000</span> 分</h3>
+                        <h3>您可以兑换 <span id="prizeType">3</span> 种奖品</h3>
+                    </dt>
+                    <dd><a class="btn" href="prize.html">我要兑奖</a></dd>
+                </dl>
+            </div>
+            <div class="con2_item" id="score_anchor">
+            	<dl>
+                	<dt>
+                    	<h2>勤劳奖</h2>
+                        <h3>你今天可以领取1个积分</h3>
+                        <h4>连续第二天领取，可领取积分数量增加1个。</h4>
+                    </dt>
+                    <dd><a class="btn">领取</a></dd>
+                </dl>
+            </div>
+            <div class="con2_item">
+            	<dl>
+                	<dt>
+                    	<h2>好运奖</h2>
+                    </dt>
+                </dl>
+                <div class="scratch_box">
+                	<div id="scratch_start" style="display:none;">
+                        <h2><img src="images/title2.png" /></h2>
+                        <div class="canvas_wrap">
+                            <canvas id="scratch_card"></canvas>
+                            <div id="card_txt">10分</div>
+                        </div>
+                        <div class="scratch_again"><a class="btn">再刮一次</a></div>
+                    </div>
+                    <div id="scratch_end">
+                        <h2><img src="images/title2_2.png" /></h2>
+                        <div class="scratch_show">刮奖区</div>
+                    </div>
+                </div>
+                <div class="scratch_info">
+                	<span class="fl">我有 <strong>10</strong> 张刮刮卡</span>
+                    <span class="fr">
+                    	<input type="text" placeholder="输入验证码" />
+                        <a class="btn">兑换</a>
+                    </span>
+                    <p>输入验证码兑换刮刮卡，每人每天可兑换1次</p>
+                </div>
+            </div>
+            <div class="con2_item noneborder">
+            	<dl>
+                	<dt>
+                        <h5>分享活动给朋友，朋友可获得验证码</h5>
+                    </dt>
+                    <dd><a class="btn" onClick="sharebtn()">分享</a></dd>
+                </dl>
+                <div class="act_box">
+                	<h2><img src="images/title3.png" /></h2>
+                    <div id="tab" class="tab_app">
+                        <ul class="tab_btn tab_app_btn">
+                            <li class="active">安装APP</li>
+                            <li>写祝福</li>
+                        </ul>
+                        <div class="tab_con tab_app_con">
+                            <div style="display:block;">
+                            	<ul class="app_list">
+                                	<li class="active">
+                                    	<a>
+                                        	<img src="images/app.jpg" />
+                                            <span>植物大战僵尸</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                    	<a>
+                                        	<img src="images/app.jpg" />
+                                            <span>下载中</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                    	<a>
+                                        	<img src="images/app.jpg" />
+                                            <span>已下载</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                    	<a>
+                                        	<img src="images/app.jpg" />
+                                            <span>植物大战僵尸</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                    	<a>
+                                        	<img src="images/app.jpg" />
+                                            <span>植物大战僵尸</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                    	<a>
+                                        	<img src="images/app.jpg" />
+                                            <span>植物大战僵尸</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                    	<a>
+                                        	<img src="images/app.jpg" />
+                                            <span>植物大战僵尸</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                    	<a>
+                                        	<img src="images/app.jpg" />
+                                            <span>植物大战僵尸</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <a class="btn" id="changeBtn">换一换</a>
+                                <p>温馨提示：每下载并成功安装一个应用可获取一张刮刮卡</p>
+                            </div>
+                            <div>
+                            	<h3>写上你对乐商店的生日祝福发送至新浪微博<strong>@乐商店</strong>可获取一张刮刮卡,每天最多可获取一张.</h3>
+                                <textarea id="weibo_txt"></textarea>
+                            	<a class="btn" onClick="shareweibo()">分享至新浪微博</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="con3">
+    	<div class="title"><h2><img src="images/title4.png" /></h2></div>
+        <div class="con3_wrap">
+        	<h3>分享您的“联想奋斗史”截图至新浪微博@乐商店，就有机会成为幸运儿，获得神秘好礼！</h3>
+            <img src="images/pic2.jpg" />
+        </div>
+    </div>
+	
+    <div class="contact">
+    	<h2>我们在乐商店新浪官方微博也有回馈活动。如您对本次活动有疑问或者建议，请联系乐商店的官方微信。</h2>
+        <ul>
+        	<li>
+            	<img src="images/icon4.png" />
+                <h3>新浪微博：乐商店</h3>
+            </li>
+            <li>
+            	<img src="images/icon5.png" />
+                <h3>微信：leshangdian</h3>
+            </li>
+        </ul>
+        <h4><div></div></h4>
+    </div>
+    <!--<div id="area_box"></div>-->
+    
+</div>
+
+<!--<div id="mask" class="pa" style="display:none;"></div>
+<div id="dialogWrapper" class="pf" style="display:none;">
+	<section class="pop_wrap">
+    	<h2>恭喜！<br/>您已兑换<strong>手机一部</strong></h2>
+        <p>奖品将在活动结束后<strong>*工作日内</strong>发放，请填写您的联系信息，并仔细检查，我们将会把奖品发放至你填写的地址，地址填写不完整将视为自动放弃奖品！</p>
+        <div class="winner_info" id="winner_tel">
+        	<p><label>姓名：</label><input type="text" name="uname" /></p>
+            <p><label>手机号码：</label><input type="text" name="tel" /></p>
+            <p><label>收货地址：</label></p>
+            <p id="area_box" class="select_type1"></p>
+            <p class="address"><input type="text" placeholder="详细地址" name="address" /></p>
+        </div>
+        <div class="btn_box">
+        	<a class="btn" onClick="closePop()">取消</a>
+            <a class="btn" onclick="submit_mob()">确认</a>
+        </div>
+    </section>
+</div>
+
+<div id="dialogWrapper" class="pf" style="display:none;">
+	<section class="pop_wrap">
+    	<h2>恭喜！<br/>您已兑换<strong>30元充值卡</strong></h2>
+        <p>请牢记你的充值卡序列号。关闭此页面后你可以在“我的奖品”页面查看。</p>
+        <h4>充值卡序列号：</h4>
+        <h5>1268966889668799668007</h5>
+        <div class="btn_box">
+        	<a class="btn" onClick="closePop()">关闭</a>
+        </div>
+    </section>
+</div>
+
+
+<div id="dialogWrapper" class="pf" style="display:none;">
+	<section class="pop_wrap">
+    	<h2>恭喜！<br/>您已兑换<strong>30元充值卡</strong></h2>
+        <p>我们将会在活动结束后7个工作日把话费充值到你所填写的手机号。提交之前请仔细核查，信息填写错误将视为自动放弃奖品。</p>
+        <div class="winner_info" id="winner_card">
+        	<p class="select_type2">
+            	<label>运营商：</label>
+                <select>
+                    <option>中国移动</option>
+                    <option>中国联通</option>
+                    <option>中国电信</option>
+                </select>
+            </p>
+            <p class="select_type2">
+            	<label>省份：</label>
+                <select id="province_sel"><option value="请选择">请选择</option><option value="北京">北京</option><option value="广东">广东</option><option value="上海">上海</option><option value="天津">天津</option><option value="重庆">重庆</option><option value="辽宁">辽宁</option><option value="江苏">江苏</option><option value="湖北">湖北</option><option value="四川">四川</option><option value="陕西">陕西</option><option value="河北">河北</option><option value="山西">山西</option><option value="河南">河南</option><option value="吉林">吉林</option><option value="黑龙江">黑龙江</option><option value="内蒙古">内蒙古</option><option value="山东">山东</option><option value="安徽">安徽</option><option value="浙江">浙江</option><option value="福建">福建</option><option value="湖南">湖南</option><option value="广西">广西</option><option value="江西">江西</option><option value="贵州">贵州</option><option value="云南">云南</option><option value="西藏">西藏</option><option value="海南">海南</option><option value="甘肃">甘肃</option><option value="宁夏">宁夏</option><option value="青海">青海</option><option value="新疆">新疆</option><option value="香港">香港</option><option value="澳门">澳门</option><option value="台湾">台湾</option><option value="海外">海外</option><option value="其他">其他</option></select>
+            </p>
+            <p><label>手机号码：</label><input type="text" /></p>
+        </div>
+        <div class="btn_box">
+        	<a class="btn" onClick="closePop()">取消</a>
+            <a class="btn">确认</a>
+        </div>
+    </section>
+</div>
+
+<div id="dialogWrapper" class="pf" style="display:none;">
+	<section class="pop_wrap">
+    	<h2>恭喜您！<br/>获得<strong>30元充值卡</strong></h2>
+        <p>你也可以将活动通过微信分享给您的朋友，分享后您的朋友将获得一个验证码，可用验证码兑换生日卡哟~~</p>
+        <h3><input type="checkbox" />不再提示</h3>
+        <div class="btn_box">
+        	<a class="btn">取消</a>
+            <a class="btn">分享给朋友</a>
+        </div>
+    </section>
+</div>-->
+
+
+
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<!--<script type="text/javascript" src="js/cities.js"></script>-->
+</body>
+</html>

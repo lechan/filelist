@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+/* CSS reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fiedlset,input,textarea,p,blockquote,th,td,figure,button,time,span,i{margin:0; padding:0;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-text-size-adjust:none;}
+table{border-collapse:collapse; border-spacing:0;}
+fieldset,img,button{border:0}
+address,b,caption,cite,code,dfn,em,th,var{font-style:normal; font-weight:normal; font-variant:normal}
+ol,ul{list-style:none}
+caption,th{text-align:left}
+h1,h2,h3,h4,h5,h6{font-size:100%; font-weight:normal}
+q:before,q:after{content:""}
+blockquote, q{quotes: none}
+abbr,acronym{border:0}
+a{text-decoration: none; color:inherit}
+i,b,em,strong{font-style:normal}
+input,button,select,textarea{outline:none}
+
+.fb{font-weight:bold;}
+
+/*position*/
+.bcenter{margin:0 auto}
+.tcenter{text-align:center}
+.fl{float:left}
+.fr{float:right}
+.pr{position:relative}
+.pa{position:absolute}
+.pf{position:fixed}
+.oh{overflow:hidden}
+.none{display:none; visibility:hidden; width:0; height:0; overflow:hidden;}
+.block{display:block}
+
+
+/* CSS Document */
+body{ font-family:"微软雅黑";}
+.header{ width:100%; height:40px; background:#50535B; line-height:40px; position:fixed; z-index:2000;}
+.wrap{ max-width:950px; min-width:320px; margin:0 auto; height:100%; position:relative;}
+.logo{ font-size:14px; color:#fff; float:left; font-weight:bold;}
+.header_link{ float:right; height:40px;}
+.header_link li{ display:inline-block; font-size:14px; color:#fff; margin-left:10px;}
+.header_link li a{ margin-right:10px;}
+.footer{ background:#F2F2F2; width:100%; padding:20px 0px; overflow:hidden;}
+.copyright{ font-size:16px; color:#5c5c5c; float:right; text-align:right;}
+.content{ width:100%;}
+.section1_l{ float:left; width:60%; overflow:hidden; position:absolute; left:0px; top:50%; margin-top:-150px;}
+.section1_l h1 img{ width:90%;}
+.section1_l h2{ font-size:60px; color:#8e795c;}
+.section1_l h3{ font-size:20px; color:#8e795c; margin-bottom:30px; font-weight:bold;}
+.section1_l p{ font-size:18px; color:#827d75;}
+.section1_r{ float:right; width:40%; overflow:hidden; position:absolute; right:0px; top:50%; margin-top:-190px;}
+.section2{ background:url(../images/con2_bg.png) no-repeat center bottom #41455E; background-size:auto 90%;}
+.section2_content{ width:100%; color:#8fb5ca; text-align:left; position:absolute; top:50%; margin-top:-150px;}
+.section2_content h2{ font-size:48px; width:400px; margin:20px auto;}
+.section2_content h3{ font-size:30px; width:400px; margin:0px auto;}
+.section2_content h4{ font-size:18px; width:400px; margin:0 auto;}
+.section3_content{ text-align:center; width:100%; position:absolute; top:50%; margin-top:-250px;}
+.section3_content h2{ font-size:20px; color:#8e795c; margin-bottom:20px;}
+.section3_content h2 strong{ font-size:36px; color:#f36f6f;}
+.section3_content h3{ max-width:800px; margin:0 auto;}
+.section3_content h3 img{ width:100%;}
+.section4{ background:url(../images/con4_bg.jpg) no-repeat center bottom #ACE4E2; background-size:auto 90%;}
+.section4 .pop_txt{ width:364px; height:144px; position:absolute; bottom:8%; left:8%; background:url(../images/txt_pop.png) no-repeat 0 0; background-size:contain;}
+.section4 .pop_txt p{ padding:50px 10px 0px 20px; font-size:18px; color:#fff;}
+.section4 .pop_txt p strong{ font-weight:bold;}
+.section5{ background:url(../images/con5_bg.png) no-repeat center bottom #E4F8FE;}
+.section5_content{ width:100%; color:#8fb5ca; position:absolute; top:50%; margin-top:-230px;}
+.section5_content h2{ font-size:36px; color:#8e795c; margin:20px auto; text-align:center;}
+.contact{ padding:60px 0px;}
+.contact .title{ font-size:24px; color:#fff; width:90%; border-radius:5px; background:#8F8F8F; padding:10px 20px; margin:0 auto 20px;}
+.contact p{ width:90%; margin:0 auto; font-size:24px; line-height:40px; color:#9b968e;}
+.contact ul{ text-align:center;}
+.contact ul li{ display:inline-block; text-align:center; margin:20px;}
+.contact ul li img{ display:block;}
+.contact ul li h3{ text-align:center; font-size:24px; color:#9b968e; line-height:40px;}
+.address_pic{ width:90%; margin:20px auto;}
+
+@media handheld and (max-width: 640px), screen and (max-device-width: 640px), screen and (max-width: 640px)  {
+.header .logo{ font-size:16px; float:none; text-align:center;}
+.header_link{ float:right; height:40px; display:none;}
+.header_link li{ font-size:7px; margin-left:5px;}
+.header_link li a{ margin-right:5px;}
+.copyright{ font-size:8px;}
+.section1_l{ width:230px; top:10%; left:50%; margin-top:0px; margin-left:-115px;}
+.section1_l h1 img{ width:90%;}
+.section1_l h2{ font-size:24px;}
+.section1_l h3{ font-size:10px; margin-bottom:15px;}
+.section1_l p{ font-size:9px;}
+.section1_r{ width:60%; margin-top:0px; left:50%; margin-left:-100px;}
+.section1_r img{ width:169px;}
+.section2{ background:url(../images/con2_bg.png) no-repeat center bottom #41455E; background-size:100% auto;}
+.section2_content{ width:100%; color:#8fb5ca; text-align:left; position:absolute; top:50%; margin-top:-150px;}
+.section2_content h2{ font-size:24px; width:auto; padding-left:20px;}
+.section2_content h3{ font-size:15px; width:auto; padding-left:20px;}
+.section2_content h4{ font-size:9px; width:auto; padding-left:20px;}
+.section3_content{ margin-top:-125px;}
+.section3_content h2{ font-size:10px; margin-bottom:20px;}
+.section3_content h2 strong{ font-size:18px;}
+.section3_content h3{ max-width:800px; margin:0 auto;}
+.section3_content h3 img{ width:100%;}
+.section4{ background:url(../images/con4_bg.jpg) no-repeat center #ACE4E2; background-size:100% auto;}
+.section4_content{ height:250px; position:absolute; top:50%; margin-top:-125px;}
+.section4 .pop_txt{ width:160px; height:72px; bottom:20px; left:0px;}
+.section4 .pop_txt p{ padding:25px 0px 0px 5px; font-size:9px;}
+.section5{ background-size:100% auto;}
+.section5_content{ margin-top:-115px;}
+.section5_content h2{ font-size:18px; margin:10px auto;}
+.contact{ padding:30px 0px;}
+.contact .title{ font-size:12px; padding:5px 10px; margin:0 auto 10px;}
+.contact p{ font-size:12px; line-height:20px;}
+.contact ul li{ margin:10px;}
+.contact ul li img{ width:95px;}
+.contact ul li h3{font-size:12px; line-height:20px;}
+.address_pic{ margin:10px auto;}
+.address_pic img{ width:100%;}
+.footer img{ width:72px;}
+.footer .logo{ margin-left:20px;}
+.footer .copyright{ margin-right:20px;}
+}

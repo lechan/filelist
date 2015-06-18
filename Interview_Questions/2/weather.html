@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<h2>天气接口测试(jsonp)</h2>
+<h3>接口实例：</h3>
+<p><a href="http://www.52ladybug.com/weather/?city=上海&day=1&type=simple&callback=weather" target="_blank">http://www.52ladybug.com/weather/?city=上海&day=1&type=simple&callback=weather</a></p>
+
+<h3>请输入城市名后（不要测试北京），点击按钮</h3>
+<input type="text" id="txt" />
+<input type="button" id="btn" value="点击" />
+<script type="text/javascript">
+/*
+首先公布接口的地址
+http://www.52ladybug.com/weather/?city=上海&day=1&type=simple&callback=weather
+
+参数说明：beta版有4个参数
+city：城市，支持全国2600个主要城市，必填
+day：天数，1~5之间任意整数，此处控制返回数据中的天数，选填
+type：形式，此处为simple时，返回的数据将被精简，选填
+callback：回调函数名，此处用来指定大家的回调函数，返回值将作为参数直接传入指定的函数中，选填（建议填写）
+返回值说明：返回值为json格式，utf8编码
+基本信息：
+cityId ----城市id
+cityName ---- 城市名
+buildTime ---- 信息发布时间（24小时制，11表示11点，18表示下午6点）
+date ---- 当天日期
+week ---- 当天星期
+info ---- 天气信息，json格式，每个json值为数组格式
+info.weather ---- 天气，根据参数day的数字返回1~6天的天气数据，依次为今天开始往后的6天天气。
+
+开启simple模式后数据会被精简
+info.wind ---- 风向，根据参数day的数字返回1~6天的风向数据
+info.speen ---- 风力，格式同上
+info.tempLow ---- 最低温度（摄氏），格式同上
+info.tempHight ---- 最高温度（摄氏），格式同上
+附加信息：当开启simple模式后附加信息不显示
+training ----晨练指数
+drying ---- 晾晒指数
+uv ---- 紫外线指数
+carWash ---- 洗车指数
+travel ---- 旅游指数
+*/
+
+
+
+</script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+<!--
+	
+	$("#btn").click(function(){
+		var d = $('#txt').val(),html;
+		var loadUrl = 'http://www.52ladybug.com/weather/?city='+d+'&day=1&type=simple&callback=info';
+		$.getScript(loadUrl,function (data) {
+			var w = data.info;//获取天气预报的JSON
+			html=w.date+"<br />"+w.info+"<br />"+w.tempLow+"<br />"+w.tempHight+"<br />";
+			alert(info.date);
+		});
+	});
+
+
+//-->
+</script>
+</body>
+</html>

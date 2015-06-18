@@ -1,0 +1,9 @@
+<?php
+header("Content-Type: text/cache-manifest");
+?>
+CACHE MANIFEST
+# 2014-10-20
+jquery.min.js
+
+NETWORK:
+*

@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+</head>
+
+<body>
+<div id="abc">123</div>
+<script type="text/javascript">
+document.domain = 'lechan.duapp.com';
+function video(){
+	alert(1);	
+}
+</script>
+</body>
+</html>

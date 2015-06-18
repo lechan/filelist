@@ -1,0 +1,71 @@
+define(["app/tool","app/lazyload","lib/fastclick"],function(t,lazy) {
+	"use strict";
+	var App = {
+		config : {
+			listUrl : 'MOCK/list.json'+'?t='+new Date().getTime(),
+			loginUrl : ''+'?t='+new Date().getTime()
+		},
+		tpl : {
+			listCon : '<div class="topicItem"></div>',
+			listItem : '\
+			<li>\
+            	<a href="#{url}">\
+                	#{topItem}\
+                    <div class="listImg"><img class="lazy" dataimg="#{iconAddr}" src="images/grey.png" /></div>\
+                    <h3>#{name}</h3>\
+                    <h4><strong>#{scorePrice}</strong><i>#{promotionWords}</i></h4>\
+                    #{bottomItem}\
+                </a>\
+            </li>\
+			',
+			popbox : {
+				"test" : '\
+				<section class="pop_wrap">\
+					<h2 style="padding:20px 0px;">测试弹窗</h2>\
+				</section>'	
+			}
+		},
+		getData : function(){
+			var self = this;
+			$.ajax({
+				url:self.config.indexUrl,
+				type:"GET",
+				dataType:"json",
+				success: function(data){
+					self.data = data;
+					self.renderMainCon();
+				},
+				error: function(){
+					alert("数据错误");	
+				}	
+			});	
+		},
+		renderMainCon : function(){
+			var self = this,i,topicNum = self.data.normalTopics.length;
+			$("#mainPage").append(self.tpl.userCon).append(self.tpl.lvCon);
+			for(i=0;i<topicNum;i++){
+				$("#mainPage").append(self.tpl.topicCon);
+				self.topicItem(i);	
+			}
+			$(self.tpl.bannerCon).insertBefore($("#mainPage div.topicItem").eq(1));
+			$(self.tpl.tagCon).insertBefore($("#mainPage div.topicItem").eq(1));
+			
+			self.user();
+			self.lv();
+			self.banner();
+			self.tag();
+			self.countdownHandler();
+			lazy.init();
+		},
+		init : function(){
+			//this.getData();			
+		}
+	}
+		
+	App.init();
+	
+	document.addEventListener('DOMContentLoaded', function() {
+		FastClick.attach(document.body);
+	}, false);
+	
+});

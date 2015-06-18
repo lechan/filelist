@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" /> 
+<title>Lv专区</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script type="text/javascript" src="js/lib/require.js" data-main="js/conf/lvConf"></script>
+</head>
+
+<body data-tracker-name="lv">
+<input type="hidden" id="start" value="0" data-pagenum="10" />
+<div class="blankPage blankBg2 blankLv">
+    <div class="blankIcon blankPos1"></div>
+    <h4>没有找到您的专享商品</h4>
+    <h3>等级越高，商品越丰富，折扣越高哦！</h3>
+</div>
+<div class="wrap" id="mainPage">
+	
+	<div class="lvBanner">
+    	<img src="images/grey.png" id="topBanner" />
+    	<div class="myLv"><i></i>我的专享</div>
+        <input type="hidden" id="isMyLv" value="false" />
+    </div>
+    <div class="mainList lvList">
+    	<ul>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

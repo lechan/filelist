@@ -1,0 +1,201 @@
+{
+   "data": {
+		"channelCode":2,
+        "c": 60,
+        "si": 1,
+        "totalCount": 60,
+        "videos": [
+            {
+                "aid": 5136748,
+                "clarityCode": 4,
+                "updateDate": "2013-12-22",
+                "isDownload": 1,
+                "feeType": 0,               
+                "sourceCode": 1,
+                "timeLength": 1795,
+                "vid": "1484959",               
+                "name": "天龙八部（2013）第1集",
+                "order": 1
+            },
+            {
+                "aid": 5136748,
+                "clarityCode": 4,
+                "updateDate": "2013-12-22",
+                "isDownload": 0,
+                "feeType": 0,               
+                "sourceCode": 1,
+                "timeLength": 1795,
+                "vid": "1484959",               
+                "name": "天龙八部（2013）第1集",
+                "order": 1
+            },
+            {
+                "aid": 5136748,
+                "clarityCode": 4,
+                "updateDate": "2013-12-22",
+                "isDownload": 0,
+                "feeType": 0,               
+                "sourceCode": 1,
+                "timeLength": 1795,
+                "vid": "1484959",               
+                "name": "天龙八部（2013）第1集",
+                "order": 1
+            },
+            {
+                "aid": 5136748,
+                "clarityCode": 4,
+                "updateDate": "2013-12-22",
+                "isDownload": 0,
+                "feeType": 0,               
+                "sourceCode": 1,
+                "timeLength": 1795,
+                "vid": "1484959",               
+                "name": "天龙八部（2013）第1集",
+                "order": 1
+            },
+            {
+                "aid": 5136748,
+                "clarityCode": 4,
+                "updateDate": "2013-12-22",
+                "isDownload": 0,
+                "feeType": 0,               
+                "sourceCode": 1,
+                "timeLength": 1795,
+                "vid": "1484959",               
+                "name": "天龙八部（2013）第1集",
+                "order": 1
+            },
+            {
+                "aid": 5136748,
+                "clarityCode": 4,
+                "updateDate": "2013-12-22",
+                "isDownload": 0,
+                "feeType": 0,               
+                "sourceCode": 1,
+                "timeLength": 1795,
+                "vid": "1484959",               
+                "name": "天龙八部（2013）第1集",
+                "order": 1
+            },
+            {
+                "aid": 5136748,
+                "clarityCode": 4,
+                "updateDate": "2013-12-22",
+                "isDownload": 0,
+                "feeType": 0,               
+                "sourceCode": 1,
+                "timeLength": 1795,
+                "vid": "1484959",               
+                "name": "天龙八部（2013）第1集",
+                "order": 1
+            },
+            {
+                "aid": 5136748,
+                "clarityCode": 4,
+                "updateDate": "2013-12-22",
+                "isDownload": 0,
+                "feeType": 0,               
+                "sourceCode": 1,
+                "timeLength": 1795,
+                "vid": "1484959",               
+                "name": "天龙八部（2013）第1集",
+                "order": 1
+            },
+            {
+                "aid": 5136748,
+                "clarityCode": 4,
+                "updateDate": "2013-12-22",
+                "isDownload": 0,
+                "feeType": 0,               
+                "sourceCode": 1,
+                "timeLength": 1795,
+                "vid": "1484959",               
+                "name": "天龙八部（2013）第1集",
+                "order": 1
+            },
+            {
+                "aid": 5136748,
+                "clarityCode": 4,
+                "updateDate": "2013-12-22",
+                "isDownload": 0,
+                "feeType": 0,               
+                "sourceCode": 1,
+                "timeLength": 1795,
+                "vid": "1484959",               
+                "name": "天龙八部（2013）第1集",
+                "order": 1
+            },
+            {
+                "aid": 5136748,
+                "clarityCode": 4,
+                "updateDate": "2013-12-22",
+                "isDownload": 0,
+                "feeType": 0,               
+                "sourceCode": 1,
+                "timeLength": 1795,
+                "vid": "1484959",               
+                "name": "天龙八部（2013）第1集",
+                "order": 1
+            },
+            {
+                "aid": 5136748,
+                "clarityCode": 4,
+                "updateDate": "2013-12-22",
+                "isDownload": 0,
+                "feeType": 0,               
+                "sourceCode": 1,
+                "timeLength": 1795,
+                "vid": "1484959",               
+                "name": "天龙八部（2013）第1集",
+                "order": 1
+            },
+            {
+                "aid": 5136748,
+                "clarityCode": 4,
+                "updateDate": "2013-12-22",
+                "isDownload": 0,
+                "feeType": 0,               
+                "sourceCode": 1,
+                "timeLength": 1795,
+                "vid": "1484959",               
+                "name": "天龙八部（2013）第1集",
+                "order": 1
+            },
+            {
+                "aid": 5136748,
+                "clarityCode": 1,
+                "updateDate": "2013-12-23",        
+                "isDownload": 0,
+                "feeType": 0,          
+                "sourceCode": 1,
+                "timeLength": 1979,              
+                "vid": "1484969",
+                "video_name": "天龙八部（2013）第2集",
+                "order": 2
+            },{
+                "aid": 5136748,
+                "clarityCode": 1,
+                "updateDate": "2013-12-23",        
+                "isDownload": 1,
+                "feeType": 0,          
+                "sourceCode": 1,
+                "timeLength": 1979,              
+                "vid": "1484969",
+                "video_name": "天龙八部（2013）第2集",
+                "order": 2
+            },{
+                "aid": 5136748,
+                "clarityCode": 1,
+                "updateDate": "2013-12-23",        
+                "isDownload": 1,
+                "feeType": 0,          
+                "sourceCode": 1,
+                "timeLength": 1979,              
+                "vid": "1484969",
+                "video_name": "天龙八部（2013）第2集",
+                "order": 2
+            }
+        ]
+    },
+    "success": true
+}

@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="minimum-scale=0.5,maximum-scale=0.5,initial-scale=0.5,user-scalable=no,width=device-width" />
+<title>触 &middot; 爱</title>
+<script type="text/javascript">
+(function(a){function b(){var b=g.getBoundingClientRect().width;b/c>540&&(b=540*c),a.rem=b/16,g.style.fontSize=a.rem+"px"}var c,d,e,f=a.document,g=f.documentElement,h=f.querySelector('meta[name="viewport"]'),i=f.querySelector('meta[name="flexible"]');if(h){console.warn("将根据已有的meta标签来设置缩放比例");var j=h.getAttribute("content").match(/initial\-scale=(["']?)([\d\.]+)\1?/);j&&(d=parseFloat(j[2]),c=parseInt(1/d))}
+else if(i){var j=i.getAttribute("content").match(/initial\-dpr=(["']?)([\d\.]+)\1?/);j&&(c=parseFloat(j[2]),d=parseFloat((1/c).toFixed(2)))}if(!c&&!d){var k=(a.navigator.appVersion.match(/android/gi),a.navigator.appVersion.match(/iphone/gi)),c=a.devicePixelRatio;c=k?c>=3?3:c>=2?2:1:1,d=1/c}if(g.setAttribute("data-dpr",c),!h)if(h=f.createElement("meta"),h.setAttribute("name","viewport"),h.setAttribute("content","initial-scale="+d+", maximum-scale="+d+", minimum-scale="+d+", user-scalable=no"),g.firstElementChild)g.firstElementChild.appendChild(h);else{var l=f.createElement("div");l.appendChild(h),f.write(l.innerHTML)}a.dpr=c,a.addEventListener("resize",function(){clearTimeout(e),e=setTimeout(b,300)},!1),a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(e),e=setTimeout(b,300))},!1),"complete"===f.readyState?f.body.style.fontSize=12*c+"px":f.addEventListener("DOMContentLoaded",function(){f.body.style.fontSize=12*c+"px"},!1),b()})(window);
+</script>
+</head>
+
+<body>
+<style type="text/css">
+*{ margin:0px; padding:0px;}
+body{ overflow:hidden;}
+#loveHeart{width:650px;height:650px; margin:0 auto; position:relative; overflow:hidden;}
+#garden{width:100%;height:100%; position:absolute; top:0px; left:0px;}
+#words{font-family:"楷体";width:180px;font-size:30px;color:#666; text-align:left; display:block; line-height:40px; margin:185px auto 0px; display:none;}
+#words strong{ font-weight:100; margin-right:0px; color:#666; -webkit-transition:all linear 1s; transition:all linear 1s;}
+</style>
+<div id="loveHeart">
+	<canvas id="garden"></canvas>
+    <div id="words">
+        <p><strong>付</strong>诸曲水涧</p>
+        <p><strong>蓉</strong>颜似天仙</p>
+        <p><strong>我</strong>欲掀汝帘</p>
+        <p><strong>爱</strong>涌难相劝</p>
+        <p><strong>你</strong>执手痴恋</p>
+    </div>
+</div>
+<script type="text/javascript" src="../js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="js/garden_dev.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

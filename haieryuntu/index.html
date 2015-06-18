@@ -1,0 +1,424 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>海尔云图</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="viewport" content="minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no,width=device-width" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta http-equiv="Cache-Control" content="max-age=3600"/>
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+</head>
+
+<body>
+
+<!--导航-->
+<nav class="main_nav">
+	<div class="login_box" id="login_info">
+    	<h2><img src="images/login.png" width="75" height="75" /></h2>
+        <h3>点击登录</h3>
+    </div>
+    <ul class="main_nav_list">
+    	<li class="news_btn"><span>新闻</span></li>
+        <li class="search_btn" data-name="search"><span>搜索</span></li>
+        <li class="collect_btn" data-name="collect"><span>收藏</span></li>
+        <li class="push_btn" data-name="push"><span>推送</span></li>
+        <li class="history_btn" data-name="history"><span>历史</span></li>
+        <li class="set_btn" data-name="set"><span>设置</span></li>
+        <li class="quit_btn" style="display:none;"><span>退出</span></li>
+    </ul>
+</nav>
+<div class="nav_mask"></div>
+
+<!--首页-->
+<section class="page_item" style="display:block;" id="page_index">
+<header class="page_header">
+	<div class="fl header_left"><span class="nav_btn"></span></div>
+    <h1 class="header_title"><span class="logo"></span></h1>
+    <div class="fr header_right"></div>
+</header>
+<nav class="page_nav">
+	<div class="nav_wrap">
+        <div class="swiper-wrapper" id="page_nav_con">
+			
+        </div>
+        <div class="pagination" style="display: none;"></div>
+    </div>
+    <div class="change_nav">
+    	<span id="subscribe_btn">+</span>
+    </div>
+</nav>
+
+<!--<nav class="page_sub_nav">
+	<div class="sub_nav_wrap">
+    	<div class="swiper-wrapper" id="sub_nav_con">
+			<div class="swiper-slide">
+                <div class="sub_title current">测试1</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="sub_title">测试2</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="sub_title">测试2</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="sub_title">测试2</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="sub_title">测试2</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="sub_title">测试2</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="sub_title">测试2</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="sub_title">测试2</div>
+            </div>
+        </div>
+        <div class="pagination" style="display: none;"></div>
+    </div>
+</nav>-->
+
+<div class="swiper-container">
+    <div class="swiper-wrapper" id="list_wrap"></div>
+    <div class="pagination" style="display: none;"></div>
+</div>
+</section>
+
+<!--详情页-->
+<section class="page_item" id="page_detail">
+<header class="page_header">
+	<div class="fl header_left"><span class="back_btn" id="page_detail_close"></span></div>
+    <h1 class="header_title">云图新闻</h1>
+    <div class="fr header_right"><span class="share_btn">分享</span></div>
+</header>
+<div id="detail">
+    <div class="detail"></div>
+</div>
+<div class="func_bar">
+	<div id="topic_before">
+        <span class="fl topic_input_btn" id="topic_input_btn">我来说两句</span>
+        <span class="fl topic_list_btn" id="topic_list_btn"><i></i>10</span>
+        <span class="fr collectNews_btn" id="collect_btn">★</span>
+    </div>
+    <div id="topic_after" style="display:none;">
+    	<input type="text" placeholder="我来说两句" class="topic_input" id="topic_input" />
+        <div class="topic_btn_group">
+            <h2 class="fl">
+                <span class="btn_grey" id="topic_cancel">取消</span>
+            </h2>
+            <h2 class="fr">
+                <span class="btn_red" id="topic_submit">发布</span>
+            </h2>
+        </div>
+    </div>
+</div>
+</section>
+
+<!--评论页-->
+<section class="page_item" id="page_topic">
+
+<div class="loading_mask"></div>
+
+<header class="page_header">
+	<div class="fl header_left"><span class="back_btn" id="topic_list_close"></span></div>
+    <h1 class="header_title">云图新闻</h1>
+    <div class="fr header_right"></div>
+</header>
+<div class="topic_con">
+	<h1>张瑞敏在“首届中国创新发展论坛”上的演讲</h1>
+    <div class="topic_info">
+    	<span class="fl">青岛日报</span>
+        <span class="fr">2014-07-01 11:43:50</span>
+    </div>
+    <div class="topic_list_wrap">
+        <div class="topic_list">
+            <ul>
+                <li>
+                    <h2>
+                        <span class="fl">云图教主</span>
+                        <span class="fr">59分钟前</span>
+                    </h2>
+                    <p>我们和海尔一起，变得更加强大！我们和海尔一起，变得更加强大！</p>
+                </li>
+                <li>
+                    <h2>
+                        <span class="fl">云图教主</span>
+                        <span class="fr">59分钟前</span>
+                    </h2>
+                    <p>我们和海尔一起，变得更加强大！我们和海尔一起，变得更加强大！</p>
+                </li>
+                <li>
+                    <h2>
+                        <span class="fl">云图教主</span>
+                        <span class="fr">59分钟前</span>
+                    </h2>
+                    <p>我们和海尔一起，变得更加强大！我们和海尔一起，变得更加强大！</p>
+                </li>
+                <li>
+                    <h2>
+                        <span class="fl">云图教主</span>
+                        <span class="fr">59分钟前</span>
+                    </h2>
+                    <p>我们和海尔一起，变得更加强大！我们和海尔一起，变得更加强大！</p>
+                </li>
+                <li>
+                    <h2>
+                        <span class="fl">云图教主</span>
+                        <span class="fr">59分钟前</span>
+                    </h2>
+                    <p>我们和海尔一起，变得更加强大！我们和海尔一起，变得更加强大！</p>
+                </li>
+                <li>
+                    <h2>
+                        <span class="fl">云图教主</span>
+                        <span class="fr">59分钟前</span>
+                    </h2>
+                    <p>我们和海尔一起，变得更加强大！我们和海尔一起，变得更加强大！</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="func_bar">
+	<div id="topic_before2">
+        <span class="fl topic_input_btn" id="topic_input_btn2">我来说两句</span>
+        <span class="fr topic_back_btn" id="topic_back">原文</span>
+    </div>
+    <div id="topic_after2" style="display:none;">
+    	<input type="text" placeholder="我来说两句" class="topic_input" id="topic_input2" />
+        <div class="topic_btn_group">
+            <h2 class="fl">
+                <span class="btn_grey" id="topic_cancel2">取消</span>
+            </h2>
+            <h2 class="fr">
+                <span class="btn_red" id="topic_submit2">发布</span>
+            </h2>
+        </div>
+    </div>
+</div>
+</section>
+
+<!--频道订阅-->
+<section class="page_item" id="chanel_subscribe">
+
+<div class="loading_mask"></div>
+
+<header class="page_header">
+	<div class="fl header_left"><span class="back_btn" id="chanel_subscribe_close"></span></div>
+    <h1 class="header_title">频道订阅</h1>
+    <div class="fr header_right"></div>
+</header>
+<div class="chanel_subscribe_con">
+	<div class="chanel_subscribe_selected">
+    	<ul class="chanel_subscribe_list" id="chanel_subscribe_selected">
+
+        </ul>
+        <h2>点击去除频道<br/>按住拖动进行排序</h2>
+    </div>
+    <div class="chanel_subscribe_cancel">
+    	<ul class="chanel_subscribe_list" id="chanel_subscribe_cancel">
+        	
+        </ul>
+    </div>
+</div>
+
+</section>
+
+<!--登录-->
+<section class="page_item" id="page_login">
+<header class="page_header">
+	<div class="fl header_left"><span class="back_btn" id="page_login_close"></span></div>
+    <h1 class="header_title">登录</h1>
+    <div class="fr header_right"></div>
+</header>
+<div class="login_con" id="login_box">
+	<p style="height:51px; overflow:hidden;"><input type="text" placeholder="海尔员工号/用户名" class="username" /></p>
+    <p><input type="password" placeholder="portal密码/密码" class="password" /></p>
+    <p style="margin-top:20px;"><span id="login_submit">登录</span></p>
+    <!--<p style="position:absolute; bottom:100px; left:0px;"><span id="register_page_btn">注册账号</span></p>-->
+</div>
+
+</section>
+
+<!--注册-->
+<section class="page_item" id="page_register">
+<header class="page_header">
+	<div class="fl header_left"><span class="back_btn" id="page_login_close"></span></div>
+    <h1 class="header_title">注册</h1>
+    <div class="fr header_right"></div>
+</header>
+<div class="register_con" id="register_box">
+	<p><label>账号：</label><input type="text" class="username" /></p>
+    <p><label>密码：</label><input type="password" class="password" /></p>
+    <p><label>确认密码：</label><input type="password" class="password_again" /></p>
+    <p style="border-bottom:1px solid #999999;"><label>邮箱：</label><input type="text" class="email" /></p>
+    <h2 style="margin-top:20px;"><span id="register_submit">注册</span></h2>
+</div>
+</section>
+
+<!--搜索-->
+<section class="page_item" id="page_search">
+<header class="page_header">
+	<div class="fl header_left"><span class="back_btn"></span></div>
+    <h1 class="header_title">搜索</h1>
+    <div class="fr header_right"></div>
+</header>
+<div class="search_con">
+	<p><input type="text" placeholder="输入关键字" id="search_input" /></p>
+    <h2><span id="search_btn">搜索</span></h2>
+</div>
+</section>
+
+<!--搜索列表-->
+<section class="page_item" id="page_search_list">
+
+
+
+<header class="page_header">
+	<div class="fl header_left"><span class="back_btn" id="search_back"></span></div>
+    <h1 class="header_title">搜索</h1>
+    <div class="fr header_right"></div>
+</header>
+<div class="search_list_con">
+	<div class="keyword">当前搜索：<strong id="keyword"></strong></div>
+    <div class="search_list" id="search_list_box">
+    	<div class="search_list_wrap">
+            <ul id="search_list">
+                <div class="loading_mask"></div>
+            </ul>
+            <div class="pullUp"><span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多</span></div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!--收藏列表-->
+<section class="page_item" id="page_collect">
+
+<header class="page_header">
+	<div class="fl header_left"><span class="back_btn"></span></div>
+    <h1 class="header_title">我的收藏</h1>
+    <div class="fr header_right"><!--<span class="collect_num">20</span>--></div>
+</header>
+<div class="search_list_con">
+    <div class="search_list" id="collect_list_box">
+    	<div class="search_list_wrap">
+    		<ul id="collect_list">
+            	<div class="loading_mask"></div>
+	        </ul>
+            <div class="pullUp"><span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多</span></div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!--推送列表-->
+<section class="page_item" id="page_push">
+
+<header class="page_header">
+	<div class="fl header_left"><span class="back_btn"></span></div>
+    <h1 class="header_title">推送消息</h1>
+</header>
+<div class="search_list_con">
+    <div class="search_list" id="push_list_box">
+    	<div class="search_list_wrap">
+    		<ul id="push_list">
+            	<div class="loading_mask"></div>
+	        </ul>
+        </div>
+    </div>
+</div>
+</section>
+
+<!--历史列表-->
+<section class="page_item" id="page_history">
+
+<header class="page_header">
+	<div class="fl header_left"><span class="back_btn"></span></div>
+    <h1 class="header_title">历史记录</h1>
+    <div class="fr header_right"></div>
+</header>
+<div class="history_list_con">
+	<div class="history_tab">
+    	<ul>
+        	<li class="active" data-type="1">分享</li>
+            <li data-type="2">阅读</li>
+            <li data-type="3">评论</li>
+        </ul>
+    </div>
+    <div class="search_list" id="history_list_box">
+    	<div class="search_list_wrap">
+    		<ul id="history_list">
+            	<div class="loading_mask"></div>
+	        </ul>
+       	</div>
+    </div>
+</div>
+</section>
+
+<!--设置页-->
+<section class="page_item" id="page_set">
+<header class="page_header">
+	<div class="fl header_left"><span class="back_btn"></span></div>
+    <h1 class="header_title">设置</h1>
+</header>
+<ul class="set_list">
+	<li data-name="setBg"><label>左侧菜单背景</label><span>默认</span></li>
+    <li data-name="setFontsize"><label>字体大小</label><span>中</span></li>
+    <li data-name="clearBuffer"><label>清除缓存</label></li>
+</ul>
+</section>
+
+<!--设置弹窗-->
+<section class="pop" id="setBg">
+	<dl>
+    	<dt>选择左边菜单背景</dt>
+        <dd data-info="navtype1">默认</dd>
+        <dd data-info="navtype2">亮蓝色</dd>
+        <dd data-info="navtype3">深蓝色</dd>
+    </dl>
+    <div class="close_pop">取消</div>
+</section>
+
+<section class="pop" id="setFontsize">
+	<dl>
+    	<dt>选择新闻内容字体</dt>
+        <dd data-info="fonttype1">大</dd>
+        <dd data-info="fonttype2">中</dd>
+        <dd data-info="fonttype3">小</dd>
+    </dl>
+    <div class="close_pop">取消</div>
+</section>
+
+<section class="pop" id="clearBuffer">
+	<dl>
+    	<dt>清除缓存</dt>
+        <dd>确认</dd>
+    </dl>
+    <div class="close_pop">取消</div>
+</section>
+<input type="hidden" id="YZHD_SUBMALL" value="APP" />
+
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+<script type="text/javascript" src="js/idangerous.swiper.min-2.4.1.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript" src="js/func.js"></script>
+
+<script type="text/javascript">
+(function() {
+	var lzhd = document.createElement('script'); lzhd.type = 'text/javascript'; lzhd.async = true;
+	if('https:' != document.location.protocol)
+		lzhd.src = 'http://liangzi1.haier.net:8099/collect-yuntu.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lzhd, s);
+})();
+</script>
+</body>
+</html>

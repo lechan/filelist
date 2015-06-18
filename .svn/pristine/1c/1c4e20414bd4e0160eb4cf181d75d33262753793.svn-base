@@ -1,0 +1,9 @@
+$(function(){
+	adjustHeight();	
+});
+
+
+function adjustHeight(){
+	var h = document.documentElement.clientHeight;
+	$(".section").css("height",h+"px");
+}

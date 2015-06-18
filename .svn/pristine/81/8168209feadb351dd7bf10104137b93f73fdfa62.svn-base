@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2048</title>
+<link rel="stylesheet" type="text/css" href="css/2048.css" />
+<script type="text/javascript" src="js/2048.js"></script>
+</head>
+
+<body>
+<div id="div2048">
+    <a id="start">tap to start :-)</a>
+</div>
+</body>
+</html>

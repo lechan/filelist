@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+*{ margin:0px; padding:0px;}
+html,body{ background:#000;}
+.wrap{ width:640px; height:387px; margin:0 auto; position:relative;-webkit-transform-origin: 50% 0%; -webkit-transform:scale(1.65); cursor: pointer;}
+.box1,.box2{ position:absolute; top:0px; left:0px; width:561px; height:387px;}
+.box3,.box4{ position:absolute; top:0px; left:0px; width:640px; height:387px; z-index:1;}
+.box1{ z-index:1;-webkit-transform: translate3d(0px, 0px, 1px);}
+.box2{ z-index:2;-webkit-transform: translate3d(0px, 0px, 2px);}
+.box3{ z-index:3;-webkit-transform: translate3d(0px, 0px, 3px);}
+.box4{ z-index:4;-webkit-transform: translate3d(0px, 0px, 4px);}
+</style>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#view").toggle(function(){
+		$(".box2").stop().animate({"opacity":0},1000);
+		$(".box4").stop().animate({"opacity":0},1000);
+	},function(){
+		$(".box2").stop().animate({"opacity":1},1000);
+		$(".box4").stop().animate({"opacity":1},1000);	
+		
+	});	
+});
+</script>
+</head>
+
+<body>
+<div class="wrap" id="view">
+	<div class="box1"><img src="images/dolguldur-dof-bg.jpg" /></div>
+	<div class="box2"><img src="images/dolguldur-dof-bg-blurred.jpg" /></div>
+    <div class="box3"><img src="images/dolguldur-dof-gandalf-blurred.png" /></div>
+    <div class="box4"><img src="images/dolguldur-dof-gandalf.png" /></div>
+</div>
+</body>
+</html>

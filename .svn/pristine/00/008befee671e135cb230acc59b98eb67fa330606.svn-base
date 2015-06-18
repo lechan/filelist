@@ -1,0 +1,102 @@
+define(['tool','zepto','swipe','iscroll'], function(t) {
+	"use strict";
+	var App = {
+		config : {
+			url : 'MOCK/index.json'	
+		},
+		tpl : {
+			bannerItem : '<div><a href="#{url}"><img src="#{img}" /></a></div>',
+			bannerDotItem : '<i></i>'
+		},
+		sideBar : function(){
+			$("#mainPage").on("swipeLeft",function(){
+				var self = $(this);
+				if(self.hasClass("swipeR")){
+					$(this).removeClass("swipeR");
+					t.scrollStatus.status = true;
+				}else{
+					$(this).addClass("swipeL");
+					t.scrollStatus.status = false;
+				}
+			}).on("swipeRight",function(){
+				var self = $(this);
+				if(self.hasClass("swipeL")){
+					$(this).removeClass("swipeL");
+					t.scrollStatus.status = true;
+				}else{
+					$(this).addClass("swipeR");
+					t.scrollStatus.status = false;
+				}
+			});
+			$("#mainPage").click(function(){
+				alert(1);	
+			});
+			t.scrollStatus.init();	
+		},
+		getData : function(){
+			var self = this;
+			$.ajax({
+				url:self.config.url,
+				type:"GET",
+				dataType:"json",
+				success: function(data){
+					self.data = data;
+					self.banner();
+					//self.lv.init();
+				},
+				error: function(){
+						
+				}	
+			});	
+		},
+		banner : function(){
+			var
+			self = this,
+			render = function(){
+				var bannerData = self.data.banner;
+				var bannerList = '';
+				var bannerDotList = '';
+				$.each(bannerData,function(index){
+					bannerList += t.formatTpl(self.tpl.bannerItem,{},bannerData[index]);
+					bannerDotList += t.formatTpl(self.tpl.bannerDotItem,{},{});	
+				});
+				$(".banner_wrap").html(bannerList);
+				$(".banner_dot_wrap").html(bannerDotList).find("i").eq(0).addClass("active");
+				
+				handler();
+			},
+			handler = function(){
+				var bannerObj = document.getElementById("banner");
+				var bannerSwipe = Swipe(bannerObj, {
+				  // startSlide: 4,
+				  // auto: 3000,
+				  // continuous: true,
+				  // disableScroll: true,
+				  // stopPropagation: true,
+				  // callback: function(index, element) {},
+				  // transitionEnd: function(index, element) {}
+				});	
+			},
+			init = function(){
+				render();
+			}
+			init();
+		},
+		recommendList : function(){
+			var myScroll = new IScroll('#recommend_wrapper', { scrollX: true, scrollY: false, eventPassthrough: true, preventDefault: false });	
+		},
+		init : function(){
+			this.getData();
+			this.sideBar();	
+			this.recommendList();
+			t.fastClick();
+			t.countdown.init('countdown1','2015/5/26 10:00:00',function(){
+				alert(1);	
+			});
+			console.log(t.formatDate('1430370000000','yyyy年MM月dd日 hh:mm:ss'));
+		}
+	}
+		
+	App.init();
+		
+});

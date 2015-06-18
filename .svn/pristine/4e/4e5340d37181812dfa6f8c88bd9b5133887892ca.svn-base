@@ -1,0 +1,34 @@
+require.config({
+    baseUrl: 'js/lib',
+    paths: {
+		app: '../app',
+        zepto: 'zepto.min',
+		touch: 'touch',
+		swipe: 'swipe',
+		avartar: 'avatar',
+		avatarCfg: 'avatarCfg'
+    },
+	shim:{
+		'zepto' : {
+			'exports' : 'zepto'	
+		},
+		'touch' : {
+			'exports' : 'touch',
+			'deps' : ['zepto']	
+		},
+		'swipe' : {
+			'exports' : 'swipe',
+			'deps' : ['touch']	
+		},
+		'avatarCfg' : {
+			'exports' : 'avatarCfg',
+			'deps' : ['tracker']
+		},
+		'avatar' : {
+			'exports' : 'avatar',
+			'deps' : ['avatarCfg']
+		}
+	}
+});
+
+require(['app/index','avatar']);

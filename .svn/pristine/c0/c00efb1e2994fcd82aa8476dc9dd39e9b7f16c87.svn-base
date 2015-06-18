@@ -1,0 +1,13 @@
+CACHE MANIFEST
+# 2014-10-15
+/cookbook_angular/css/main.css
+/cookbook_angular/js/jquery-2.1.0.min.js
+/cookbook_angular/js/angular.min.js
+/cookbook_angular/js/app.js
+/cookbook_angular/js/controllers.js
+
+NETWORK:
+*
+
+FALLBACK:
+/cookbook_angular/404.html

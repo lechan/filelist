@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/> 
+<title>无标题文档</title>
+<style type="text/css">
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, del, dfn, em, img, ins, kbd, q, samp, small, strong, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, table, tbody, tfoot, thead, tr, th, td, article, aside, footer, header, nav, section {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}
+body{ height:100%; overflow:hidden;}
+li{ list-style:none;}
+.wrap{ max-width:640px; margin:0 auto; overflow:hidden;}
+.tab{ max-width:640px; width:100%; border-bottom:1px solid #666; position:fixed; top:0px; background:#fff; z-index:1;}
+.tab ul{ width:100%; display:table; table-layout:fixed;}
+.tab ul li{ display:table-cell; text-align:center; height:30px; line-height:30px; font-size:18px;}
+.tab ul li.active{ border-bottom:2px solid #C66;}
+.content{ margin-top:30px; height:100%; overflow-y:auto;}
+.swipe {overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap > div {
+  float:left;
+  width:100%;
+  position: relative;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.swipe-wrap div ul li{ height:30px; line-height:30px; border-bottom:1px solid #ccc; padding:10px;}
+
+/* END required styles */
+
+</style>
+</head>
+
+<body>
+<div class="wrap">
+    <div class="tab">
+        <ul>
+            <li class="active">标签1</li>
+            <li>标签2</li>
+            <li>标签3</li>
+            <li>标签4</li>
+        </ul>
+    </div>
+    <div class="content swipe" id="mySwipe">
+        <div class="swipe-wrap">
+            <div>
+            	<ul>
+                	<li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                    <li>这里是列表这里是列表</li>
+                </ul>
+            </div>
+            <div>
+            	<ul>
+                	<li>这里是列表这里是列表2</li>
+                    <li>这里是列表这里是列表2</li>
+                    <li>这里是列表这里是列表2</li>
+                    <li>这里是列表这里是列表2</li>
+                    <li>这里是列表这里是列表2</li>
+                    <li>这里是列表这里是列表2</li>
+                    <li>这里是列表这里是列表2</li>
+                    <li>这里是列表这里是列表2</li>
+                    <li>这里是列表这里是列表2</li>
+                    <li>这里是列表这里是列表2</li>
+                    <li>这里是列表这里是列表2</li>
+                    <li>这里是列表这里是列表2</li>
+                    <li>这里是列表这里是列表2</li>
+                    <li>这里是列表这里是列表2</li>
+                </ul>
+            </div>
+            <div>
+            	<ul>
+                	<li>这里是列表这里是列表3</li>
+                    <li>这里是列表这里是列表3</li>
+                </ul>
+            </div>
+            <div>
+            	<ul>
+                	<li>这里是列表这里是列表4</li>
+                    <li>这里是列表这里是列表4</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="http://lechan.sinaapp.com/js/jquery-2.1.0.min.js"></script>
+<script src="js/swipe.js"></script>
+<script type="text/javascript">
+$(function(){
+	var elem = document.getElementById('mySwipe');
+	var clientH = $(window).height();
+	$("#mySwipe div.swipe-wrap div").css("height",(clientH-30)+"px");
+	window.mySwipe = Swipe(elem, {
+	   startSlide: 0,
+	   //auto: 3000,
+	   continuous: true,
+	   disableScroll: false,
+	   stopPropagation: true,
+	   callback: function(index, element) {
+			$(".tab ul li").removeClass("active");
+			$(".tab ul li").eq(index).addClass("active");   
+	   },
+	   transitionEnd: function(index, element) {
+
+	   }
+	});
+	
+	$(".tab ul li").on("click",function(){
+		var index = $(this).index();
+		mySwipe.slide(index, 200);	
+	});
+});
+// with jQuery
+// window.mySwipe = $('#mySwipe').Swipe().data('Swipe');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,maximum-scale=1" />
+<title>评论</title>	
+<link rel="stylesheet" type="text/css" href="css/base.css">
+</head>
+<body>
+<div class='error-box review-box'>
+	<div class='star-box'>
+		<span class="appStars" id='starBox'></span>
+		<div>点击星型进行评分<input type="hidden" id="recScore" value="0"></div>
+	</div>
+	<form id='errForm' onsubmit='return false'><button id='btnCheck' class='hidden'></button><textarea id='errBody' required placeholder='评论内容'></textarea></form>
+	<div class='err-btm'>
+		<button id='btnSendErr' class='btn1'>发送</button>
+	</div>
+</div>
+<script type="text/javascript" src='js/zepto.js'></script>
+<script type="text/javascript" src='js/video.js'></script>
+<script type="text/javascript" src='js/review.js'></script>
+</body>
+</html>
+

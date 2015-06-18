@@ -1,0 +1,566 @@
+(function(WIN, U, E, T){
+	var CMPS=[];
+	var Drama={
+		url:'/video/api/videolist'
+		,clsLoaded:'loaded'
+		,ctnr:null, itemTpl:null
+		,tpls:{tplDrama:'.tplDrama', tplEnt:'.tplEnt'}
+		,doms:{btnSort:'#btnSort', head:'#dramaHead', body:'#dramaBody'}
+		,ctnDoms:{listCtnr:'#videoList', latest:'#latestDesc'}
+		,videos:[], sort:null, scroller:null, noLoadedEver:true
+		,startIndex:E.startIndex, pageCount:100
+		,init:function(navData, cb){
+			this.ctnr=this.navData.ctn;
+			var doms=this.doms;
+			U.initDoms(doms);
+			this.scroller=U.scrollLoad(doms.body, function(callback){t.load(callback);});
+
+			this.sort=App.data.isOver?E.sort.asc:E.sort.desc;
+
+			var tpls=this.tpls;
+			U.initDoms(tpls);
+			tpls.tplDrama.remove();
+			tpls.tplEnt.remove();
+
+			var t=this;
+			doms.btnSort.addClass(t.sort.cls).click(function(){t.toggleSort();});
+			this.getVideoStatus();
+			this.load(navData, cb);
+		}
+		,toggleSort:function(){
+			this.doms.btnSort.removeClass(this.sort.cls);
+			if(this.sort==E.sort.desc){
+				this.sort=E.sort.asc;
+			}else{
+				this.sort=E.sort.desc;
+			}
+			this.doms.btnSort.addClass(this.sort.cls);
+			this.reload();
+		}
+		,play:function(tar){
+			var ix;
+			while(tar&&tar!=this.ctnDoms.listCtnr[0]){
+				if(tar.hasAttribute('ix')){
+					ix=parseInt(tar.getAttribute('ix'));
+					break;
+				}
+				tar=tar.parentNode;
+			}
+			if(ix!=undefined&&!isNaN(ix)){
+				App.play(this.videos[ix]);
+			}
+		}
+		,reload:function(){
+			if(E.startIndex==E.pageCount)return;
+			this.videos=[];
+			this.vDoms={};
+			this.startIndex=E.startIndex;
+			this.ctnDoms.listCtnr.empty().removeClass(E.clsEmpty);
+			this.noLoadedEver=true;
+			this.getVideoStatus();
+			this.scroller.reset();
+			this.load();
+		}
+		,load:function(data, callback){
+			var t=this, sourceData=App.ddsource.selectedSource;
+			$.getJSON(this.url, {albumId:App.albumId, sourceId:sourceData.src.sourceCode, clarityId:sourceData.stream, si:this.startIndex, c:this.pageCount||E.pageCount, o:t.sort.val}
+					,this.ctnr
+					//,this.doms.body
+					,function(d){
+						var d=d.data;
+						if(d){
+							t.startIndex=(d.startIndex||d.si)+(d.count||d.c);
+							if(d.totalCount<=t.startIndex){
+								t.scroller.stop();
+							}
+							if(d.videos&&d.videos.length){
+								t.render(d);
+							}else if(!this.videos.length){
+								this.ctnr.addClass(E.clsEmpty);
+							}
+						}
+						callback&&callback(d.data&&d.data.videos&&d.data.videos.length);
+					}
+					,function(){
+						callback&&callback();
+					}
+			);
+		}
+		,render:function(d){
+			if(d.channelCode==E.channelCode.movie&&d.videos.length==1){
+				d=App.nav.dataList[0];
+				d.btn.hide();
+				d.ctn.hide();
+				App.nav.dataList.shift();
+				App.nav.reset(1);
+				return;
+			}
+
+			if(!this.inited){
+				this.inited=true, setWidth=false;
+				if(d.channelCode==E.channelCode.variety){
+					$(this.tpls.tplEnt[0]).appendTo(this.doms.head).removeClass(E.clsTpl);
+					$(this.tpls.tplEnt[1]).appendTo(this.doms. body).removeClass(E.clsTpl);
+				}else if(d.channelCode!=undefined){
+					$(this.tpls.tplDrama[0]).appendTo(this.doms.head).removeClass(E.clsTpl);
+					$(this.tpls.tplDrama[1]).appendTo(this.doms. body).removeClass(E.clsTpl);
+					setWidth=true;
+				}else{
+					T.show('视频数据有误');
+					return;
+				}
+				this.initUI(setWidth);
+			}
+
+			if(d.videos&&d.videos.length){
+				if(d.channelCode==E.channelCode.variety){
+					this.appendEnt(d.videos);
+				}else if(d.channelCode!=undefined){
+					this.appendDrama(d.videos);
+				}
+			}
+
+			this.videos=this.videos.concat(d.videos);
+			if(this.noLoadedEver){
+				this.scroller.check();
+				this.noLoadedEver=false;
+			}
+			if(this.vStatuses&&this.vStatuses.length){
+				this.updateVStatus();
+			}
+		}
+		,appendDrama:function(d){
+			var ls=this.ctnDoms.listCtnr;
+			var c=document.createDocumentFragment();
+			var startIx=this.videos.length;
+			for(var i=0, len=d.length; i<len; i++){
+				var it=this.itemTpl.clone();
+				//if(d[i].isDownload){
+				//	it.addClass(this.clsLoaded);
+				//}
+				it.html(d[i].name);
+				it.attr("ix", i+startIx);
+				it.attr("data-source-id", d[i].sourceCode);
+				it.attr("data-num", d[i].name);
+				it.attr("data-clarity", d[i].clarityCode);
+				c.appendChild(it[0]);
+				this.vDoms[d[i].vid]=it;
+			}
+			ls.append(c);
+		}
+		,appendEnt:function(d){
+			var ls=this.ctnDoms.listCtnr;
+			var c=document.createDocumentFragment();
+			var startIx=this.videos.length;
+			for(var i=0, len=d.length; i<len; i++){
+				var it=this.itemTpl.clone();
+				//if(d[i].isDownload){
+				//	$(it.children()[0]).addClass(this.clsLoaded);
+				//}
+				it.find('.drama-date').html(d[i].updateDate);
+				it.find('.drama-tit').html(d[i].video_name);
+				it.attr("ix", i+startIx);
+				c.appendChild(it[0]);
+				this.vDoms[d[i].vid]=it;
+			}
+			ls.append(c);
+		}
+		,initUI:function(setWidth){
+			var cDoms=this.ctnDoms;
+			U.initDoms(cDoms);
+			var doms=this.doms;
+			doms.body.height(App.ctnHt-doms.head.height());//.css('border', '1px solid red');
+			var t=this;
+			cDoms.latest.html(App.data.updateDesc);
+			var t=this;
+			cDoms.listCtnr.click(function(ev){t.play(ev.target);});
+			this.vDoms={};
+			this.itemTpl=$(cDoms.listCtnr.children()[0]);
+			if(setWidth){
+				var ctnrWidth=doms.body.width(), itemWidth=this.itemTpl.width();
+				var p=parseInt(doms.body.css('padding-left')), m=parseInt(this.itemTpl.css('margin-left'));
+				if(!isNaN(p)){
+					ctnrWidth-=p*2;
+				}
+				if(isNaN(m)){
+					m=0;
+				}
+				var fullItemWidth=itemWidth+m*2;
+				var num=Math.floor(ctnrWidth/fullItemWidth);
+				this.itemTpl.width((ctnrWidth-fullItemWidth*num)/num+itemWidth);
+				//m+=(ctnrWidth-itemWidth*num)/num/2;
+				//this.itemTpl.css('margin-left', m);
+				//this.itemTpl.css('margin-right', m);
+			}
+			this.itemTpl.remove();
+		}
+		,getVideoStatus:function(){
+			if(!API||!API.getVideoStatus){
+				T.show('不支持getVideoStatus');
+				return this.getVideoStatus=function(){};
+			}
+
+			var d=App.ddsource.selectedSource;
+			var rs=API.getVideoStatus(JSON.stringify({aid:this.albumId, source:d.src.sourceCode, clarity:d.stream}));
+			if(rs){
+				try{
+					//alert(rs);
+					rs=JSON.parse(rs);
+					this.vStatuses=rs.results;
+				}catch(err){
+					T.show('视频状态获取失败');
+				}
+			}
+		}
+		,updateVStatus:function(){
+			var s=this.vStatuses, v=this.vDoms;
+			for(var i=0, len=s.length; i<len; i++){
+				var sIt=s[i];
+				if(sIt.status==E.vStatus.loading){
+					v[sIt.vid].addClass(this.clsLoading);
+				}else if(sIt.status==E.vStatus.loaded){
+					v[sIt.vid].removeClass(this.clsLoading).addClass(this.clsLoaded);
+				}
+			}
+		}
+	};
+	CMPS.push(Drama);
+
+	var Proposal={
+		url:'/video/api/recommenderalbum'
+		,init:function(navData, cb){
+			var tpl=$(this.navData.ctn.children()[0]).remove().removeClass(E.clsTpl);
+			new U.VList(this.navData.ctn, tpl, this.url, {albumId:App.albumId}, function(d){return d&&d.data&&d.data.dataList;});
+		}
+	};
+	CMPS.push(Proposal);
+
+	var Review={
+		gradeUrl:'/comment/api/grade'
+		,cmtUrl:'/comment/api/commentlist'
+		,clsFull:'full', starPfx:'star'
+		,doms:{avgScore:'#avgScore', star:'#star', leScore:'#leScore', scoreList:'#scoreList', btnFullScore:'#reviewFullScores', btnCmt:'#btnCmt', reviewList:'#reviewList', reviewBtnMore:"#reviewBtnMore"}
+		,ctnr:null, cmtTpl:null, replyTpl:null, replyCtnTpl:null, scoreTpl:null
+		,noLoadedEver:true ,scroller:null, dataList:[]
+		,startIndex:E.startIndex
+		,init:function(navData, cb){
+			this.ctnr=this.navData.ctn;
+			var doms=this.doms;
+			U.initDoms(doms);
+
+			this.cmtTpl=$(doms.reviewList.children()[0]).removeClass(E.clsTpl).remove();
+			this.replyTpl=this.cmtTpl.find('.recSub').remove();
+			this.replyCtnTpl=this.replyTpl.find('li').remove();
+			this.scoreTpl=$(doms.scoreList.children()[0]).removeClass(E.clsTpl).remove();
+
+			doms.btnCmt.attr('href', doms.btnCmt.attr('href')+App.albumId);
+			var lk=this.cmtTpl.find('.icon-comment');
+			lk.attr('href', lk.attr('href')+App.albumId);
+			lk=this.replyCtnTpl.find('.icon-comment');
+			lk.attr('href', lk.attr('href')+App.albumId);
+
+
+			this.loadGrade();
+			this.loadCmts();
+			var t=this;
+			this.scroller=U.scrollLoad(this.ctnr, function(callback){t.loadCmts(callback);});
+		}
+		,toggleFull:function(div){
+			var p=$(div).parent();
+			p.toggleClass(this.clsFull);
+		}
+		,getStarCls:function(grade){
+			return this.starPfx+grade;
+		}
+		,loadGrade:function(){
+			var t=this;
+			$.getJSON(this.gradeUrl, {bizCode:'VIDEO', bizIdentity:App.albumId}, this.ctnr, function(d){
+				d.data&&t.renderGrade(d.data);
+			});
+		}
+		,renderGrade:function(d){
+			doms=this.doms;
+			doms.avgScore.html(d.averageScore);
+			doms.star.addClass(this.getStarCls(Math.floor(d.averageScore/2)));
+			if(d.datalist){
+				d=d.datalist;
+				var c=document.createDocumentFragment();
+				for(var i=0, len=d.length; i<len; i++){
+					if(d[i].fromName=='乐商店'){
+						doms.leScore.html(d[i].score);
+					}else{
+						var it=this.scoreTpl.clone();
+						it.find('label').html(d[i].fromName);
+						it.find('.score').html(d[i].score);
+						c.appendChild(it[0]);
+					}
+				}
+				doms.scoreList.append(c);
+				if(doms.scoreList[0].scollHeight>doms.scoreList[0].clientHeight){
+					var t=this;
+					doms.btnFullScore.show().click(function(ev){t.toggleFull(ev.currentTarget);});
+				}
+			}
+		}
+		,loadCmts:function(callback){
+			var t=this;
+			$.getJSON(this.cmtUrl, {bizCode:'VIDEO', bizIdentity:App.albumId, si:this.startIndex, count:E.pageCount}
+					,this.doms.reviewList
+					,function(d){
+						var gotten=false;
+						if(d.data){
+							var d=d.data;
+							t.startIndex=(d.startIndex||d.si)+(d.count||d.c);
+							if(d.totalCount<=t.startIndex){
+								t.scroller.stop();
+							}
+							if(d.datalist&&d.datalist.length){
+								t.renderCmt(d.datalist);
+								gotten=true;
+							}else{
+								t.doms.reviewList.addClass(E.clsEmpty);
+							}
+						}
+						callback&&callback(gotten);
+					}
+					,function(){
+						callback&&callback();
+					}
+			);
+		}
+		,renderCmt:function(ls){
+			var c=document.createDocumentFragment(), pool={};
+			for(var i=0, len=ls.length; i<len; i++){
+				var dCmt=ls[i].comment;
+				pool[dCmt.id]=dCmt;
+				var cmt=this.cmtTpl.clone();
+				cmt.find('.appStars').addClass(this.getStarCls(dCmt.grade));
+				cmt.find('.userName').html(dCmt.userName);
+				cmt.find('.model').html(dCmt.model);
+				cmt.find('.ver').html(dCmt.appVersion);
+				cmt.find('.time').html(dCmt.lastModifyDate);
+				cmt.find('.review-list-desc').html(dCmt.content);
+				var lk=cmt.find('.icon-comment');
+				lk.attr('href', lk.attr('href')+'&pid='+dCmt.id+'&oid='+dCmt.id);
+
+				if(ls[i].replys&&ls[i].replys.length){
+					dRpl=ls[i].replys;
+					var rpl=this.replyTpl.clone();
+					var ul=rpl.find('ul');
+					for(var j=0, len2=dRpl.length; j<len2; j++){
+						var dIt=dRpl[j];
+						pool[dIt.id]=dIt;
+						var it=this.replyCtnTpl.clone();
+						it.find('.userName').html(dIt.userName);
+						it.find('.model').html(dIt.model);
+						it.find('.atUserName').html(pool[dIt.parentId].userName);
+						it.find('.content').html(dIt.content);
+						var lk=it.find('.icon-comment');
+						lk.attr('href', lk.attr('href')+'&pid='+dCmt.id+'&oid='+dIt.id);
+						ul.append(it);
+					}
+					cmt.append(rpl);
+				}
+				c.appendChild(cmt[0]);
+			}
+			this.doms.reviewList.append(c);
+			if(this.noLoadedEver){
+				this.scroller.check();
+				this.noLoadedEver=false;
+			}
+			this.dataList=this.dataList.concat(ls);
+		}
+	};
+	CMPS.push(Review);
+
+
+	var Synopsis={
+		url:'/video/api/albumdesc'
+		,kwUrl:'leapp://ptn/appsearch.do?keywords='
+		,tpls:{lk:{tpl:null, label:null, value:null, valIt:null}, kw:null, desc:null}
+		,init:function(navData, cb){
+			this.ctnr=this.navData.ctn;
+			var tpls=this.tpls;
+			for(var i in tpls){
+				var d=tpls[i]={};
+				var tpl=d.tpl=this.ctnr.children('.'+i).removeClass(E.clsTpl).remove();
+				d.label=tpl.find('.lbl').remove();
+				d.value=tpl.find('.val').remove();
+				d.valIt=d.value.children()[0];
+				d.valIt&&(d.valIt=$(d.valIt).remove());
+			}
+			this.load(navData, cb);
+		}
+		,load:function(navData, cb){
+			var t=this;
+			$.getJSON(this.url, {albumId:App.albumId}, this.ctnr, function(d){
+				if(d&&d.data&&d.data&&d.data.length){
+					t.render(d.data);
+				}else{
+					t.ctnr.addClass(E.clsEmpty);
+				}
+				cb&&cb(d);
+			}, function(){
+				cb&&cb();
+			});
+		}
+		,render:function(ls){
+			var c=document.createDocumentFragment(), tpls=this.tpls;
+			for(var i=0, len=ls.length; i<len; i++){
+				var dIt=ls[i];
+				var it;
+				if(dIt.key=="简介"){
+					this.desc=dIt.value;
+					it=tpls.desc;
+					it.tpl.append(it.value.html(dIt.value));
+				}else{
+					it={};
+					var tar=tpls[dIt.type==1?'lk':'kw'];
+					for(var k in tar){
+						if(tar[k]){
+							it[k]=tar[k].clone();
+						}
+					}
+					if(dIt.value){
+						var vals=dIt.value.split(',');
+						for(var j=0, len2=vals.length; j<len2; j++){
+							var vIt=it.valIt.clone().html(vals[j]);
+							if(dIt.type==1){
+								vIt.attr('href', this.kwUrl+vals[j]);
+							}
+							it.value.append(vIt);
+						}
+					}else{
+						it.value.append(this.tpls.kw.valIt.clone());
+					}
+					it.tpl.append(it.value);
+				}
+				it.tpl.prepend(it.label.html(dIt.key+'：'));
+				c.appendChild(it.tpl[0]);
+			}
+			this.ctnr.append(c);
+		}
+	};
+	CMPS.push(Synopsis);
+	
+	var App={
+		url:'/video/api/albuminfo'
+		,doms:{upper:'#detailUpper', navCtnr:'#navList', ctn:'#navListCtnr', footer:'#detailFooter', btnPlay:'#btnPlay', btnOL:'#btnOL', score:'#score', poster:'#poster', btnError:'#btnError', info:'#info', btnShare:'#btnShare'}
+		,ctnHt:0
+		,data:null, reportUrl:'', nav:null
+		,init:function(){
+			var doms=this.doms;
+			U.initDoms(doms);
+
+			this.reportUrl=doms.btnError.attr('href');
+
+			var h1=U.getVP().height, h2=doms.upper.height(), h3=doms.footer.height();
+			this.ctnHt=h1-h2-h3;
+			//alert(this.ctnHt+' '+h1+' '+h2+' '+h3);
+			doms.ctn.height(this.ctnHt);
+
+
+			this.albumId=U.getURLParam('aid');
+			doms.btnOL.attr('href', U.getWVUrl(doms.btnOL.attr('href')+location.search));
+			this.load();
+		}
+		,share:function(){
+			if(!API||!API.getVideoStatus){
+				return T.show('不支持share');
+				this.share=function(){};
+			}
+			if(!Synopsis.navData.loaded){
+				var t=this;
+				this.nav.load(Synopsis.navData, function(){t.doShare();});
+			}else{
+				this.doShare();
+			}
+		}
+		,doShare:function(){
+			var args=[document.title+'-乐商店视频', Synopsis.desc, "text/plain",location.href, this.data.albumImgV, this.data.albumImgH, String(this.albumId), '视频', '0','0'];
+			//var args=[document.title+'-乐商店视频', 'content' ,"text/plain",location.href, 'this.data.albumImgV'];
+			//alert(JSON.stringify(args));
+			API.share.apply(API, args);
+		}
+		,load:function(){
+			var t=this;
+			$.getJSON(this.url, {albumId:this.albumId}, this.doms.upper, function(d){t.render(d);});
+		}
+		,render:function(d){
+			d=this.data=d.data;
+			var doms=this.doms;
+
+			doms.poster.attr('src', d.albumImgV);
+			doms.score.html(d.score);
+			document.title=d.albumTitle||d.albumName||'';
+			var tpl=$(doms.info.children()[0]).remove();
+			var c=document.createDocumentFragment();
+			var ls=d.desList;
+			for(var i=0, len=ls.length; i<len; i++){
+				if(!ls[i].value)continue;
+				var it=tpl.clone();
+				it.find('label').html(ls[i].key+'：');
+				it.find('span').html(ls[i].value);
+				c.appendChild(it[0]);
+			}
+			doms.info.prepend(c);
+
+			var ls=d.source, offline=false;
+			for(var i=0, len=ls.length; i<len; i++){
+			    var def=ls[i].definition;
+			    for(var j=0, len2=def.length; j<len2; j++){
+					if(def[j].isDownload){
+						offline=true;
+						break;
+					}
+			    }
+				if(offline)break;
+			}
+			if(!offline){
+			    doms.footer.addClass('noOffline');
+			}
+			this.ddsource=new U.DDSource(ls, function(){Drama.reload();}, true);
+			this.initCmp();
+			this.initUI();
+		}
+		,initUI:function(){
+			var b=this.doms.btnError, sourceData=this.ddsource.selectedSource;
+			b.attr('href', this.reportUrl+this.albumId+','+ sourceData.src.sourceCode+','+ sourceData.stream);
+			var t=this;
+			this.doms.btnShare.click(function(){t.share();});
+		}
+		,initCmp:function(){
+			var doms=this.doms, navData=[];
+			var btns=doms.navCtnr.children(), parts=doms.ctn.children();
+			$.each(CMPS, function(ix, el){
+				el.navData={btn:$(btns[ix]), ctn:$(parts[ix]), loader:function(navData, cb){el.init(navData, cb);}};
+				navData.push(el.navData);
+			});
+			this.nav=new U.Nav(navData, 0);
+
+			if(API){
+				var t=this;
+				doms.btnPlay.click(function(){
+					if(Drama.videos.length){
+						t.play(Drama.videos[0]);
+					}else{
+						T.show('无数据');
+					}
+				});
+			}
+		}
+		,play:function(d){
+			var sourceData=this.ddsource.selectedSource;
+			var args=[String(d.sourceCode), String(d.aid), String(d.vid), String(d.clarityCode), '{}'];
+			//alert(JSON.stringify(args));
+			API.playVideo.apply(API, args);
+		}
+	};
+
+
+
+
+	$(function(){
+		App.init();
+	});
+})(window, LENOVO.util, LENOVO.enum, LENOVO.toast);

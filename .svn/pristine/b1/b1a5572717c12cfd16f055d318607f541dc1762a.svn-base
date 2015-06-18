@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no,width=device-width" />
+<title>Jquery-puzzle拼图</title>
+<style>
+html{
+	height:100%;
+}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,button,textarea,p,blockquote,th,td{
+	padding:0;
+	margin:0;
+}
+body{
+	font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
+	font-size:12px;
+	background:#fff;
+	color:#333;
+}
+a{
+	outline:none;
+	-moz-outline:none;
+	text-decoration:none;
+}
+.clearfix{
+	zoom:1;
+	_height:1px;
+}
+.clearfix:after{
+	content:".";
+	display:block;
+	height:0;
+	clear:both;
+	visibility:hidden;
+}
+.head{
+	height:50px;
+	line-height:50px;
+	padding-left:20px;
+	border-bottom:1px solid #eee;
+	box-shadow: 1px 1px 5px #ccc;
+}
+.head h1{
+	float:left;
+	width:320px;
+	font-weight:normal;
+	font-size:22px;
+}
+.head span{
+	display:block;
+	float:right;
+	font-size:12px;
+	color:#999;
+	line-height:14px;
+	margin:30px 10px 0 0;
+}
+.wrap{
+	width:320px;
+	margin:80px auto;
+}
+.play_wrap{
+	width:300px;
+}
+#play_area{
+	position:relative;
+	width:300px;
+	height:300px;
+	margin:auto;
+	background:#fefefe;
+	border-radius:2px;
+	color: black;
+	box-shadow: 0px 0px 8px #09F;
+	border:1px solid #fff;
+	*border:1px solid #e5e5e5;
+	cursor:default;
+}
+#play_area .play_cell{
+	width:48px;
+	height:48px;
+	border:1px solid #fff;
+	border-radius:4px;
+	position:absolute;
+	background-position: 5px 5px;
+	cursor: default;
+	z-index:80;
+	box-shadow:0px 0px 8px #fff;
+	transition-property:background-position;
+	transition-duration:300ms;
+	transition-timing-function:ease-in-out;
+}
+#play_area .play_cell.hover{
+	filter: alpha(opacity=80);
+	opacity:.8;
+	box-shadow: 0px 0px 8px #000;
+	z-index:90;
+	*border:1px solid #09F;
+}
+.play_menu{
+	font-size:14px;
+	padding-top:20px;
+}
+.play_menu p{
+	line-height:200%;
+	clear:both;
+}
+.play_menu a.play_btn{
+	display:block;
+	margin-bottom:20px;
+	width:80px;
+	height:28px;
+	line-height:28px;
+	text-align:center;
+	text-decoration:none;
+	color:#333;
+	background:#fefefe;
+	border:1px solid #eee;
+	border-radius: 2px;
+	box-shadow: 1px 1px 2px #eee;
+	border-color: #ddd #d2d2d2 #d2d2d2 #ddd;
+	outline:none;
+    -moz-outline:none;
+}
+.play_menu a.play_btn:hover{
+	background-color: #fcfcfc;
+	border-color: #ccc;
+	box-shadow: inset 0 -2px 6px #eee;
+}
+.play_menu a#play_btn_level{
+	position:relative;
+	margin-bottom:30px;
+}
+.level_text{
+	margin-left:-10px;
+}
+.level_icon{
+	display:block;
+	position:absolute;
+	top:12px;
+	right:16px;
+	width:0;
+	height:0;
+	overflow:hidden;
+	border:5px solid #FFF;
+	border-color:#999 transparent transparent transparent;
+}
+.level_menu{
+	position:absolute;
+	margin:-30px 0 0px 1px;
+	display:none;
+}
+.level_menu ul{
+	list-style:none;
+}
+.level_menu li{
+	float:left;
+}
+.level_menu li a{
+	display:block;
+	padding:3px 10px;
+	border:1px solid #e8e8e8;
+	margin-left:-1px;
+	color:#09c;
+}
+.level_menu li a:hover{
+	background:#09c;
+	color:#fefefe;
+}
+#info{
+	font-size:16px;
+	margin:30px 0 0 0;
+}
+#info a{
+	color:#09F;
+}
+</style>
+<script type="text/javascript" src="http://lechan.sinaapp.com/js/jquery-2.1.0.min.js"></script>
+<!--<script type="text/javascript" src="../js/zepto.min.js"></script>-->
+<script type="text/javascript">
+var puzzleGame = function(options){
+	this.img = options.img || "";
+	this.e_playArea = $("#play_area");
+	this.e_startBtn = $("#play_btn_start");
+	this.e_playScore = $("#play_score");
+	this.e_playCount = $("#play_count");
+	this.e_levelBtn = $("#play_btn_level");
+	this.e_levelMenu = $("#play_menu_level");
+	this.areaWidth = parseInt(this.e_playArea.css("width"));
+	this.areaHeight = parseInt(this.e_playArea.css("height"));
+	this.offX = this.e_playArea.offset().left;
+	this.offY = this.e_playArea.offset().top;
+	this.levelArr = [[3,3],[4,4],[6,6]];
+	this.level = 0;
+	this.scoreArr = [100,200,400];
+	this.score = 0;
+	this.playCount = 0;
+	this.cellRow = this.levelArr[this.level][0];
+	this.cellCol = this.levelArr[this.level][1];
+	this.cellWidth = this.areaWidth/this.cellCol;
+	this.cellHeight = this.areaHeight/this.cellRow;
+	this.imgArr = [];
+	this.ranArr = [];
+	this.cellArr = [];
+	this.easing = 'swing';
+	this.time = 400;
+	this.thisLeft = 0;
+	this.thisTop = 0;
+	this.nextIndex;
+	this.thisIndex;
+	this.cb_cellDown = $.Callbacks();
+	this.isInit = false;
+	this.isBind = false;
+	this.start();
+};
+puzzleGame.prototype = {
+	start:function(){
+		this.init();
+		this.menu();
+	},
+	set: function(options){
+		this.level = options.level === 0 ? 0 : (options.level || 1);
+	},
+	menu:function(){
+		var self = this;
+		this.e_startBtn.click(function(){
+			if(!self.isBind){
+				self.bindCell();
+			}
+			self.e_levelMenu.hide();
+			self.play();
+		});
+		this.e_levelBtn.click(function(){
+			if(self.playing) return;
+			self.e_levelMenu.toggle();
+		});
+		this.e_levelMenu.find("a").click(function(){
+			self.e_levelMenu.hide();
+			self.e_levelBtn.find(".level_text").html($(this).html())
+			if(parseInt($(this).attr("level")) !== self.level){
+				self.set({
+					"level": $(this).attr("level")
+				});
+				self.isInit = true;
+				self.isBind = false;
+			}
+		})
+	},
+	play:function(){
+		if(this.isInit){
+			this.isInit = false;
+			this.cellRow = this.levelArr[this.level][0];
+			this.cellCol = this.levelArr[this.level][1];
+			this.cellWidth = this.areaWidth/this.cellCol;
+			this.cellHeight = this.areaHeight/this.cellRow;
+			this.init();
+		}
+		this.e_playCount.html(this.playCount = 0);
+		this.randomImg();
+		if(!this.isBind)this.bindCell();
+	},
+	init:function(){
+		var _cell;
+		this.cellArr = [];
+		this.imgArr = [];
+		this.e_playArea.html("");
+		for(var i = 0; i<this.cellRow; i++){
+			for(var j = 0; j<this.cellCol; j++){
+				this.imgArr.push(i*this.cellCol + j);
+				_cell = document.createElement("div");
+				_cell.className = "play_cell";
+				$(_cell).css({
+					"width": this.cellWidth-2,
+					"height": this.cellHeight-2,
+					"left": j * this.cellWidth,
+					"top": i * this.cellHeight,
+					"background": "url(" + this.img + ")",
+					"backgroundPosition": (-j) * this.cellWidth + "px " + (-i) * this.cellHeight + "px"
+				});
+				this.cellArr.push($(_cell));
+				this.e_playArea.append(_cell);
+			}
+		}
+	},
+	randomImg:function(){
+		var ran,arr;
+		arr = this.imgArr.slice();
+		this.ranArr = [];
+		for(var i = 0, ilen = arr.length; i < ilen; i++){
+			ran = Math.floor(Math.random() * arr.length);
+			this.ranArr.push(arr[ran]);
+			this.cellArr[i].css({
+				"backgroundPosition": (-arr[ran]%this.cellCol) * this.cellWidth + "px " + (-Math.floor(arr[ran]/this.cellCol)) * this.cellHeight + "px"
+			})
+			arr.splice(ran,1);
+		}
+		$("#p").html(this.ranArr.join())
+	},
+	browserRedirect:function(){
+		var sUserAgent = navigator.userAgent.toLowerCase();
+		var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+		var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+		var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+		var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+		var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+		var bIsAndroid = sUserAgent.match(/android/i) == "android";
+		var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+		var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+		if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+			return true;
+		} else {
+			return false;
+		}
+	},
+	bindCell:function(){
+		var self = this;
+		this.isBind = true;
+		this.cb_cellDown.add(self.cellDown);
+		for(var i = 0, len = this.cellArr.length; i<len; i++){
+			if(this.browserRedirect()){
+				this.cellArr[i].on({
+					"touchmove": function(){
+						$(this).addClass("hover");
+					},
+					"touchend": function(){
+						$(this).removeClass("hover");
+					},
+					"touchstart": function(e){
+						e = e.originalEvent ? e.originalEvent.targetTouches[0] : e.touches[0];
+						self.cb_cellDown.fire(e, $(this), self);
+						return false;
+					}
+				});
+			}else{
+				this.cellArr[i].on({
+					"mouseover": function(){
+						$(this).addClass("hover");
+					},
+					"mouseout": function(){
+						$(this).removeClass("hover");
+					},
+					"mousedown": function(e){
+						self.cb_cellDown.fire(e, $(this), self);
+						return false;
+					}
+				});	
+			}
+		}
+	},
+	cellDown:function(e,_cell,self){
+		var //self = this,
+		_x = e.pageX - _cell.offset().left,
+		_y = e.pageY - _cell.offset().top;
+		self.thisLeft = _cell.css("left");
+		self.thisTop = _cell.css("top");
+		self.thisIndex = Math.floor(parseInt(self.thisTop)/self.cellHeight)*self.cellCol;
+		self.thisIndex += Math.floor(parseInt(self.thisLeft)/self.cellWidth);
+		_cell.css("zIndex",99);
+		if(self.browserRedirect()){
+			$(document).on({
+				"touchmove": function(e){
+					e = e.originalEvent ? e.originalEvent.targetTouches[0] : e.touches[0];
+					_cell.css({
+						"left": e.pageX - self.offX - _x,
+						"top": e.pageY - self.offY - _y
+					})
+				},
+				"touchend": function(e){
+					e = e.originalEvent ? e.originalEvent.changedTouches[0] : e.changedTouches[0];
+					$(document).off("touchend");
+					$(document).off("touchmove");
+					self.cb_cellDown.empty();
+					if( e.pageX - self.offX < 0 || e.pageX - self.offX > self.areaWidth || e.pageY - self.offY < 0 || e.pageY - self.offY > self.areaHeight ){
+						self.returnCell();
+						return;
+					}
+					var _tx, _ty, _ti, _tj;
+					_tx = e.pageX - self.offX;
+					_ty = e.pageY - self.offY;
+					_ti = Math.floor( _ty / self.cellHeight );
+					_tj = Math.floor( _tx / self.cellWidth );
+					self.nextIndex = _ti*self.cellCol + _tj;
+					if(self.nextIndex == self.thisIndex){
+						self.returnCell();
+					}else{
+						self.changeCell();
+					}
+				}
+			});
+		}else{
+			$(document).on({
+				"mousemove": function(e){
+					_cell.css({
+						"left": e.pageX - self.offX - _x,
+						"top": e.pageY - self.offY - _y
+					})
+				},
+				"mouseup": function(e){
+					$(document).off("mouseup");
+					$(document).off("mousemove");
+					self.cb_cellDown.empty();
+					if( e.pageX - self.offX < 0 || e.pageX - self.offX > self.areaWidth || e.pageY - self.offY < 0 || e.pageY - self.offY > self.areaHeight ){
+						self.returnCell();
+						return;
+					}
+					var _tx, _ty, _ti, _tj;
+					_tx = e.pageX - self.offX;
+					_ty = e.pageY - self.offY;
+					_ti = Math.floor( _ty / self.cellHeight );
+					_tj = Math.floor( _tx / self.cellWidth );
+					self.nextIndex = _ti*self.cellCol + _tj;
+					if(self.nextIndex == self.thisIndex){
+						self.returnCell();
+					}else{
+						self.changeCell();
+					}
+				}
+			});
+		}
+	},
+	changeCell:function(){
+		var self = this,
+		_tc = this.cellArr[this.thisIndex],
+		_tl = this.thisLeft,
+		_tt = this.thisTop,
+		_nc = this.cellArr[this.nextIndex],
+		_nl = (this.nextIndex % this.cellCol) * this.cellWidth,
+		_nt = Math.floor(this.nextIndex / this.cellCol) * this.cellHeight;
+		_nc.css("zIndex",98);
+		this.cellArr[this.nextIndex] = _tc;
+		this.cellArr[this.thisIndex] = _nc;
+		this.ranArr[this.nextIndex] = this.ranArr[this.nextIndex] + this.ranArr[this.thisIndex];
+		this.ranArr[this.thisIndex] = this.ranArr[this.nextIndex] - this.ranArr[this.thisIndex];
+		this.ranArr[this.nextIndex] = this.ranArr[this.nextIndex] - this.ranArr[this.thisIndex];
+		_tc.animate({
+			"left": _nl,
+			"top": _nt
+		},self.time,self.easing,function(){
+			_tc.removeClass("hover");
+			_tc.css("zIndex","");
+		})
+		_nc.animate({
+			"left": _tl,
+			"top": _tt
+		},self.time,self.easing,function(){
+			_nc.removeClass("hover");
+			_nc.css("zIndex","");
+			self.check();
+			if(!self.cb_cellDown.has(self.cellDown)) self.cb_cellDown.add(self.cellDown);
+		})
+	},
+	returnCell:function(){
+		var self = this;
+		this.cellArr[this.thisIndex].animate({
+			"left": self.thisLeft,
+			"top": self.thisTop
+		},self.time,self.easing,function(){
+			$(this).removeClass("hover");
+			$(this).css("zIndex","");
+			if(!self.cb_cellDown.has(self.cellDown)) self.cb_cellDown.add(self.cellDown);
+		});
+	},
+	check:function(){
+		this.e_playCount.html( ++ this.playCount);
+		if(this.ranArr.join() == this.imgArr.join()){
+			this.success();
+		}
+	},
+	success:function(){
+		$(".play_cell").off("mousedown");
+		$(".play_cell").off("mouseover");
+		$(".play_cell").off("touchstart");
+		$(".play_cell").off("touchmove");
+		this.isBind = false;
+		alert("ok");
+		this.score += this.scoreArr[this.level]
+		this.e_playScore.html(this.score);
+		
+	}
+}
+$(document).ready(function(e) {
+    var pg = new puzzleGame({
+		img: "1.jpg"
+	});
+});
+</script>
+</head>
+<body>
+<div class="wrap">
+<div class="play_wrap">
+	<div id="play_area"></div>
+  <div class="play_menu">
+  	<a id="play_btn_start" class="play_btn" href="javascript:void(0);" unselectable="on">开始</a>
+      <a id="play_btn_level" class="play_btn" href="javascript:void(0);" unselectable="on">
+      	<span class="level_text">3 x 3</span>
+      	<span class="level_icon"></span>
+      </a>
+      	<div class="level_menu" id="play_menu_level">
+          	<ul>
+              	<li>
+                  	<a href="javascript:void(0);" level=0 >3 x 3</a>
+                  </li>
+                  <li>
+                  	<a href="javascript:void(0);" level=1 >4 x 4</a>
+                  </li>
+                  <li>
+                  	<a href="javascript:void(0);" level=2 >6 x 6</a>
+                  </li>
+              </ul>
+          </div>
+  	<p>完成：<span id="play_score">0</span></p>
+  	<p>交换：<span id="play_count">0</span></p>
+      <p>说明：<br>
+      -点击开始，小图片将随机打乱；<br>
+      -拖动小图片可交换位置，顺序完全正确则为成功；<br>
+      -难度分“3x3”、“4x4”、“6x6”三级；<br>
+      -对应的分值为100、200、400；
+      </p>
+  </div>
+</div>
+</body>
+</html>
